@@ -36,6 +36,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
 ]
 
 MIDDLEWARE = [
@@ -130,3 +131,9 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 # https://docs.djangoproject.com/en/3.1/topics/auth/default/#django.contrib.auth.views.LogoutView
 
 LOGOUT_REDIRECT_URL = '/'
+
+
+# Django sites framework
+# https://docs.djangoproject.com/en/3.1/ref/contrib/sites/
+
+SITE_ID = 1
