@@ -9,6 +9,9 @@ verify_ssl = true
 django = "*"
 psycopg2 = "*"
 autopep8 = "*"
+django-heroku = "*"
+gunicorn = "*"
+whitenoise = "*"
 
 [requires]
 python_version = "3.7"
