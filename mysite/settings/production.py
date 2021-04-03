@@ -1,8 +1,8 @@
 from .base import *
 
 ALLOWED_HOSTS = [
-    'https://www.michael-patterson.com', 
-    'https://young-savannah-60236.herokuapp.com',
+    'www.michael-patterson.com', 
+    'young-savannah-60236.herokuapp.com',
 ]
 
 # SSL/HTTPS
