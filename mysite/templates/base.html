@@ -1,0 +1,246 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script
+            async
+            src="https://www.googletagmanager.com/gtag/js?id=UA-77337691-4"
+        ></script>
+        <script>
+            window.dataLayer = window.dataLayer || []
+            function gtag() {
+                dataLayer.push(arguments)
+            }
+            gtag('js', new Date())
+
+            gtag('config', 'UA-77337691-4')
+        </script>
+
+        <!-- Required meta tags -->
+        <meta charset="utf-8" />
+        <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1, shrink-to-fit=no"
+        />
+
+        <!-- Bootstrap CSS -->
+        <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
+            integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2"
+            crossorigin="anonymous"
+        />
+
+        <!-- favicon -->
+        <link
+            rel="shortcut icon"
+            type="image/png"
+            href="{% static 'images/m_p_favicon.png' %}"
+        />
+
+        <!-- highlight.js theme -->
+        <link
+            id="highlight-link"
+            rel="stylesheet"
+            href="{% static 'css/highlight/styles/atelier-dune.dark.css' %}"
+        />
+
+        <!-- hamburgers -->
+        <link rel="stylesheet" href="{% static 'css/hamburgers.min.css' %}" />
+
+        <!-- animate css -->
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"
+        />
+
+        <!-- Google Fonts -->
+        <link rel="preconnect" href="https://fonts.gstatic.com" />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@600&display=swap"
+            rel="stylesheet"
+        />
+
+        {% block head_links %}{% endblock head_links %}
+
+        <!-- base css -->
+        <link rel="stylesheet" href="{% static 'css/base.css' %}" />
+
+        <!-- prettier-ignore -->
+        <title>
+            {% if title and post.title %}
+                {{ title }}: {{ post.title }}
+            {% elif title %}
+                {{ title }}
+            {% elif post.title %}
+                {{ post.title }}
+            {% endif %}
+            - Mike Patterson - Web Developer
+        </title>
+
+        <!-- json ld -->
+        {% block json_ld %}{% endblock json_ld %}
+
+        <!-- ckeditor js -->
+        <script>
+            window.CKEDITOR_BASEPATH = "{% static 'ckeditor/ckeditor/' %}"
+        </script>
+        <script
+            type="text/javascript"
+            src="{% static 'ckeditor/ckeditor-init.js' %}"
+        ></script>
+        <script
+            type="text/javascript"
+            src="{% static 'ckeditor/ckeditor/ckeditor.js' %}"
+        ></script>
+    </head>
+
+    <body>
+        <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+            <a class="navbar-brand" href="{% url 'home' %}">Mike Patterson</a>
+            <button
+                class="navbar-toggler hamburger hamburger--slider animate__animated animate__rubberBand"
+                type="button"
+                data-toggle="collapse"
+                data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent"
+                aria-expanded="false"
+                aria-label="Toggle navigation"
+            >
+                <!-- <span class="navbar-toggler-icon"></span> -->
+                <span class="hamburger-box">
+                    <span class="hamburger-inner"></span>
+                </span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto text-center">
+                    <li class="nav-item {{ home_active }}">
+                        <a
+                            class="nav-link"
+                            href="{{ home_active_link|default:'/' }}"
+                            >Home {{ home_active_sr|safe }}</a
+                        >
+                    </li>
+                    <li class="nav-item {{ about_active }}">
+                        <a
+                            class="nav-link"
+                            href="{{ about_active_link|default:'/about/' }}"
+                            >About {{ About_active_sr|safe }}</a
+                        >
+                    </li>
+                    <li class="nav-item {{ contact_active }}">
+                        <a
+                            class="nav-link"
+                            href="{{ contact_active_link|default:'/contact/' }}"
+                            >Contact {{ Contact_active_sr|safe }}</a
+                        >
+                    </li>
+                    <li class="nav-item {{ blog_active }}">
+                        <a
+                            class="nav-link"
+                            href="{{ blog_active_link|default:'/blog/' }}"
+                            >Blog {{ Blog_active_sr|safe }}</a
+                        >
+                    </li>
+                </ul>
+                <ul class="navbar-nav ml-auto text-center">
+                    <li class="nav-item dropdown">
+                        <a
+                            class="nav-link dropdown-toggle"
+                            href="#"
+                            id="navbarDropdown"
+                            role="button"
+                            data-toggle="dropdown"
+                            aria-haspopup="true"
+                            aria-expanded="false"
+                        >
+                            Blog Menu
+                        </a>
+                        <div
+                            class="dropdown-menu"
+                            aria-labelledby="navbarDropdown"
+                        >
+                            <a class="dropdown-item" href="{% url 'blog' %}"
+                                >Blog Home {{ blog_active_sr|safe }}</a
+                            >
+                            <div class="dropdown-divider"></div>
+                            <a
+                                class="dropdown-item"
+                                href="{% url 'post-list-all' %}"
+                                >All Posts {{ all_active_sr|safe }}</a
+                            >
+                            <div class="dropdown-divider"></div>
+                            <a
+                                class="dropdown-item"
+                                href="{% url 'category-list' %}"
+                                >Categories {{ category_active_sr|safe }}</a
+                            >
+                            {% if user.is_authenticated %}
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="{% url 'post-new' %}"
+                                >New Post {{ new_active_sr|safe }}</a
+                            >
+                            {% endif %}
+                        </div>
+                    </li>
+                </ul>
+                <div class="ml-4">
+                    <!-- Search Form -->
+                    <form
+                        method="GET"
+                        action="/blog/search/"
+                        class="form-inline input-group"
+                    >
+                        <input
+                            class="form-control"
+                            type="text"
+                            placeholder="Blog Search"
+                            aria-label="Blog Search"
+                            aria-describedby="button-addon"
+                            name="q"
+                            value="{{ request.GET.q }}"
+                            aria-label="Search"
+                        />
+                        <div class="input-group-append">
+                            <button
+                                class="btn btn-outline-primary"
+                                type="submit"
+                                id="button-addon"
+                            >
+                                Search
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </nav>
+
+        <main class="container">
+            {% block content %}
+            <h1>Hello, world!</h1>
+            {% endblock content %}
+        </main>
+
+        <!-- Bootstrap JavaScript -->
+        <script
+            src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+            integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+            crossorigin="anonymous"
+        ></script>
+        <script
+            src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
+            crossorigin="anonymous"
+        ></script>
+        <!-- highlight.js -->
+        <script src="{% static 'ckeditor/ckeditor/plugins/codesnippet/lib/highlight/highlight.pack.js' %}"></script>
+        <script>
+            hljs.initHighlightingOnLoad()
+        </script>
+        <!-- base js -->
+        <script type="text/javascript" src="{% static 'js/base.js' %}"></script>
+        {% block foot_links %}{% endblock foot_links %}
+    </body>
+</html>
