@@ -1,4 +1,6 @@
 from .base import *
+from .ckeditor import *
+from .email import *
 
 ALLOWED_HOSTS = ['*']
 
