@@ -1,0 +1,24 @@
+.form-row {
+    margin: auto;
+}
+.field-body {
+    max-width: 768px;
+}
+
+@media (max-width: 767px) {
+    fieldset > .form-row {
+        padding: 15px 2px;
+    }
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+    fieldset.module {
+        margin-bottom: 60px;
+    }
+    .submit-row {
+        position: fixed;
+        bottom: 0;
+        right: 1em;
+    }
+}
