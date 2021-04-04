@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block head_links %}
+<!-- font-awesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0/css/all.min.css">
+{% endblock head_links %}
+
+
+{% block content %}
+<section class="about-container">
+    <h1>About</h1>
+    <div class="row">
+        <div class="col-lg-6 py-3">
+            <div class="btn-group mb-4" role="group" aria-label="Social Links">
+                <a class="btn btn-light border" href="https://www.linkedin.com/in/mike-patterson-a2a5a68a/" target="_blank" title="Linkedin"><i class="fab fa-linkedin fa-2x"></i></a class="btn btn-light">
+                <a class="btn btn-light border" href="https://github.com/mppatterson84" target="_blank" title="GitHub"><i class="fab fa-github fa-2x"></i></a>
+                <a class="btn btn-light border" href="https://twitter.com/suchamike" target="_blank" title="Twitter"><i class="fab fa-twitter fa-2x"></i></a>
+            </div>
+            <p>
+                Hello, World! My name is Mike. 
+                I'm a full stack web developer.
+            </p>
+            <p>
+                My approach to programming comes from a curiosity for technology
+                and a drive for creativity.
+            </p>
+            <p>
+                My main focus is frontend development with HTML, CSS, and Javascript 
+                and backend development with Python, Django, and PostgreSQL.
+            </p>
+            <p>
+                
+            </p>
+        </div>
+        <div class="col-lg-6 py-3">
+            <div class="text-center mb-4">
+                <a href="{% url 'contact' %}" class="btn btn-primary btn-lg">Contact Me</a>
+            </div>
+            <div class="w-50 m-auto">
+                <img src="https://image.shutterstock.com/z/stock-vector-default-avatar-profile-icon-grey-photo-placeholder-518740741.jpg" alt="avatar image">
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock content %}
+
+
+{% block foot_links %}
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0/js/all.min.js"></script>
+{% endblock foot_links %}
