@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+<section>
+    <h1>{{ title }}</h1>
+    <a class="btn btn-primary" href="{% url 'blog' %}">Blog</a>
+    <a class="btn btn-primary" href="{% url 'category-list' %}">Categories</a>
+
+        {% for post in object_list %}
+            <div class="post-entry">
+                {% if post.published == False %}
+                <h4 class="bg-warning p-1">This post is not published.</h4>
+                {% endif %}
+                <h2><a href="{% url 'post-detail' post.slug %}">{{ post.title }}</a></h2>
+                <p>{{ post.body|truncatewords_html:50|safe }}</p>
+            </div>
+        {% endfor %}
+</section>
+{% endblock content %}
