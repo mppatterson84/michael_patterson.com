@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block head_links %}
+<!-- font-awesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0/css/all.min.css">
+<!-- google recaptcha -->
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+<script type="text/javascript">
+    var enableBtn = () => document.querySelector('#submit-btn').disabled = false
+    var disableBtn = () => document.querySelector('#submit-btn').disabled = true
+</script>
+{% endblock head_links %}
+
+{% block content %}
+<section class="email-container">
+    <h1>Contact</h1>
+
+    {% if messages %}
+        <div class="messages">
+            {% for message in messages %}
+                <p {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</p>
+            {% endfor %}
+        </div>
+    {% endif %}
+        
+    <div class="row m-auto">
+        <div class="col-lg-2"></div>
+        <div class="col-lg-8">
+            <i class="far fa-envelope fa-2x"></i>
+            <form method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <div class="g-recaptcha mb-1" data-sitekey="{{ reCAPTCHA_site_key_v2 }}" data-callback="enableBtn" data-expired-callback="disableBtn"></div>
+                <div class="form-actions">
+                    <button class="btn btn-primary" id="submit-btn" type="submit" disabled>Send</button>
+                </div>
+            </form>
+        </div>
+        <div class="col-lg-2"></div>
+    </div>
+</div>
+{% endblock content %}
+
+{% block foot_links %}
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0/js/all.min.js"></script>
+{% endblock foot_links %}
