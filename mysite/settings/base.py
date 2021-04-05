@@ -42,6 +42,8 @@ INSTALLED_APPS = [
     # 3rd Party
     'ckeditor',
     'ckeditor_uploader',
+    'cloudinary_storage',
+    'cloudinary',
 
     # Local
     'pages.apps.PagesConfig',
@@ -154,3 +156,7 @@ SITE_ID = 1
 
 # django-heroku
 django_heroku.settings(locals())
+
+# media and cloudinary storage
+MEDIA_URL = '/media/'
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
