@@ -12,6 +12,7 @@
                     "@id": "{{ request.scheme }}://{{ request.site }}{% url 'post-detail' post.slug %}"
                 },
                 "headline": "{{ post.title }}",
+                "image": "{{ post.image.url }}",
                 "datePublished": "{{ post.created_at|date:'c' }}",
                 "dateModified": "{{ post.updated_at|date:'c' }}",
                 "author": {
