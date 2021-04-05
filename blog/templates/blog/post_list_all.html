@@ -8,14 +8,14 @@
                 "@type": ["ItemList", "Blog"],
                 "name": "{{ request.site.name }} - {{ title }}",
                 "itemListElement":[
-                {% for post in object_list %}
-                {
-                  "@type":["ListItem", "BlogPosting"],
-                  "position":{{ forloop.counter }},
-                  "url":"{{ request.scheme }}://{{ request.site }}{% url 'post-detail' post.slug %}"
-                },  
-                {% endfor %}  
-              ]
+                    {% for post in object_list %}
+                    {
+                    "@type":["ListItem", "BlogPosting"],
+                    "position":{{ forloop.counter }},
+                    "url":"{{ request.scheme }}://{{ request.site }}{% url 'post-detail' post.slug %}"
+                    },
+                    {% endfor %}
+                ]
             }
         </script>
 {% endblock json_ld %}
