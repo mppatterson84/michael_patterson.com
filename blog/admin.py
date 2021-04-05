@@ -22,6 +22,7 @@ class PostAdminForm(forms.ModelForm):
         fields = [
             'title',
             'body',
+            'image',
             'author',
             'created_at',
             'updated_at',
