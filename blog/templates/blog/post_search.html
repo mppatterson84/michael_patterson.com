@@ -1,6 +1,26 @@
 {% extends 'base.html' %}
 
 
+{% block json_ld %}
+        <script type="application/ld+json">
+            {
+                "@context": "https://schema.org",
+                "@type": ["ItemList", "Blog"],
+                "name": "{{ request.site.name }} - {{ title }}",
+                "itemListElement":[
+                {% for post in object_list %}
+                {
+                  "@type":["ListItem", "BlogPosting"],
+                  "position":{{ forloop.counter }},
+                  "url":"{{ request.scheme }}://{{ request.site }}{% url 'post-detail' post.slug %}"
+                },  
+                {% endfor %}  
+              ]
+            }
+        </script>
+{% endblock json_ld %}
+
+
 {% block content %}
 <section>
     <h1>{{ title }}</h1>
