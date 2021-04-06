@@ -11,6 +11,12 @@ class PostAdminForm(forms.ModelForm):
         widget=CKEditorWidget()
     )
 
+    image = forms.ImageField(
+        label='Featured Image',
+        help_text='Required for Structured Data to provide good SEO',
+        required=True
+    )
+
     categories = forms.ModelMultipleChoiceField(
         queryset=PostCategory.objects.all(),
         required=False,
