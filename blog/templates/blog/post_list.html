@@ -6,7 +6,7 @@
             {
                 "@context": "https://schema.org",
                 "@type": ["ItemList", "Blog"],
-                "name": "{{ request.site.name }} - {{ title }}",
+                "name": "{{ title }} - {{ request.site.name }}",
                 "itemListElement":[
                     {% for post in object_list %}
                     {
@@ -16,7 +16,7 @@
                         "headline": "{{ post.title }}",
                         "image": "{{ request.scheme }}://{{ request.site }}/{{ post.image }}"
                     }{% if not forloop.last %},{% endif %}
-                    {% endfor %}  
+                    {% endfor %}
                 ]
             }
         </script>
