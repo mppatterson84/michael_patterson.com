@@ -12,7 +12,9 @@
                     {
                         "@type":["ListItem", "BlogPosting"],
                         "position":{{ forloop.counter }},
-                        "url":"{{ request.scheme }}://{{ request.site }}{% url 'post-detail' post.slug %}"
+                        "url":"{{ request.scheme }}://{{ request.site }}{% url 'post-detail' post.slug %}",
+                        "headline": "{{ post.title }}",
+                        "image": "{{ request.scheme }}://{{ request.site }}/{{ post.image }}"
                     }{% if not forloop.last %},{% endif %}
                     {% endfor %}  
                 ]
