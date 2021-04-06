@@ -10,10 +10,10 @@
                 "itemListElement":[
                     {% for post in object_list %}
                     {
-                    "@type":["ListItem", "BlogPosting"],
-                    "position":{{ forloop.counter }},
-                    "url":"{{ request.scheme }}://{{ request.site }}{% url 'post-detail' post.slug %}"
-                    },  
+                        "@type":["ListItem", "BlogPosting"],
+                        "position":{{ forloop.counter }},
+                        "url":"{{ request.scheme }}://{{ request.site }}{% url 'post-detail' post.slug %}"
+                    }{% if not forloop.last %},{% endif %}
                     {% endfor %}  
                 ]
             }
