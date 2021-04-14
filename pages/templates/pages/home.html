@@ -1,3 +1,4 @@
+{% extends 'base.html' %}
 {% load static %}
 
 <!DOCTYPE html>
@@ -41,6 +42,13 @@
         />
         <!-- style -->
         <link rel="stylesheet" href="{% static 'css/home.css' %}" />
+{% block head_links %}
+    <!-- google fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Audiowide&display=swap" rel="stylesheet">
+    <!-- home css -->
+    <link rel="stylesheet" href="{% static 'css/home.css' %}">
+{% endblock head_links %}
 
         <title>Mike Patterson - Web Developer</title>
     </head>
@@ -94,6 +102,22 @@
             <section class="container box-content">
                 <div class="box" id="box4">
                     <h2>Building It</h2>
+
+{% block header %}
+    <header>
+        <div>
+            <h1>Hello, World!</h1>
+            <p>
+                My name is Mike. I'm a Web Developer.
+                I create spectacular websites.
+            </p>
+            <a class="btn btn-lg btn-light" href="{% url 'about' %}">Learn More</a>
+        </div>
+    </header>
+{% endblock header %}
+    
+
+{% block content %}
                     <p>
                         My toolbox includes Python, Django, and Postgres SQL for
                         the backend. For the frontend I specialize with HTML,
@@ -121,3 +145,4 @@
         <script src="{% static 'js/home.js' %}"></script>
     </body>
 </html>
+{% endblock content %}
