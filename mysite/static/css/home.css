@@ -22,7 +22,7 @@ header p {
         background-position: center;
         background-size: cover;
         padding: 0 1em;
-        display: flex;
+        height: 92vh;
     }
     header h1 {
         font-size: 4rem;
