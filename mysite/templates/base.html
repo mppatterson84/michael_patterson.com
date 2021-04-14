@@ -66,13 +66,13 @@
         <!-- prettier-ignore -->
         <title>
             {% if title and post.title %}
-                {{ title }}: {{ post.title }}
+                {{ title }}: {{ post.title }} -
             {% elif title %}
-                {{ title }}
+                {{ title }} -
             {% elif post.title %}
-                {{ post.title }}
+                {{ post.title }} -
             {% endif %}
-            - Mike Patterson - Web Developer
+            Mike Patterson - Web Developer
         </title>
 
         <!-- json ld -->
