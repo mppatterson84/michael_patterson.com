@@ -59,3 +59,15 @@ if (window.outerWidth < 768) {
         e.style.float = 'none'
     })
 }
+
+// google analytics
+window.dataLayer = window.dataLayer || []
+function gtag() {
+    dataLayer.push(arguments)
+}
+gtag('js', new Date())
+
+gtag('config', 'UA-77337691-4')
+
+// highlight js
+hljs.initHighlightingOnLoad()

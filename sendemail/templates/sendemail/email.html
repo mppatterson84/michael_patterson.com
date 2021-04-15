@@ -11,10 +11,8 @@
 />
 <!-- google recaptcha -->
 <script src="https://www.google.com/recaptcha/api.js" async defer></script>
-<script type="text/javascript">
-    var enableBtn = () => document.querySelector('#submit-btn').disabled = false
-    var disableBtn = () => document.querySelector('#submit-btn').disabled = true
-</script>
+<!-- email js -->
+<script src="{% static 'js/email.js' %}"></script>
 {% endblock head_links %}
 
 {% block content %}
