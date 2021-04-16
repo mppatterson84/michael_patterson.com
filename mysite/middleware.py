@@ -25,16 +25,17 @@ class ExtraHttpHeaders:
         csp_sse = ' '.join([str(u) for u in csp_sse_urls])
 
         csp = [
-            "default-src 'self';",
-            "img-src *;",
-            f"script-src-elem 'self' {csp_sse};",
-            "style-src * 'unsafe-inline';",
-            "font-src *;",
-            "connect-src 'self' https://www.google-analytics.com https://stats.g.doubleclick.net;",
-            "frame-src 'self' https://www.google.com/"
+            "default-src 'none'",
+            "img-src *",
+            f"script-src-elem 'self' {csp_sse}",
+            "style-src * 'unsafe-inline'",
+            "font-src *",
+            "connect-src 'self' https://www.google-analytics.com https://stats.g.doubleclick.net",
+            "frame-src 'self' https://www.google.com/",
+            "frame-ancestors 'none'"
         ]
 
-        response['Content-Security-Policy'] = "".join(csp)
+        response['Content-Security-Policy'] = "; ".join(csp)
         # Code to be executed for each request/response after
         # the view is called.
 
