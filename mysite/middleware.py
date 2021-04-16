@@ -18,7 +18,8 @@ class ExtraHttpHeaders:
             "https://cdn.jsdelivr.net",
             "https://cdnjs.cloudflare.com",
             "https://www.google.com",
-            "https://www.gstatic.com"
+            "https://www.gstatic.com",
+            "https://media-library.cloudinary.com/global/all.js"
         ]
 
         csp_sse = ' '.join([str(u) for u in csp_sse_urls])
