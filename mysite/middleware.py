@@ -27,6 +27,7 @@ class ExtraHttpHeaders:
         csp = [
             "default-src 'none'",
             "img-src *",
+            f"script-src 'self' {csp_sse}",
             f"script-src-elem 'self' {csp_sse}",
             "style-src * 'unsafe-inline'",
             "font-src *",
