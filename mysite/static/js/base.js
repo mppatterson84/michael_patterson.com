@@ -4,6 +4,7 @@ hamburger.addEventListener('click', () => {
     hamburger.classList.toggle('is-active')
     hamburger.classList.toggle('animate__rubberBand')
     hamburger.classList.toggle('animate__jello')
+    $('.collapse').collapse('toggle')
     doubleClickDelay()
 })
 
