@@ -32,7 +32,9 @@ class ExtraHttpHeaders:
             "font-src *",
             "connect-src 'self' https://www.google-analytics.com https://stats.g.doubleclick.net",
             "frame-src 'self' https://www.google.com/",
-            "frame-ancestors 'none'"
+            "frame-ancestors 'none'",
+            "base-uri 'none'",
+            "form-action 'self'"
         ]
 
         response['Content-Security-Policy'] = "; ".join(csp)
