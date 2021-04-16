@@ -17,6 +17,12 @@ img {
 figcaption {
     text-align: center;
 }
+#nav-brand {
+    height: 29px;
+    width: 29px;
+    margin: 0;
+    filter: invert(1);
+}
 .post-entry {
     border: 2px solid rgba(174, 221, 250, 0.3);
     border-radius: 5px;
