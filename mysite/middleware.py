@@ -1,4 +1,17 @@
+import base64
+import hashlib
 import random
+import urllib.request
+
+def get_sri(file_url):
+    f = ''
+    for line in urllib.request.urlopen(file_url):
+        f = f + line.decode('utf-8')
+    f = f.encode()
+
+    h = hashlib.sha384(f).digest()
+    hash_base64 = base64.b64encode(h).decode()
+    return 'sha384-{}'.format(hash_base64)
 
 
 def GetCspNonce(len=16):
@@ -55,4 +68,5 @@ class ExtraHttpHeaders(object):
 
     def process_template_response(self, request, response):
         response.context_data['nonce'] = self.nonce_str
+        response.context_data['analytics_sri'] = get_sri('https://www.googletagmanager.com/gtag/js?id=UA-77337691-4')
         return response
