@@ -1,4 +1,12 @@
-class ExtraHttpHeaders:
+import random
+
+
+def GetCspNonce(len=16):
+    """Return a random nonce."""
+    return hex(random.getrandbits(128))
+
+
+class ExtraHttpHeaders(object):
     def __init__(self, get_response):
         self.get_response = get_response
         # One-time configuration and initialization.
@@ -6,6 +14,7 @@ class ExtraHttpHeaders:
     def __call__(self, request):
         # Code to be executed for each request before
         # the view (and later middleware) are called.
+        self.nonce_str = GetCspNonce()
 
         response = self.get_response(request)
         response['Strict-Transport-Security'] = 'max-age=63072000'
@@ -27,7 +36,7 @@ class ExtraHttpHeaders:
         csp = [
             "default-src 'none'",
             "img-src *",
-            f"script-src 'self' {csp_sse}",
+            f"script-src 'self' 'nonce-{self.nonce_str}' {csp_sse}",
             f"script-src-elem 'self' {csp_sse}",
             "style-src * 'unsafe-inline'",
             "font-src *",
@@ -42,4 +51,8 @@ class ExtraHttpHeaders:
         # Code to be executed for each request/response after
         # the view is called.
 
+        return response
+
+    def process_template_response(self, request, response):
+        response.context_data['nonce'] = self.nonce_str
         return response
