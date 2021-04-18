@@ -35,6 +35,7 @@ class ExtraHttpHeaders(object):
         csp_sse_urls = [
             "https://stats.g.doubleclick.net",
             "https://www.google-analytics.com",
+            "https://ssl.google-analytics.com",
             "https://code.jquery.com",
             "https://www.googletagmanager.com",
             "https://cdn.jsdelivr.net",
@@ -68,5 +69,4 @@ class ExtraHttpHeaders(object):
 
     def process_template_response(self, request, response):
         response.context_data['nonce'] = self.nonce_str
-        response.context_data['analytics_sri'] = get_sri('https://www.googletagmanager.com/gtag/js?id=UA-77337691-4')
         return response
