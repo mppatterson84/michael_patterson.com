@@ -3,18 +3,19 @@ import hashlib
 import random
 import urllib.request
 
-def get_sri(file_url):
-    f = ''
-    for line in urllib.request.urlopen(file_url):
-        f = f + line.decode('utf-8')
-    f = f.encode()
 
-    h = hashlib.sha384(f).digest()
-    hash_base64 = base64.b64encode(h).decode()
+def get_sri(file_url):
+    file_string = ''
+    for line in urllib.request.urlopen(file_url):
+        file_string = file_string + line.decode('utf-8')
+    file_string = file_string.encode()
+
+    string_hash = hashlib.sha384(file_string).digest()
+    hash_base64 = base64.b64encode(string_hash).decode()
     return 'sha384-{}'.format(hash_base64)
 
 
-def GetCspNonce(len=16):
+def get_csp_nonce(len=16):
     """Return a random nonce."""
     return hex(random.getrandbits(128))
 
@@ -27,7 +28,7 @@ class ExtraHttpHeaders(object):
     def __call__(self, request):
         # Code to be executed for each request before
         # the view (and later middleware) are called.
-        self.nonce_str = GetCspNonce()
+        self.nonce_str = get_csp_nonce()
 
         response = self.get_response(request)
         response['Strict-Transport-Security'] = 'max-age=63072000'
