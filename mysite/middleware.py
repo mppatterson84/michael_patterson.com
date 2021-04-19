@@ -50,7 +50,7 @@ class ExtraHttpHeaders(object):
         csp = [
             "default-src 'none'",
             "img-src *",
-            f"script-src 'self' 'nonce-{self.nonce_str}' {csp_sse}",
+            f"script-src 'self' 'strict-dynamic' 'nonce-{self.nonce_str}' {csp_sse}",
             f"script-src-elem 'self' {csp_sse}",
             "style-src * 'unsafe-inline'",
             "font-src *",
