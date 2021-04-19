@@ -15,7 +15,7 @@ def get_sri(file_url):
     return 'sha384-{}'.format(hash_base64)
 
 
-def get_csp_nonce(len=16):
+def get_csp_nonce():
     """Return a random nonce."""
     return hex(random.getrandbits(128))
 
