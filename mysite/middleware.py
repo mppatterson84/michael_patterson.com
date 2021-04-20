@@ -31,6 +31,10 @@ class ExtraHttpHeaders(object):
         self.nonce_str = get_csp_nonce()
 
         response = self.get_response(request)
+
+        if request.path.startswith('/admin/'):
+            return response
+
         response['Strict-Transport-Security'] = 'max-age=63072000'
 
         csp_sse_urls = [
@@ -56,7 +60,7 @@ class ExtraHttpHeaders(object):
             "style-src * 'unsafe-inline'",
             "font-src *",
             "connect-src 'self' https://www.google-analytics.com https://stats.g.doubleclick.net",
-            "frame-src 'self' https://www.google.com/",
+            "frame-src 'self' https://www.google.com/ https://cloudinary.com",
             "frame-ancestors 'none'",
             "base-uri 'none'",
             "form-action 'self'"
