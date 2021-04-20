@@ -32,8 +32,14 @@ class ExtraHttpHeaders(object):
 
         response = self.get_response(request)
 
-        if request.path.startswith('/admin/'):
-            return response
+        excluded_paths = [
+            '/admin/',
+            '/ckeditor/',
+            '/browser/'
+        ]
+        for path in excluded_paths:
+            if request.path.startswith(path):
+                return response
 
         response['Strict-Transport-Security'] = 'max-age=63072000'
 
