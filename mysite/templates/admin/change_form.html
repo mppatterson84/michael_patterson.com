@@ -11,4 +11,6 @@
 {% block admin_change_form_document_ready %}
   {{ block.super }}
   <script src="{% static 'admin/js/custom.js' %}"></script>
+  <script src="https://media-library.cloudinary.com/global/all.js"></script>
+  <script src="{% static 'admin/js/media_library_widget.js' %}"></script>
 {% endblock %}
