@@ -11,8 +11,8 @@ class PostAdminForm(forms.ModelForm):
         widget=CKEditorWidget()
     )
 
-    image = forms.ImageField(
-        label='Featured Image',
+    image = forms.CharField(
+        label='Featured Image URL',
         help_text='Required for Structured Data to provide good SEO',
         required=True
     )
