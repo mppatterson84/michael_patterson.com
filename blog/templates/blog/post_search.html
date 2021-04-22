@@ -1,4 +1,15 @@
 {% extends 'base.html' %}
+{% load static %}
+
+
+{% block head_links %}
+    <!-- highlight.js theme -->
+    <link
+        id="highlight-link"
+        rel="stylesheet"
+        href="{% static 'css/highlight/styles/atelier-dune.dark.css' %}"
+    />
+{% endblock head_links %}
 
 
 {% block json_ld %}
