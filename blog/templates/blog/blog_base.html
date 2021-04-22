@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block head_links %}
+    <!-- highlight.js theme -->
+    <link
+        id="highlight-link"
+        rel="stylesheet"
+        href="{% static 'css/highlight/styles/atelier-dune.dark.css' %}"
+    />
+{% endblock head_links %}
+
+
+{% block foot_links %}
+    <!-- highlight.js -->
+    <script src="{% static 'ckeditor/ckeditor/plugins/codesnippet/lib/highlight/highlight.pack.js' %}" defer></script>
+    <script src="{% static 'js/blog.js' %}" defer></script>
+{% endblock foot_links %}

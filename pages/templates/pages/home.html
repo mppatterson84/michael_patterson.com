@@ -2,6 +2,11 @@
 {% load static %}
 
 
+{% block preload %}
+<link rel="preload" as="image" href="https://images.unsplash.com/photo-1613025952818-57743137f1db?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1950&q=80">
+{% endblock preload %}
+
+
 {% block head_links %}
     <!-- home css -->
     <link rel="stylesheet" href="{% static 'css/home.css' %}">

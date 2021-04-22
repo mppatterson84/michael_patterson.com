@@ -69,6 +69,3 @@ function gtag() {
 gtag('js', new Date())
 
 gtag('config', 'UA-77337691-4')
-
-// highlight js
-hljs.initHighlightingOnLoad()
