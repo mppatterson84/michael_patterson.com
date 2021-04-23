@@ -1,14 +1,20 @@
 {% extends 'base.html' %}
 {% load static %}
 
+
+{% block preload %}
+    <link rel="preload" as="image" href="{% static 'images/icons/envelope-regular.svg' %}">
+{% endblock preload %}
+
+
 {% block head_links %}
 <!-- font-awesome -->
-<link 
+<!-- <link 
     rel="stylesheet" 
     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0/css/all.min.css" 
     integrity="sha384-REHJTs1r2ErKBuJB0fCK99gCYsVjwxHrSU0N7I1zl9vZbggVJXRMsv/sLlOAGb4M" 
     crossorigin="anonymous" 
-/>
+/> -->
 <!-- google recaptcha -->
 <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 <!-- email js -->
@@ -30,7 +36,10 @@
     <div class="row m-auto">
         <div class="col-lg-2"></div>
         <div class="col-lg-8">
-            <i class="far fa-envelope fa-2x"></i>
+            <!-- <i class="far fa-envelope fa-2x"></i> -->
+            <i>
+                <img src="{% static 'images/icons/envelope-regular.svg' %}" alt="" srcset="">
+            </i>
             <form method="post">
                 {% csrf_token %}
                 {{ form.as_p }}
@@ -46,10 +55,10 @@
 {% endblock content %}
 
 {% block foot_links %}
-<script 
+<!-- <script 
     src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0/js/all.min.js" 
     integrity="sha384-S+e0w/GqyDFzOU88KBBRbedIB4IMF55OzWmROqS6nlDcXlEaV8PcFi4DHZYfDk4Y" 
     crossorigin="anonymous"
     defer
-></script>
+></script> -->
 {% endblock foot_links %}

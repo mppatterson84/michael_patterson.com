@@ -63,7 +63,7 @@ class ExtraHttpHeaders(object):
             "img-src *",
             f"script-src 'self' 'strict-dynamic' 'nonce-{self.nonce_str}' {csp_sse}",
             f"script-src-elem 'self' {csp_sse}",
-            "style-src * 'sha256-ZVjd2zfSTfAVh1y7eCcNk0SPGUQOP/H8vzrFJIVgg90=' 'sha256-ixVUGs3ai0rMA0pgIVBN0KVlYbQip7/5SGmnUwJPNqE='",
+            "style-src *",
             "font-src *",
             "connect-src 'self' https://www.google-analytics.com https://stats.g.doubleclick.net",
             "frame-src 'self' https://www.google.com/ https://cloudinary.com",

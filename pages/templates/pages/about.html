@@ -2,14 +2,21 @@
 {% load static %}
 
 
+{% block preload %}
+    <link rel="preload" as="image" href="{% static 'images/icons/linkedin-brands.svg' %}">
+    <link rel="preload" as="image" href="{% static 'images/icons/github-brands.svg' %}">
+    <link rel="preload" as="image" href="{% static 'images/icons/twitter-brands.svg' %}">
+{% endblock preload %}
+
+
 {% block head_links %}
 <!-- font-awesome -->
-<link 
+<!-- <link 
     rel="stylesheet" 
     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0/css/all.min.css" 
     integrity="sha384-REHJTs1r2ErKBuJB0fCK99gCYsVjwxHrSU0N7I1zl9vZbggVJXRMsv/sLlOAGb4M" 
     crossorigin="anonymous" 
-/>
+/> -->
 {% endblock head_links %}
 
 
@@ -19,9 +26,24 @@
     <div class="row">
         <div class="col-lg-6 py-3">
             <div class="btn-group mb-4" role="group" aria-label="Social Links">
-                <a class="btn btn-light border" href="https://www.linkedin.com/in/mike-patterson-web-developer/" target="_blank" title="Linkedin"><i class="fab fa-linkedin fa-2x"></i></a class="btn btn-light">
-                <a class="btn btn-light border" href="https://github.com/mppatterson84" target="_blank" title="GitHub"><i class="fab fa-github fa-2x"></i></a>
-                <a class="btn btn-light border" href="https://twitter.com/suchamike" target="_blank" title="Twitter"><i class="fab fa-twitter fa-2x"></i></a>
+                <a class="btn btn-light border" href="https://www.linkedin.com/in/mike-patterson-web-developer/" target="_blank" title="Linkedin">
+                    <!-- <i class="fab fa-linkedin fa-2x"></i> -->
+                    <i>
+                        <img src="{% static 'images/icons/linkedin-brands.svg' %}" alt="" srcset="">
+                    </i>
+                </a>
+                <a class="btn btn-light border" href="https://github.com/mppatterson84" target="_blank" title="GitHub">
+                    <!-- <i class="fab fa-github fa-2x"></i> -->
+                    <i>
+                        <img src="{% static 'images/icons/github-brands.svg' %}" alt="" srcset="">
+                    </i>
+                </a>
+                <a class="btn btn-light border" href="https://twitter.com/suchamike" target="_blank" title="Twitter">
+                    <!-- <i class="fab fa-twitter fa-2x"></i> -->
+                    <i>
+                        <img src="{% static 'images/icons/twitter-brands.svg' %}" alt="" srcset="">
+                    </i>
+                </a>
             </div>
             <p>
                 Hello, World! My name is Mike. 
@@ -53,10 +75,10 @@
 
 
 {% block foot_links %}
-<script 
+<!-- <script 
     src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0/js/all.min.js" 
     integrity="sha384-S+e0w/GqyDFzOU88KBBRbedIB4IMF55OzWmROqS6nlDcXlEaV8PcFi4DHZYfDk4Y" 
     crossorigin="anonymous"
     defer
-></script>
+></script> -->
 {% endblock foot_links %}

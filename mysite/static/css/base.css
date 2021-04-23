@@ -19,6 +19,11 @@ img {
     max-width: 95%;
     height: auto;
 }
+i > img {
+    margin: 0;
+    height: 2em;
+    width: 2em;
+}
 figcaption {
     text-align: center;
 }
