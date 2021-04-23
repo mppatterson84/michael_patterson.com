@@ -83,6 +83,33 @@ p.align-center > img {
     display: block;
     margin: 1em auto;
 }
+figure.image.align-left > figcaption {
+    display: block;
+    max-width: 400px;
+    margin-right: auto;
+}
+figure.image.align-right > figcaption {
+    display: block;
+    max-width: 400px;
+    margin-left: auto;
+}
+div.align-center > figure.image > figcaption {
+    display: block;
+    max-width: 400px;
+    margin: auto;
+}
+figure.image.align-left > img {
+    display: block;
+    margin-right: auto;
+}
+figure.image.align-right > img {
+    display: block;
+    margin-left: auto;
+}
+div.align-center > figure.image > img {
+    display: block;
+    margin: auto;
+}
 
 /* Extra small devices (phones, 576px and down) */
 @media only screen and (max-width: 576px) {
