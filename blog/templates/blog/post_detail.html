@@ -1,19 +1,5 @@
 {% extends 'blog/blog_base.html' %}
 {% load static %}
-
-
-{% block head_links %}
-    {{ block.super }}
-    <!-- ckeditor js -->
-    <script
-        type="text/javascript"
-        src="{% static 'ckeditor/ckeditor-init.js' %}"
-    ></script>
-    <script
-        type="text/javascript"
-        src="{% static 'ckeditor/ckeditor/ckeditor.js' %}"
-    ></script>
-{% endblock head_links %}
     
 
 {% block json_ld %}
