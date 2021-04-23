@@ -17,6 +17,7 @@ CKEDITOR_CONFIGS = {
         'autoGrow_minHeight': '300',
         'width': '100%',
         'image2_prefillDimensions': False,
+        'image2_alignClasses': ['align-left', 'align-center', 'align-right'],
         'filebrowserBrowseUrl': '/browser/',
         # start font_names
         'font_names': 'Arial/Arial, Helvetica, sans-serif;' +

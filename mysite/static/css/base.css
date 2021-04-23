@@ -71,6 +71,18 @@ footer {
     flex-direction: column;
     align-items: flex-end;
 }
+img.align-left {
+    display: block;
+    margin-right: auto;
+}
+img.align-right {
+    display: block;
+    margin-left: auto;
+}
+p.align-center > img {
+    display: block;
+    margin: 1em auto;
+}
 
 /* Extra small devices (phones, 576px and down) */
 @media only screen and (max-width: 576px) {
