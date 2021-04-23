@@ -73,6 +73,7 @@ class ExtraHttpHeaders(object):
         ]
 
         response['Content-Security-Policy'] = "; ".join(csp)
+        response['Cache-Control'] = 'max-age=31536000'
         # Code to be executed for each request/response after
         # the view is called.
 
