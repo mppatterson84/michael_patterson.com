@@ -6,7 +6,7 @@
     <h1>{{ title }}</h1>
     <a class="btn btn-primary" href="{% url 'blog' %}">Blog</a>
     {% if user.is_authenticated %}
-    <a class="btn btn-success" href="{% url 'category-new' %}">New Category</a>
+    <a class="btn btn-success" href="/admin/blog/postcategory/add/">New Category</a>
     {% endif %}
         
 
@@ -19,7 +19,7 @@
             
             {% if user.is_authenticated %}
             <div class="ml-auto">
-                <a class="btn btn-danger btn-sm" href="{% url 'category-delete' category.slug %}">Delete</a>
+                <a class="btn btn-danger btn-sm" href="/admin/blog/postcategory/{{ category.pk }}/delete/">Delete</a>
             </div>
             {% endif %}
 
