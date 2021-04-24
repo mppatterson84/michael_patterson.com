@@ -1,3 +1,6 @@
 .env
 .vscode
 staticfiles
+scss
+node_modules
+package-lock.json
