@@ -1,14 +1,29 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
-    
     <head>
         <!-- preload -->
         {% block preload %}{% endblock preload %}
-        <link rel="preload" as="image" href="{% static 'images/m_p_logo_50.png' %}">
-        <link rel="preload" as="style" href="{% static 'css/bootstrap-4.6.0-dist/bootstrap.min.css' %}" />
-        <link rel="preload" as="style" href="{% static 'css/hamburgers.min.css' %}" />
-        <link rel="preload" as="style" href="{% static 'css/animate.min.css' %}" />
+        <link
+            rel="preload"
+            as="image"
+            href="{% static 'images/m_p_logo_50.png' %}"
+        />
+        <link
+            rel="preload"
+            as="style"
+            href="{% static 'css/bootstrap-4.6.0-dist/bootstrap.min.css' %}"
+        />
+        <link
+            rel="preload"
+            as="style"
+            href="{% static 'css/hamburgers.min.css' %}"
+        />
+        <link
+            rel="preload"
+            as="style"
+            href="{% static 'css/animate.min.css' %}"
+        />
         <link rel="preload" as="style" href="{% static 'css/base.css' %}" />
 
         <!-- Global site tag (gtag.js) - Google Analytics -->
@@ -26,7 +41,10 @@
         />
 
         <!-- Bootstrap CSS -->
-        <link rel="stylesheet" href="{% static 'css/bootstrap-4.6.0-dist/bootstrap.min.css' %}" />
+        <link
+            rel="stylesheet"
+            href="{% static 'css/bootstrap-4.6.0-dist/bootstrap.min.css' %}"
+        />
 
         <!-- favicon -->
         <link
@@ -154,7 +172,9 @@
                             >
                             {% if user.is_authenticated %}
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="/admin/blog/post/add/"
+                            <a
+                                class="dropdown-item"
+                                href="/admin/blog/post/add/"
                                 >New Post {{ new_active_sr|safe }}</a
                             >
                             {% endif %}
@@ -194,15 +214,17 @@
 
         {% block header %}{% endblock header %}
 
-        <main class="container">
-            {% block content %}{% endblock content %}
-        </main>
+        <main class="container">{% block content %}{% endblock content %}</main>
 
         <!-- Bootstrap JavaScript -->
         <script src="{% static 'js/jquery-3.5.1.slim.min.js' %}" defer></script>
         <script src="{% static 'js/bootstrap.bundle.min.js' %}" defer></script>
         {% block foot_links %}{% endblock foot_links %}
         <!-- base js -->
-        <script type="text/javascript" src="{% static 'js/base.js' %}" defer></script>
+        <script
+            type="text/javascript"
+            src="{% static 'js/base.js' %}"
+            defer
+        ></script>
     </body>
 </html>
