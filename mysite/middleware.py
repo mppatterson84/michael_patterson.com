@@ -51,6 +51,7 @@ class ExtraHttpHeaders(object):
             "https://www.googletagmanager.com",
             "https://cdn.jsdelivr.net",
             "https://cdnjs.cloudflare.com",
+            "https://static.cloudflareinsights.com",
             "https://www.google.com",
             "https://www.gstatic.com",
             "https://media-library.cloudinary.com/global/all.js"
