@@ -86,7 +86,6 @@
     </head>
 
     <body>
-
         <nav class="navbar navbar-expand-md navbar-dark bg-dark">
             <div class="container-fluid">
                 <a class="navbar-brand" href="{% url 'home' %}">
@@ -98,28 +97,59 @@
                         alt="Mike Patterson"
                     />
                 </a>
-                <button class="navbar-toggler hamburger hamburger--slider animate__animated animate__rubberBand" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <button
+                    class="navbar-toggler hamburger hamburger--slider animate__animated animate__rubberBand"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent"
+                    aria-controls="navbarSupportedContent"
+                    aria-expanded="false"
+                    aria-label="Toggle navigation"
+                >
                     <!-- <span class="navbar-toggler-icon"></span> -->
                     <span class="hamburger-box">
                         <span class="hamburger-inner"></span>
                     </span>
                 </button>
-              <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0 text-center">
-                  <li class="nav-item">
-                    <a class="nav-link {{ home_active }}" {{ home_aria_current }} href="{% url 'home' %}">Home</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link {{ about_active }}" {{ about_aria_current }} href="{% url 'about' %}">About</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link {{ contact_active }}" {{ contact_aria_current }} href="{% url 'contact' %}">Contact</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link {{ blog_active }}" {{ blog_aria_current }} href="{% url 'blog' %}">Blog</a>
-                  </li>
-                </ul>
-                <!-- <ul class="navbar-nav me-2 mb-2 mb-lg-0 ml-auto text-center">
+                <div
+                    class="collapse navbar-collapse"
+                    id="navbarSupportedContent"
+                >
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0 text-center">
+                        <li class="nav-item">
+                            <a
+                                class="nav-link {{ home_active }}"
+                                aria-current="{{ home_aria_current|default:'false' }}"
+                                href="{% url 'home' %}"
+                                >Home</a
+                            >
+                        </li>
+                        <li class="nav-item">
+                            <a
+                                class="nav-link {{ about_active }}"
+                                aria-current="{{ about_aria_current|default:'false' }}"
+                                href="{% url 'about' %}"
+                                >About</a
+                            >
+                        </li>
+                        <li class="nav-item">
+                            <a
+                                class="nav-link {{ contact_active }}"
+                                aria-current="{{ contact_aria_current|default:'false' }}"
+                                href="{% url 'contact' %}"
+                                >Contact</a
+                            >
+                        </li>
+                        <li class="nav-item">
+                            <a
+                                class="nav-link {{ blog_active }}"
+                                aria-current="{{ blog_aria_current|default:'false' }}"
+                                href="{% url 'blog' %}"
+                                >Blog</a
+                            >
+                        </li>
+                    </ul>
+                    <!-- <ul class="navbar-nav me-2 mb-2 mb-lg-0 ml-auto text-center">
                     <li class="nav-item dropdown">
                       <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         Blog Menu
@@ -137,15 +167,33 @@
                       </ul>
                     </li>
                 </ul> -->
-                <div class="ml-4">
-                    <form method="GET" action="/blog/search/" class="d-flex input-group">
-                      <input class="form-control" type="search" placeholder="Blog Search" aria-label="Blog Search" aria-describedby="basic-addon2" name="q" value="{{ request.GET.q }}">
-                      <button class="btn btn-outline-primary input-group-text" id="basic-addon2" type="submit">Search</button>
-                    </form>
+                    <div class="ml-4">
+                        <form
+                            method="GET"
+                            action="/blog/search/"
+                            class="d-flex input-group"
+                        >
+                            <input
+                                class="form-control"
+                                type="search"
+                                placeholder="Blog Search"
+                                aria-label="Blog Search"
+                                aria-describedby="basic-addon2"
+                                name="q"
+                                value="{{ request.GET.q }}"
+                            />
+                            <button
+                                class="btn btn-outline-primary input-group-text"
+                                id="basic-addon2"
+                                type="submit"
+                            >
+                                Search
+                            </button>
+                        </form>
+                    </div>
                 </div>
-              </div>
             </div>
-          </nav>
+        </nav>
 
         {% block header %}{% endblock header %}
 
