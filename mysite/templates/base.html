@@ -12,7 +12,7 @@
         <link
             rel="preload"
             as="style"
-            href="{% static 'css/bootstrap-4.6.0-dist/bootstrap.min.css' %}"
+            href="{% static 'css/bootstrap.custom.min.css' %}"
         />
         <link
             rel="preload"
@@ -45,7 +45,7 @@
         <!-- Bootstrap CSS -->
         <link
             rel="stylesheet"
-            href="{% static 'css/bootstrap-4.6.0-dist/bootstrap.min.css' %}"
+            href="{% static 'css/bootstrap.custom.min.css' %}"
         />
 
         <!-- favicon -->
@@ -86,133 +86,66 @@
     </head>
 
     <body>
-        <nav class="navbar navbar-expand-md navbar-dark bg-dark">
-            <a class="navbar-brand" href="{% url 'home' %}">
-                <img
-                    id="nav-brand"
-                    src="{% static 'images/m_p_logo_50.png' %}"
-                    width="600"
-                    height="600"
-                    alt="Mike Patterson"
-                />
-            </a>
-            <button
-                class="navbar-toggler hamburger hamburger--slider animate__animated animate__rubberBand"
-                type="button"
-                aria-controls="navbarSupportedContent"
-                aria-expanded="false"
-                aria-label="Toggle navigation"
-            >
-                <!-- <span class="navbar-toggler-icon"></span> -->
-                <span class="hamburger-box">
-                    <span class="hamburger-inner"></span>
-                </span>
-            </button>
 
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav mr-auto text-center">
-                    <li class="nav-item {{ home_active }}">
-                        <a
-                            class="nav-link"
-                            href="{{ home_active_link|default:'/' }}"
-                            >Home {{ home_active_sr|safe }}</a
-                        >
-                    </li>
-                    <li class="nav-item {{ about_active }}">
-                        <a
-                            class="nav-link"
-                            href="{{ about_active_link|default:'/about/' }}"
-                            >About {{ About_active_sr|safe }}</a
-                        >
-                    </li>
-                    <li class="nav-item {{ contact_active }}">
-                        <a
-                            class="nav-link"
-                            href="{{ contact_active_link|default:'/contact/' }}"
-                            >Contact {{ Contact_active_sr|safe }}</a
-                        >
-                    </li>
-                    <li class="nav-item {{ blog_active }}">
-                        <a
-                            class="nav-link"
-                            href="{{ blog_active_link|default:'/blog/' }}"
-                            >Blog {{ Blog_active_sr|safe }}</a
-                        >
-                    </li>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="{% url 'home' %}">
+                    <img
+                        id="nav-brand"
+                        src="{% static 'images/m_p_logo_50.png' %}"
+                        width="600"
+                        height="600"
+                        alt="Mike Patterson"
+                    />
+                </a>
+                <button class="navbar-toggler hamburger hamburger--slider animate__animated animate__rubberBand" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <!-- <span class="navbar-toggler-icon"></span> -->
+                    <span class="hamburger-box">
+                        <span class="hamburger-inner"></span>
+                    </span>
+                </button>
+              <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0 text-center">
+                  <li class="nav-item">
+                    <a class="nav-link {{ home_active }}" {{ home_aria_current }} href="{% url 'home' %}">Home</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link {{ about_active }}" {{ about_aria_current }} href="{% url 'about' %}">About</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link {{ contact_active }}" {{ contact_aria_current }} href="{% url 'contact' %}">Contact</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link {{ blog_active }}" {{ blog_aria_current }} href="{% url 'blog' %}">Blog</a>
+                  </li>
                 </ul>
-                <ul class="navbar-nav ml-auto text-center">
+                <!-- <ul class="navbar-nav me-2 mb-2 mb-lg-0 ml-auto text-center">
                     <li class="nav-item dropdown">
-                        <a
-                            class="nav-link dropdown-toggle"
-                            href="#"
-                            id="navbarDropdown"
-                            role="button"
-                            data-toggle="dropdown"
-                            aria-haspopup="true"
-                            aria-expanded="false"
-                        >
-                            Blog Menu
-                        </a>
-                        <div
-                            class="dropdown-menu"
-                            aria-labelledby="navbarDropdown"
-                        >
-                            <a class="dropdown-item" href="{% url 'blog' %}"
-                                >Blog Home {{ blog_active_sr|safe }}</a
-                            >
-                            <div class="dropdown-divider"></div>
-                            <a
-                                class="dropdown-item"
-                                href="{% url 'post-list-all' %}"
-                                >All Posts {{ all_active_sr|safe }}</a
-                            >
-                            <div class="dropdown-divider"></div>
-                            <a
-                                class="dropdown-item"
-                                href="{% url 'category-list' %}"
-                                >Categories {{ category_active_sr|safe }}</a
-                            >
-                            {% if user.is_authenticated %}
-                            <div class="dropdown-divider"></div>
-                            <a
-                                class="dropdown-item"
-                                href="/admin/blog/post/add/"
-                                >New Post {{ new_active_sr|safe }}</a
-                            >
-                            {% endif %}
-                        </div>
+                      <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Blog Menu
+                      </a>
+                      <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item" href="{% url 'blog' %}">Blog Home</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="{% url 'post-list-all' %}">All Posts</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="{% url 'category-list' %}">Categories</a></li>
+                        {% if user.is_authenticated %}
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="/admin/blog/post/add">New Post</a></li>
+                        {% endif %}
+                      </ul>
                     </li>
-                </ul>
+                </ul> -->
                 <div class="ml-4">
-                    <!-- Search Form -->
-                    <form
-                        method="GET"
-                        action="/blog/search/"
-                        class="form-inline input-group"
-                    >
-                        <input
-                            class="form-control"
-                            type="text"
-                            placeholder="Blog Search"
-                            aria-label="Blog Search"
-                            aria-describedby="button-addon"
-                            name="q"
-                            value="{{ request.GET.q }}"
-                            aria-label="Search"
-                        />
-                        <div class="input-group-append">
-                            <button
-                                class="btn btn-outline-primary"
-                                type="submit"
-                                id="button-addon"
-                            >
-                                Search
-                            </button>
-                        </div>
+                    <form method="GET" action="/blog/search/" class="d-flex input-group">
+                      <input class="form-control" type="search" placeholder="Blog Search" aria-label="Blog Search" aria-describedby="basic-addon2" name="q" value="{{ request.GET.q }}">
+                      <button class="btn btn-outline-primary input-group-text" id="basic-addon2" type="submit">Search</button>
                     </form>
                 </div>
+              </div>
             </div>
-        </nav>
+          </nav>
 
         {% block header %}{% endblock header %}
 
