@@ -42,6 +42,7 @@ def email_view(request):
     context = {
         'title': 'Contact',
         'contact_active': 'active',
+        'contact_aria_current': 'aria-current="page"',
         'contact_active_link': '#',
         'contact_active_sr': '<span class="sr-only">(current)</span>',
         'form': form,

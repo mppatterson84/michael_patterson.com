@@ -34,6 +34,7 @@ class PostListView(ListView):
         context = super().get_context_data(**kwargs)
         context['title'] = 'Blog'
         context['blog_active'] = 'active'
+        context['blog_aria_current'] = 'aria-current="page"'
         context['blog_active_link'] = '#'
         context['blog_active_sr'] = '<span class="sr-only">(current)</span>'
         return context
