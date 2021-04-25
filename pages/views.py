@@ -11,9 +11,7 @@ class HomePageView(TemplateView):
         context = super().get_context_data(**kwargs)
         # context['title'] = 'Home'
         context['home_active'] = 'active'
-        context['home_aria_current'] = 'aria-current="page"'
-        context['home_active_link'] = '#'
-        context['home_active_sr'] = '<span class="sr-only">(current)</span>'
+        context['home_aria_current'] = 'page'
         return context
 
 
@@ -24,9 +22,7 @@ class AboutPageView(TemplateView):
         context = super().get_context_data(**kwargs)
         context['title'] = 'About'
         context['about_active'] = 'active'
-        context['about_aria_current'] = 'aria-current="page"'
-        context['about_active_link'] = '#'
-        context['about_active_sr'] = '<span class="sr-only">(current)</span>'
+        context['about_aria_current'] = 'page'
         return context
 
 
@@ -37,9 +33,7 @@ class ProjectsPageView(TemplateView):
         context = super().get_context_data(**kwargs)
         context['title'] = 'Projects'
         context['projects_active'] = 'active'
-        context['projects_aria_current'] = 'aria-current="page"'
-        context['projects_active_link'] = '#'
-        context['projects_active_sr'] = '<span class="sr-only">(current)</span>'
+        context['projects_aria_current'] = 'page'
         return context
 
 
@@ -50,10 +44,6 @@ class BrowserPageView(LoginRequiredMixin, TemplateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['title'] = 'Browser'
-        context['browser_active'] = 'active'
-        context['browser_aria_current'] = 'aria-current="page"'
-        context['browser_active_link'] = '#'
-        context['browser_active_sr'] = '<span class="sr-only">(current)</span>'
         context['cloud_name'] = os.environ.get('CLOUD_NAME')
         context['api_key'] = os.environ.get('API_KEY')
         context['user_name'] = os.environ.get('CLOUDINARY_USER')

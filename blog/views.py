@@ -34,9 +34,7 @@ class PostListView(ListView):
         context = super().get_context_data(**kwargs)
         context['title'] = 'Blog'
         context['blog_active'] = 'active'
-        context['blog_aria_current'] = 'aria-current="page"'
-        context['blog_active_link'] = '#'
-        context['blog_active_sr'] = '<span class="sr-only">(current)</span>'
+        context['blog_aria_current'] = 'page'
         return context
 
 
@@ -48,9 +46,6 @@ class PostListAllView(ListView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['title'] = 'Blog - All Posts'
-        context['all_active'] = 'active'
-        context['all_active_link'] = '#'
-        context['all_active_sr'] = '<span class="sr-only">(current)</span>'
         return context
 
     def get_queryset(self):
@@ -97,9 +92,6 @@ class CategoryListView(ListView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['title'] = 'Blog Categories'
-        context['category_active'] = 'active'
-        context['category_active_link'] = '#'
-        context['category_active_sr'] = '<span class="sr-only">(current)</span>'
         return context
 
 
@@ -125,7 +117,4 @@ class CategoryFilterView(ListView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['title'] = f"Blog Category: {self.request.GET.get('category')}"
-        context['category_filter_active'] = 'active'
-        context['category_filter_active_link'] = '#'
-        context['category_filter_active_sr'] = '<span class="sr-only">(current)</span>'
         return context

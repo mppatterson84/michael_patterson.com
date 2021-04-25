@@ -42,9 +42,7 @@ def email_view(request):
     context = {
         'title': 'Contact',
         'contact_active': 'active',
-        'contact_aria_current': 'aria-current="page"',
-        'contact_active_link': '#',
-        'contact_active_sr': '<span class="sr-only">(current)</span>',
+        'contact_aria_current': 'page',
         'form': form,
         'reCAPTCHA_site_key_v2': os.environ['RECAPTCHA_SITE_KEY_V2'],
     }
