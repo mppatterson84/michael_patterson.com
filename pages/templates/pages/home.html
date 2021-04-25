@@ -3,22 +3,22 @@
 
 
 {% block preload %}
-<link rel="preload" as="image" href="https://images.unsplash.com/photo-1613025952818-57743137f1db?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1950&q=80">
-<link rel="preload" as="style" href="{% static 'css/home.css' %}">
+        <link rel="preload" as="image" href="https://images.unsplash.com/photo-1613025952818-57743137f1db?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1950&q=80">
+        <link rel="preload" as="style" href="{% static 'css/home.css' %}">
 {% endblock preload %}
 
 
 {% block meta_description %}
-<meta
-    name="description"
-    content="Mike Patterson Web Developer. My name is Mike. I'm a Web Developer. I create spectacular websites."
-/>
+        <meta
+            name="description"
+            content="Mike Patterson Web Developer. My name is Mike. I'm a Web Developer. I create spectacular websites."
+        />
 {% endblock meta_description %}
     
 
 {% block head_links %}
-    <!-- home css -->
-    <link rel="stylesheet" href="{% static 'css/home.css' %}">
+        <!-- home css -->
+        <link rel="stylesheet" href="{% static 'css/home.css' %}">
 {% endblock head_links %}
 
 
@@ -46,12 +46,36 @@
             <li>
                 <h3>Search Engine Optimization</h3>
                 <p>
-                    I configure websites to <a rel="noopener" href="https://developers.google.com/search" target="_blank">Google SEO</a> standards which improves
-                    the chances a site will show up in search results
-                    in any search engine.
+                    By applying SEO
+                    <a rel="noopener" href="https://developers.google.com/search" target="_blank">recommended by Google</a>,
+                    I configure websites to improve the chances
+                    of showing a webpage in top search results.
+                </p>
+            </li>
+            <li>
+                <h3>Website Speed</h3>
+                <p>
+                    I use tools such as 
+                    <a href="https://developers.google.com/speed/pagespeed/insights/?url=https%3A%2F%2Fwww.michael-patterson.com%2F&tab=desktop" target="_blank">Page Speed Insights</a>
+                    to evaluate and improve webpage load speed. 
+                </p>
+            </li>
+            <li>
+                <h3>Website Security</h3>
+                <p>
+                    I use tools such as
+                    <a href="https://observatory.mozilla.org/analyze/www.michael-patterson.com" target="_blank">Observatory</a>
+                    to identify and correct security vulnerabilities
+                    that a website might have.
                 </p>
             </li>
         </ul>
+        <h4>Additionally</h4>
+        <p>
+            Implementing a CDN like 
+            <a rel="noopener" href="https://www.cloudflare.com/cdn/" target="_blank">Cloudflare</a>
+            provides a boost in performance with an added layer of security.
+        </p>
         <a class="btn btn-lg btn-success" href="{% url 'about' %}">Learn More About</a>
     </section>
 {% endblock content %}
