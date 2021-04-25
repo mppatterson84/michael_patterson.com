@@ -149,24 +149,60 @@
                             >
                         </li>
                     </ul>
-                    <!-- <ul class="navbar-nav me-2 mb-2 mb-lg-0 ml-auto text-center">
-                    <li class="nav-item dropdown">
-                      <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        Blog Menu
-                      </a>
-                      <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="{% url 'blog' %}">Blog Home</a></li>
-                        <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item" href="{% url 'post-list-all' %}">All Posts</a></li>
-                        <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item" href="{% url 'category-list' %}">Categories</a></li>
-                        {% if user.is_authenticated %}
-                        <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item" href="/admin/blog/post/add">New Post</a></li>
-                        {% endif %}
-                      </ul>
-                    </li>
-                </ul> -->
+                    <ul
+                        class="navbar-nav me-2 mb-2 mb-lg-0 ml-auto text-center"
+                    >
+                        <li class="nav-item dropdown">
+                            <a
+                                class="nav-link dropdown-toggle"
+                                href="#"
+                                id="navbarDropdown"
+                                role="button"
+                                data-bs-toggle="dropdown"
+                                aria-expanded="false"
+                            >
+                                Blog Menu
+                            </a>
+                            <ul
+                                class="dropdown-menu"
+                                aria-labelledby="navbarDropdown"
+                            >
+                                <li>
+                                    <a
+                                        class="dropdown-item"
+                                        href="{% url 'blog' %}"
+                                        >Blog Home</a
+                                    >
+                                </li>
+                                <li><hr class="dropdown-divider" /></li>
+                                <li>
+                                    <a
+                                        class="dropdown-item"
+                                        href="{% url 'post-list-all' %}"
+                                        >All Posts</a
+                                    >
+                                </li>
+                                <li><hr class="dropdown-divider" /></li>
+                                <li>
+                                    <a
+                                        class="dropdown-item"
+                                        href="{% url 'category-list' %}"
+                                        >Categories</a
+                                    >
+                                </li>
+                                {% if user.is_authenticated %}
+                                <li><hr class="dropdown-divider" /></li>
+                                <li>
+                                    <a
+                                        class="dropdown-item"
+                                        href="/admin/blog/post/add"
+                                        >New Post</a
+                                    >
+                                </li>
+                                {% endif %}
+                            </ul>
+                        </li>
+                    </ul>
                     <div class="ml-4">
                         <form
                             method="GET"
