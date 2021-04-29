@@ -1,6 +1,6 @@
 header {
     background-image: url('https://images.unsplash.com/photo-1613025952818-57743137f1db?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=compress&fit=clip&w=1080&q=80');
-    background-color: rgb(118, 135, 152);
+    background-color: rgb(252, 252, 255);
     background-repeat: no-repeat;
 }
 header h1 {
@@ -21,10 +21,10 @@ p > a {
 /* Extra small screens, portrait phones, 567px and down */
 @media only screen and (max-width: 567px) {
     header {
-        background-position: 40% 60%;
+        background-position: top;
         background-size: 250%;
         padding: 0 1em;
-        height: 92vh;
+        height: 75vh;
         display: block;
     }
     header h1 {
@@ -44,7 +44,7 @@ p > a {
 /* Small screens, portrait tablets, 568px and up  */
 @media only screen and (min-width: 568px) {
     header {
-        background-position: bottom left;
+        background-position: center 75%;
         background-size: 175%;
         padding: 2em 1em;
         height: 80vh;
@@ -90,7 +90,9 @@ p > a {
 /* Large screens, laptops and desktops, 992px and up */
 @media only screen and (min-width: 992px) {
     header {
-        background-size: 190%;
+        background-position: bottom;
+        background-size: 150%;
+        height: 75vh;
     }
 }
 
