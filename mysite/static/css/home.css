@@ -1,5 +1,5 @@
 header {
-    background-image: url('https://images.unsplash.com/photo-1613025952818-57743137f1db?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1080&q=80');
+    background-image: url('https://images.unsplash.com/photo-1613025952818-57743137f1db?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=compress&fit=clip&w=1080&q=80');
     background-color: rgb(118, 135, 152);
     background-repeat: no-repeat;
 }
@@ -22,7 +22,7 @@ p > a {
 @media only screen and (max-width: 567px) {
     header {
         background-position: 40% 60%;
-        background-size: 400%;
+        background-size: 250%;
         padding: 0 1em;
         height: 92vh;
         display: block;
@@ -67,7 +67,7 @@ p > a {
 /* Medium screens, landscape phones and tablets, 768px and up */
 @media only screen and (min-width: 768px) {
     header {
-        background-size: 185%;
+        background-size: 190%;
         padding: 0 0 0 5em;
         height: 93vh;
     }
@@ -90,13 +90,13 @@ p > a {
 /* Large screens, laptops and desktops, 992px and up */
 @media only screen and (min-width: 992px) {
     header {
-        background-size: 185%;
+        background-size: 190%;
     }
 }
 
 /* Extra large screens, desktops, large laptops, and tv's, 1200px and up */
 @media only screen and (min-width: 1200px) {
     header {
-        background-size: 155%;
+        background-size: 110%;
     }
 }
