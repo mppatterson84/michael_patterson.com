@@ -57,10 +57,16 @@
         />
 
         <!-- hamburgers -->
-        <link rel="stylesheet" href="{% static 'css/lib/hamburgers.custom.min.css' %}" />
+        <link
+            rel="stylesheet"
+            href="{% static 'css/lib/hamburgers.custom.min.css' %}"
+        />
 
         <!-- animate css -->
-        <link rel="stylesheet" href="{% static 'css/lib/animate.custom.min.css' %}" />
+        <link
+            rel="stylesheet"
+            href="{% static 'css/lib/animate.custom.min.css' %}"
+        />
 
         <!-- Google Fonts -->
         <!-- none -->
@@ -150,9 +156,7 @@
                             >
                         </li>
                     </ul>
-                    <ul
-                        class="navbar-nav me-2 ml-auto text-center"
-                    >
+                    <ul class="navbar-nav me-2 ml-auto text-center">
                         <li class="nav-item dropdown">
                             <a
                                 class="nav-link dropdown-toggle"
@@ -235,6 +239,8 @@
         {% block header %}{% endblock header %}
 
         <main class="container">{% block content %}{% endblock content %}</main>
+
+        {% block footer %}{% endblock footer %}
 
         <!-- Bootstrap JavaScript -->
         <script src="{% static 'js/jquery-3.5.1.slim.min.js' %}" defer></script>

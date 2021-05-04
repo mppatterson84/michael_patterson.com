@@ -61,10 +61,13 @@ code {
     word-wrap: normal;
 }
 footer {
-    margin: 2em 1em;
+    margin: 1em 0;
     display: flex;
-    flex-direction: column;
-    align-items: flex-end;
+    flex-direction: row-reverse;
+    flex-wrap: wrap;
+}
+footer > a {
+    padding: 1em 1em 0 0;
 }
 img.align-left {
     display: block;
