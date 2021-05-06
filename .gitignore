@@ -4,3 +4,4 @@ staticfiles
 scss
 node_modules
 package-lock.json
+db_backups
