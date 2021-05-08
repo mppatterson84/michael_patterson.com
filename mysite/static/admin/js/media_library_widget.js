@@ -1,9 +1,9 @@
-const image_url_field = document.getElementById('id_image')
+const image_url_field = document.getElementById('id_image');
 
 image_url_field.insertAdjacentHTML(
     'afterend',
     '<span><button id="open-btn">Choose File</button></span>'
-)
+);
 
 window.ml = cloudinary.createMediaLibrary(
     {
@@ -25,17 +25,17 @@ window.ml = cloudinary.createMediaLibrary(
 
                 function getFileUrl() {
                     if (asset.derived) {
-                        return asset.derived[0].secure_url
+                        return asset.derived[0].secure_url;
                     } else {
-                        return asset.secure_url
+                        return asset.secure_url;
                     }
                 }
 
-                image_url_field.value = getFileUrl()
-                window.ml.hide()
-            })
+                image_url_field.value = getFileUrl();
+                window.ml.hide();
+            });
         }
     },
     // document.getElementById('open-btn')
     '#open-btn'
-)
+);

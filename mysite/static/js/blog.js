@@ -1,2 +1,2 @@
 // highlight js
-hljs.initHighlightingOnLoad()
+hljs.initHighlightingOnLoad();

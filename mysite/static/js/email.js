@@ -1,2 +1,2 @@
-var enableBtn = () => (document.querySelector('#submit-btn').disabled = false)
-var disableBtn = () => (document.querySelector('#submit-btn').disabled = true)
+var enableBtn = () => (document.querySelector('#submit-btn').disabled = false);
+var disableBtn = () => (document.querySelector('#submit-btn').disabled = true);
