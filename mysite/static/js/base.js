@@ -10,5 +10,4 @@ hamburger.addEventListener('click', () => {
         hamburger.classList.add('animate__rubberBand');
         hamburger.classList.remove('animate__jello');
     }
-    $('.collapse').collapse('toggle');
 });
