@@ -1,7 +1,6 @@
 @font-face {
     font-family: 'Audiowide';
     src: url('fonts/Audiowide-Regular.ttf');
-    font-display: swap;
 }
 body {
     background-color: rgb(250, 250, 250);
