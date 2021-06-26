@@ -1,5 +1,5 @@
 div.row {
-    height: 80vh;
+    min-height: 80vh;
 }
 button.btn {
     min-width: 80px;
