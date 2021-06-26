@@ -63,7 +63,7 @@ code {
 footer {
     margin: 1em 0;
     display: flex;
-    flex-direction: row-reverse;
+    justify-content: flex-end;
     flex-wrap: wrap;
 }
 footer > a {
