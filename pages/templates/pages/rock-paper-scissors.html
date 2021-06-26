@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block head_links %}
+<!-- all font awesome -->
+<link rel="stylesheet" href="{% static 'css/lib/all.min.css' %}" />
+<!-- base css -->
+<link rel="stylesheet" href="{% static 'css/rock-paper-scissors.css' %}" />
+{% endblock head_links %}
+
+{% block content %}
+<div class="row">
+    <aside class="col-sm-3 d-flex flex-column align-items-center justify-content-center">
+        <h2>Player</h2>
+        <p class="choice-display">Make your choice.</p>
+        <div class="d-flex flex-row flex-sm-column align-items-center justify-content-center">
+            <button class="player-choice-btn m-1 btn btn-outline-secondary"><i
+                    class="far fa-hand-rock fa-2x"></i></button>
+            <button class="player-choice-btn m-1 btn btn-outline-secondary"><i
+                    class="far fa-hand-paper fa-2x"></i></button>
+            <button class="player-choice-btn m-1 btn btn-outline-secondary"><i
+                    class="far fa-hand-scissors fa-2x"></i></button>
+        </div>
+    </aside>
+    <main class="col-sm-6 d-flex align-items-center justify-content-center">
+        <div class="text-center">
+            <i id="display-icon" class="far fa-thumbs-up fa-5x p-3 my-3 animate__animated"></i>
+            <i hidden class="far fa-thumbs-up fa-5x p-3 my-3 animate__animated result-icon"></i>
+            <i hidden class="far fa-thumbs-up fa-5x p-3 my-3 animate__animated result-icon"></i>
+            <h3 class="choice-display">Ready?</h3>
+            <button disabled id="go" class="btn btn-danger m-3">Go!</button>
+            <button hidden id="play-again" class="btn btn-success m-3">Play Again</button>
+        </div>
+    </main>
+    <aside class="col-sm-3 d-flex flex-column align-items-center justify-content-center">
+        <h2>Computer</h2>
+        <p class="choice-display">Computer chooses randomly.</p>
+        <div class="d-flex flex-row flex-sm-column align-items-center justify-content-center">
+            <button class="com-choice-btn m-1 btn btn-outline-secondary"><i
+                    class="far fa-hand-rock fa-2x"></i></button>
+            <button class="com-choice-btn m-1 btn btn-outline-secondary"><i
+                    class="far fa-hand-paper fa-2x"></i></button>
+            <button class="com-choice-btn m-1 btn btn-outline-secondary"><i
+                    class="far fa-hand-scissors fa-2x"></i></button>
+        </div>
+    </aside>
+</div>
+{% endblock content %}
+
+{% block footer %}
+<footer>
+    <a href="https://fontawesome.com/license" target="_blank">Font Awesome License</a>
+</footer>
+{% endblock footer %}
+
+{% block foot_links %}
+<!-- rock paper scissors JS -->
+<script src="{% static 'js/rockPaperScissors.js' %}"></script>
+{% endblock foot_links %}

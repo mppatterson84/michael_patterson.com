@@ -50,3 +50,11 @@ class BrowserPageView(LoginRequiredMixin, TemplateView):
         context['signature'] = get_cloudinary_signature()
         context['timestamp'] = get_cloudinary_timestamp()
         return context
+
+class RockPaperScissorsPageView(TemplateView):
+    template_name = 'pages/rock-paper-scissors.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['title'] = 'Rock Paper Scissors'
+        return context
