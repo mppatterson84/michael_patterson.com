@@ -17,6 +17,13 @@
 {% block content %}
 <section class="email-container">
     <h1>Contact</h1>
+    <!-- <i class="far fa-envelope fa-2x"></i> -->
+    <p>
+        <i>
+            <img src="{% static 'images/icons/envelope-regular.svg' %}" alt="" srcset="">
+        </i>&ensp;
+        Send me a message.
+    </p>
 
     {% if messages %}
         <div class="messages">
@@ -26,13 +33,9 @@
         </div>
     {% endif %}
         
-    <div class="row m-auto">
+    <div class="row m-auto py-3">
         <div class="col-lg-2"></div>
         <div class="col-lg-8">
-            <!-- <i class="far fa-envelope fa-2x"></i> -->
-            <i>
-                <img src="{% static 'images/icons/envelope-regular.svg' %}" alt="" srcset="">
-            </i>
             <form method="post">
                 {% csrf_token %}
                 {{ form.as_p }}
