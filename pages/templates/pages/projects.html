@@ -1,10 +1,54 @@
 {% extends 'base.html' %}
 {% load static %}
 
+{% block header %}
+<header class="container-fluid d-flex flex-column justify-content-around">
+    <h1 class="mt-3">Projects</h1>
+    <div class="row my-3">
+        <div class="col-md-4">
+            <div class="card">
+                <img src="https://res.cloudinary.com/dkc5rsxrn/image/upload/v1624762784/michael-patterson.com_screenshot_wgoyxp.png" class="card-img-top m-auto" alt="michael-patterson.com frontpage">
+                <div class="card-body">
+                  <h5 class="card-title">Michael-Patterson.com</h5>
+                  <p class="card-text">My website built with Django.</p>
+                </div>
+                <div class="card-body">
+                  <a href="https://michael-patterson.com" class="card-link">Michael-Patterson.com</a>
+                  <a href="https://github.com/mppatterson84/michael_patterson.com" class="card-link">GitHub Repository</a>
+                </div>
+              </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card">
+                <img src="https://res.cloudinary.com/dkc5rsxrn/image/upload/v1624763653/rock_paper_scissors_screenshot_hkoeou.png" class="card-img-top m-auto" alt="Rock, Paper, Scissors Game">
+                <div class="card-body">
+                  <h5 class="card-title">Rock Paper Scissors Game</h5>
+                  <p class="card-text">A rock, paper, scissors game built with HTML, CSS, and Javascript.</p>
+                </div>
+                <div class="card-body">
+                    <a href="https://michael-patterson.com/rock-paper-scissors/" class="card-link">Play The Game</a>
+                  <a href="https://github.com/mppatterson84/rock-paper-scissors" class="card-link">Github Repository</a>
+                </div>
+              </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card">
+                <img src="https://res.cloudinary.com/dkc5rsxrn/image/upload/v1624765245/gamepad_controlled_car_screenshot_p0g98x.png" class="card-img-top m-auto" alt="Rock, Paper, Scissors Game">
+                <div class="card-body">
+                  <h5 class="card-title">Raspberry Pi Car</h5>
+                  <p class="card-text">An RC car modified to be controlled programatically with a Raspberry Pi.</p>
+                </div>
+                <div class="card-body">
+                    <a href="https://michael-patterson.com/blog/control-an-rc-car-with-a-raspberry-pi-and-gamepad/" class="card-link">More About</a>
+                  <a href="https://github.com/mppatterson84/gamepad_controlled_car" class="card-link">Github Repository</a>
+                </div>
+              </div>
+        </div>
+    </div>
+</header>
+{% endblock header %}
 
 {% block content %}
 <section>
-    <h1>Projects</h1>
-    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eligendi, necessitatibus.</p>
 </section>
 {% endblock content %}
