@@ -22,6 +22,9 @@ img {
     max-width: 95%;
     height: auto;
 }
+.card > img {
+    max-width: 100%;
+}
 i > img {
     margin: 0;
     height: 2em;
