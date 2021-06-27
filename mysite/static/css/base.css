@@ -13,17 +13,15 @@ main {
     padding-top: 1em;
     padding-bottom: 1em;
 }
+h1.main-heading,
 main h1 {
     border-bottom: 2px solid rgba(119, 136, 153, 0.5);
     margin-bottom: 1em;
     padding-bottom: 0.1em;
 }
 img {
-    max-width: 95%;
-    height: auto;
-}
-.card > img {
     max-width: 100%;
+    height: auto;
 }
 i > img {
     margin: 0;
@@ -128,9 +126,6 @@ div.align-center > figure.image > img {
         padding-right: 0;
         padding-left: 0;
     }
-    img {
-        margin: auto;
-    }
     img,
     figure {
         display: block;
@@ -143,9 +138,6 @@ div.align-center > figure.image > img {
     p {
         font-size: 1.2rem;
     }
-    img {
-        margin: auto;
-    }
     img,
     figure {
         display: block;
@@ -157,9 +149,6 @@ div.align-center > figure.image > img {
     nav,
     p {
         font-size: 1.1rem;
-    }
-    img {
-        margin: 1em;
     }
     img,
     figure {
