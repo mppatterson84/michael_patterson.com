@@ -6,6 +6,9 @@
 body {
     background-color: rgb(250, 250, 250);
 }
+header {
+    min-height: 75vh;
+}
 main {
     padding-top: 1em;
     padding-bottom: 1em;
