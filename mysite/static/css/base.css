@@ -111,6 +111,9 @@ div.align-center > figure.image > img {
     display: block;
     margin: auto;
 }
+.card {
+    min-height: 60vh;
+}
 
 /* Extra small devices (phones, 576px and down) */
 @media only screen and (max-width: 576px) {
