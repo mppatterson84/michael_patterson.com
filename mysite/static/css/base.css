@@ -30,10 +30,12 @@ figcaption {
 .post-meta {
     border-bottom: 2px solid rgba(119, 136, 153, 0.5);
     background-color: rgb(252, 252, 255);
+    max-width: 800px;
 }
 .post-meta-foot {
     border-top: 2px solid rgba(119, 136, 153, 0.5);
     background-color: rgb(252, 252, 255);
+    max-width: 800px;
 }
 article.post-body {
     background-color: rgb(252, 252, 255);
