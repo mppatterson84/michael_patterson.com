@@ -3,7 +3,7 @@
 
 
 {% block json_ld %}
-        <script type="application/ld+json">
+<script type="application/ld+json">
             {
                 "@context": "https://schema.org",
                 "@type": ["ItemList", "Blog"],
@@ -15,7 +15,7 @@
                         "position":{{ forloop.counter }},
                         "url":"{{ request.scheme }}://{{ request.site }}{% url 'post-detail' post.slug %}",
                         "headline": "{{ post.title }}",
-                        "image": "{{ request.scheme }}://{{ request.site }}/{{ post.image }}"
+                        "image": "{{ post.image }}"
                     }{% if not forloop.last %},{% endif %}
                     {% endfor %}
                 ]
@@ -25,20 +25,31 @@
 
 
 {% block content %}
-<section>
-    <h1>{{ title }}</h1>
-    <a class="btn btn-primary" href="{% url 'blog' %}">Blog</a>
-    <a class="btn btn-primary" href="{% url 'category-list' %}">Categories</a>
-    {% for post in object_list %}
-    <div class="post-entry">
-        {% if post.published == False %}
-        <h4 class="bg-warning p-1">This post is not published.</h4>
+<div class="container">
+    <h1 class="py-3 main-heading">{{ title }}</h1>
+    <nav class="py-3 mb-3">
+        <a class="btn btn-primary" href="{% url 'post-list-all' %}">All Posts</a>
+        <a class="btn btn-primary" href="{% url 'category-list' %}">Categories</a>
+        {% if user.is_authenticated %}
+        <a class="btn btn-success" href="/admin/blog/post/add/">New Post</a>
         {% endif %}
-        <h2><a href="{% url 'post-detail' post.slug %}">{{ post.title }}</a></h2>
-        <p>{{ post.body|truncatewords_html:50|safe }}</p>
+    </nav>
+
+    <div class="row">
+        <aside class="col-md-2"></aside>
+        <main class="col-md-8">
+            {% for post in object_list %}
+            <article class="p-3 mb-3 post-entry">
+                {% if post.published == False %}
+                <h4 class="bg-warning p-1">This post is not published.</h4>
+                {% endif %}
+                <h2><a href="{% url 'post-detail' post.slug %}">{{ post.title }}</a></h2>
+                <p>{{ post.body|truncatewords_html:50|safe }}</p>
+            </article>
+            {% endfor %}
+        </main>
+        <aside class="col-md-2"></aside>
     </div>
-    {% empty %}
-    <p class="mt-5">Filter returned no results.</p>
-    {% endfor %}
-</section>
+
+</div>
 {% endblock content %}
