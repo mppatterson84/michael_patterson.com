@@ -39,48 +39,75 @@
 
 {% block content %}
     <section>
-        <h2>What I Do</h2>
-        <p>
-            I create websites that are search engine optimized, fast, and secure.
-        </p>
-        <ul>
-            <li>
-                <h3>Search Engine Optimization</h3>
+        <div class="row p-3">
+            <div class="col-md-3"></div>
+            <div class="col-md-6">
+                <h3>What I Do</h3>
                 <p>
-                    By applying SEO
-                    <a rel="noopener" href="https://developers.google.com/search" target="_blank">recommended by Google</a>,
-                    I configure websites to improve the chances
-                    of showing a webpage in top search results.
+                    I create websites that are search engine optimized, fast, and secure.
                 </p>
+            </div>
+            <div class="col-md-3"></div>
+        </div>
+
+        <div class="row m-auto">
+            <div class="col-md-4">
+                <div class="card my-3">
+                    <div class="card-body">
+                        <h5 class="card-title">Search Engine Optimization</h5>
+                        <p class="card-text">
+                            By applying SEO
+                            <a rel="noopener" href="https://developers.google.com/search" target="_blank">recommended by Google</a>,
+                            I configure websites to improve the chances
+                            of showing a webpage in top search results.
+                        </p>
+                        <p>
+                            See the results of searching Google for
+                            <a rel="noopener" href="https://www.google.com/search?q=mike+patterson+web+developer" target="_blank">Mike Patterson Web Developer</a>.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card my-3">
+                    <div class="card-body">
+                        <h5 class="card-title">Website Speed</h5>
+                        <p class="card-text">
+                            I use tools such as 
+                            <a rel="noopener" href="https://developers.google.com/speed/pagespeed/insights/?url=https%3A%2F%2Fwww.michael-patterson.com%2F&tab=desktop" target="_blank">Google Page Speed Insights</a>
+                            to evaluate and improve webpage load speed. 
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card my-3">
+                    <div class="card-body">
+                        <h5 class="card-title">Website Security</h5>
+                        <p class="card-text">
+                            I use tools such as
+                            <a rel="noopener" href="https://observatory.mozilla.org/analyze/www.michael-patterson.com" target="_blank">Mozilla Observatory</a>
+                            to identify and correct security vulnerabilities
+                            that a website might have.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row p-3">
+            <div class="col-md-3"></div>
+            <div class="col-md-6">
+                <h3>Additionally</h3>
                 <p>
-                    See the results of searching Google for
-                    <a rel="noopener" href="https://www.google.com/search?q=mike+patterson+web+developer" target="_blank">Mike Patterson Web Developer</a>.
+                    Implementing a CDN like 
+                    <a rel="noopener" href="https://www.cloudflare.com/cdn/" target="_blank">Cloudflare</a>
+                    provides a boost in performance with an added layer of security.
                 </p>
-            </li>
-            <li>
-                <h3>Website Speed</h3>
-                <p>
-                    I use tools such as 
-                    <a rel="noopener" href="https://developers.google.com/speed/pagespeed/insights/?url=https%3A%2F%2Fwww.michael-patterson.com%2F&tab=desktop" target="_blank">Page Speed Insights</a>
-                    to evaluate and improve webpage load speed. 
-                </p>
-            </li>
-            <li>
-                <h3>Website Security</h3>
-                <p>
-                    I use tools such as
-                    <a rel="noopener" href="https://observatory.mozilla.org/analyze/www.michael-patterson.com" target="_blank">Observatory</a>
-                    to identify and correct security vulnerabilities
-                    that a website might have.
-                </p>
-            </li>
-        </ul>
-        <h4>Additionally</h4>
-        <p>
-            Implementing a CDN like 
-            <a rel="noopener" href="https://www.cloudflare.com/cdn/" target="_blank">Cloudflare</a>
-            provides a boost in performance with an added layer of security.
-        </p>
-        <a class="btn btn-lg btn-success" href="{% url 'about' %}">Learn More About</a>
+                <a class="btn btn-lg btn-success" href="{% url 'about' %}">Learn More About</a>
+            </div>
+            <div class="col-md-3"></div>
+        </div>
+
     </section>
 {% endblock content %}
