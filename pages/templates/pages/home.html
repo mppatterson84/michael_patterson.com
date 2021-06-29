@@ -24,15 +24,16 @@
 
 
 {% block header %}
-<header class="d-flex flex-column justify-content-center mb-3">
+<header class="d-flex justify-content-around align-items-center mb-3">
     <div class="p-3">
-        <h1 class="ms-4">Hello, World!</h1>
-        <p class="py-3 ms-4">
+        <h1 class="m-3">Hello, World!</h1>
+        <p class="p-3">
             My name is Mike. I'm a Web Developer.
             I create spectacular websites.
         </p>
-        <a class="btn btn-lg btn-light ms-4" href="{% url 'about' %}">Learn More About</a>
+        <a class="btn btn-lg btn-light m-3" href="{% url 'about' %}">Learn More About</a>
     </div>
+    <div></div>
 </header>
 {% endblock header %}
 
