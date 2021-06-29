@@ -40,18 +40,6 @@
 
     <h1 class="py-3 main-heading">{{ post.title }}</h1>
 
-    {% if user.is_authenticated %}
-    <nav class="py-3">
-        <div class="py-1">
-            <a href="/admin/blog/post/{{ post.pk }}/change/" class="btn btn-warning">Edit</a>
-            <a href="/admin/blog/post/{{ post.pk }}/delete/" class="btn btn-danger">Delete</a>
-            <span class="px-1">|</span>
-            <a class="btn btn-success" href="/admin/blog/post/add/">New Post</a>
-        </div>
-    </nav>
-    {% endif %}
-
-
     <div class="p-3 mb-3 mx-auto post-meta">
         {% if post.author.first_name and post.author.last_name %}
         <p>By: {{ post.author.first_name }} {{ post.author.last_name }}</p>
@@ -59,6 +47,16 @@
         <p>By: {{ post.author }}</p>
         {% endif %}
         <p>Published: {{ post.created_at }}</p>
+        {% if user.is_authenticated %}
+        <nav>
+            <div class="py-1">
+                <a href="/admin/blog/post/{{ post.pk }}/change/" class="btn btn-warning">Edit</a>
+                <a href="/admin/blog/post/{{ post.pk }}/delete/" class="btn btn-danger">Delete</a>
+                <span class="px-1">|</span>
+                <a class="btn btn-success" href="/admin/blog/post/add/">New Post</a>
+            </div>
+        </nav>
+        {% endif %}
     </div>
 
     <div class="row">
