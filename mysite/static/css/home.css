@@ -8,6 +8,7 @@ header {
     background-color: rgb(252, 252, 255);
     background-repeat: no-repeat;
     background-size: cover;
+    min-height: 75vh;
 }
 header h1 {
     color: rgb(242, 232, 253);
@@ -20,7 +21,6 @@ header h1 {
 }
 header p {
     color: rgb(250, 250, 250);
-    padding: 0.5rem;
     border-radius: 5px;
     max-width: 45ch;
 }
@@ -33,9 +33,7 @@ p > a {
 @media only screen and (max-width: 567px) {
     header {
         background-position: top;
-        padding: 0 1em;
         height: 90vh;
-        display: block;
     }
     header h1 {
         font-size: 4rem;
@@ -55,10 +53,7 @@ p > a {
 @media only screen and (min-width: 568px) {
     header {
         background-position: center;
-        padding: 2em 1em;
         height: 82vh;
-        display: flex;
-        align-items: center;
     }
     header h1 {
         font-size: 4rem;
@@ -76,7 +71,6 @@ p > a {
 /* Medium screens, landscape phones and tablets, 768px and up */
 @media only screen and (min-width: 768px) {
     header {
-        padding: 0 0 0 5em;
         height: 96vh;
     }
     header h1 {
