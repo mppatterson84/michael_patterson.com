@@ -16,31 +16,33 @@
 <main class="container">
     <h1 class="py-3 main-heading">About</h1>
     <div class="row py-3">
-        <div class="col-md-8 py-3">
+        <div class="col-md-2"></div>
+        <div class="col-md-6 py-3">
             <nav class="btn-group py-3" role="group" aria-label="Social Links">
                 <a class="btn btn-light border" href="https://www.linkedin.com/in/mike-patterson-web-developer/"
                     target="_blank" title="Linkedin">
                     <i>
-                        <img src="{% static 'images/icons/linkedin-brands.svg' %}" alt="" srcset="">
+                        <img src="{% static 'images/icons/linkedin-brands.svg' %}" alt="linkedin">
                     </i>
                 </a>
                 <a class="btn btn-light border" href="https://github.com/mppatterson84" target="_blank" title="GitHub">
                     <i>
-                        <img src="{% static 'images/icons/github-brands.svg' %}" alt="" srcset="">
+                        <img src="{% static 'images/icons/github-brands.svg' %}" alt="github">
                     </i>
                 </a>
                 <a class="btn btn-light border" href="https://twitter.com/suchamike" target="_blank" title="Twitter">
                     <i>
-                        <img src="{% static 'images/icons/twitter-brands.svg' %}" alt="" srcset="">
+                        <img src="{% static 'images/icons/twitter-brands.svg' %}" alt="twitter">
                     </i>
                 </a>
             </nav>
         </div>
-        <div class="col-lg-4 py-3 d-flex flex-column justify-content-center">
+        <div class="col-md-2 py-3 d-flex flex-column justify-content-center">
             <div class="text-center">
                 <a href="{% url 'projects' %}" class="btn btn-primary btn-lg">Projects</a>
             </div>
         </div>
+        <div class="col-md-2"></div>
     </div>
 </main>
 {% endblock content %}
