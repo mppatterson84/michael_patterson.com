@@ -40,23 +40,19 @@
 
     <h1 class="py-3 main-heading">{{ post.title }}</h1>
 
+    {% if user.is_authenticated %}
     <nav class="py-3">
-        <div class="py-1">
-            <a class="btn btn-primary" href="{% url 'blog' %}">Blog</a>
-            <a class="btn btn-primary" href="{% url 'category-list' %}">Categories</a>
-        </div>
-        {% if user.is_authenticated %}
         <div class="py-1">
             <a href="/admin/blog/post/{{ post.pk }}/change/" class="btn btn-warning">Edit</a>
             <a href="/admin/blog/post/{{ post.pk }}/delete/" class="btn btn-danger">Delete</a>
             <span class="px-1">|</span>
             <a class="btn btn-success" href="/admin/blog/post/add/">New Post</a>
         </div>
-        {% endif %}
     </nav>
+    {% endif %}
 
 
-    <div class="p-3 mb-3 post-meta">
+    <div class="p-3 mb-3 mx-auto post-meta">
         {% if post.author.first_name and post.author.last_name %}
         <p>By: {{ post.author.first_name }} {{ post.author.last_name }}</p>
         {% else %}
@@ -75,13 +71,13 @@
         <aside class="col-md-2 col-xl-3"></aside>
     </div>
 
-    <div class="p-3 mb-3 post-meta-foot">
+    <div class="p-3 mb-3 mx-auto post-meta-foot">
         {% if post.created_at|date:"M:d:Y" == post.updated_at|date:"M:d:Y" and post.created_at|time:"H:i" != post.updated_at|time:"H:i" %}
         <p>Updated: {{ post.updated_at }}</p>
         {% elif post.created_at|date:"M:d:Y" != post.updated_at|date:"M:d:Y" %}
         <p>Updated: {{ post.updated_at }}</p>
         {% endif %}
-
+        
         {% if post.categories.all %}
         <p>Categories:
             {% for category in post.categories.all %}
@@ -89,6 +85,7 @@
             {% endfor %}
         </p>
         {% endif %}
+        <a class="d-block py-3 text-end" href="#">Back to top</a>
     </div>
 
 </div>
