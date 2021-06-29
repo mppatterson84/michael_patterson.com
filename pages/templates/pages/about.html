@@ -3,27 +3,23 @@
 
 
 {% block preload %}
-        <link rel="preload" as="image" href="{% static 'images/icons/linkedin-brands.svg' %}">
-        <link rel="preload" as="image" href="{% static 'images/icons/github-brands.svg' %}">
-        <link rel="preload" as="image" href="{% static 'images/icons/twitter-brands.svg' %}">
+<link rel="preload" as="image" href="{% static 'images/icons/linkedin-brands.svg' %}">
+<link rel="preload" as="image" href="{% static 'images/icons/github-brands.svg' %}">
+<link rel="preload" as="image" href="{% static 'images/icons/twitter-brands.svg' %}">
 {% endblock preload %}
 
 
-{% block meta_description %}
-        <meta
-            name="description"
-            content="Mike Patterson Web Developer. My name is Mike. I'm a Web Developer. I create spectacular websites."
-        />
-{% endblock meta_description %}
+{% block meta_description %}{% endblock meta_description %}
 
 
 {% block content %}
-<section class="about-container">
-    <h1>About</h1>
-    <div class="row">
-        <div class="col-lg-8 py-3">
-            <div class="btn-group mb-4" role="group" aria-label="Social Links">
-                <a class="btn btn-light border" href="https://www.linkedin.com/in/mike-patterson-web-developer/" target="_blank" title="Linkedin">
+<main class="container">
+    <h1 class="py-3 main-heading">About</h1>
+    <div class="row py-3">
+        <div class="col-md-8 py-3">
+            <nav class="btn-group py-3" role="group" aria-label="Social Links">
+                <a class="btn btn-light border" href="https://www.linkedin.com/in/mike-patterson-web-developer/"
+                    target="_blank" title="Linkedin">
                     <i>
                         <img src="{% static 'images/icons/linkedin-brands.svg' %}" alt="" srcset="">
                     </i>
@@ -38,27 +34,15 @@
                         <img src="{% static 'images/icons/twitter-brands.svg' %}" alt="" srcset="">
                     </i>
                 </a>
-            </div>
-            <p>
-                Hello, World! My name is Mike. 
-                I'm a full stack web developer.
-            </p>
-            <p>
-                My approach to programming comes from a curiosity for technology
-                and a drive for creativity.
-            </p>
-            <p>
-                My main focus is frontend development with HTML, CSS, and Javascript 
-                and backend development with Python, Django, and PostgreSQL.
-            </p>
+            </nav>
         </div>
-        <div class="col-lg-4 py-3">
-            <div class="text-center mb-4">
+        <div class="col-lg-4 py-3 d-flex flex-column justify-content-center">
+            <div class="text-center">
                 <a href="{% url 'projects' %}" class="btn btn-primary btn-lg">Projects</a>
             </div>
         </div>
     </div>
-</section>
+</main>
 {% endblock content %}
 
 
@@ -67,4 +51,3 @@
     <a href="https://fontawesome.com/license" target="_blank">Font Awesome License</a>
 </footer>
 {% endblock footer %}
-    
