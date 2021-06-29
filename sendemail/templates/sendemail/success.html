@@ -2,10 +2,16 @@
 
 
 {% block content %}
-<section class="email-container">
-    <h1>Success!</h1>
-    <p class="text-center">Your message has been sent.</p>
-    <p>Visit the <a href="{% url 'blog' %}">Blog</a>.</p>
-    <p>Check out my <a href="{% url 'projects' %}">Projects</a>.</p>
-</section>
+<main class="container">
+    <h1 class="py-3 main-heading">Success!</h1>
+    <div class="row">
+        <div class="col-md-3"></div>
+        <section class="col-md-6">
+            <h4 class="py-3 text-center">Your Message Has Been Sent</h4>
+            <p>Visit the <a href="{% url 'blog' %}">Blog</a>.</p>
+            <p>Check out my <a href="{% url 'projects' %}">Projects</a>.</p>
+        </section>
+        <div class="col-md-3"></div>
+    </div>
+</main>
 {% endblock content %}
