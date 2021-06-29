@@ -24,10 +24,6 @@ header p {
     border-radius: 5px;
     max-width: 45ch;
 }
-p > a {
-    color: rgb(0, 0, 0);
-    text-decoration: underline;
-}
 
 /* Extra small screens, portrait phones, 567px and down */
 @media only screen and (max-width: 567px) {
@@ -37,7 +33,6 @@ p > a {
     }
     header h1 {
         font-size: 4rem;
-        padding-top: 1em;
     }
     header p {
         background: linear-gradient(
