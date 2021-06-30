@@ -73,7 +73,7 @@
                 </span>
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto">
+                <ul class="navbar-nav me-auto pb-3 pb-md-0">
                     <li class="nav-item ps-3 ps-md-0 ms-3 ms-md-0">
                         <a class="nav-link {{ home_active }}" aria-current="{{ home_aria_current|default:'false' }}"
                             href="{% url 'home' %}">Home</a>
@@ -94,8 +94,8 @@
                     </li>
 
                     {% if post or title == 'Blog' %}
-                    <li class="nav-item dropdown pe-md-3">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle ps-3 ps-md-2 ms-3 ms-md-0" href="#" id="navbarDropdown" role="button"
                             data-bs-toggle="dropdown" aria-expanded="false">
                             Blog
                         </a>
