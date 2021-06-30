@@ -1,6 +1,12 @@
 {% extends 'base.html' %}
 {% load static %}
 
+{% block preload %}
+    <link rel="preload" as="image" href="https://res.cloudinary.com/dkc5rsxrn/image/upload/v1625010412/Mike-Patterson-Web-Developer-screenshot_lcc6x8.png">
+    <link rel="preload" as="image" href="https://res.cloudinary.com/dkc5rsxrn/image/upload/v1624816252/Rock-Paper-Scissors-screenshot_lo8ghn.png">
+    <link rel="preload" as="image" href="https://res.cloudinary.com/dkc5rsxrn/image/upload/v1624816798/0EA90AA1-95C3-41E1-94E9-A20800211B0A_vot1bz_vjxpvi.jpg">
+{% endblock preload %}
+
 {% block header %}{% endblock header %}
 
 {% block content %}
