@@ -1,263 +1,173 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <!-- preload -->
-        {% block preload %}{% endblock preload %}
-        <link
-            rel="preload"
-            as="image"
-            href="{% static 'images/m_p_logo_50.png' %}"
-        />
-        <link
-            rel="preload"
-            as="style"
-            href="{% static 'css/lib/bootstrap.custom.min.css' %}"
-        />
-        <link
-            rel="preload"
-            as="style"
-            href="{% static 'css/lib/hamburgers.custom.min.css' %}"
-        />
-        <link
-            rel="preload"
-            as="style"
-            href="{% static 'css/lib/animate.custom.min.css' %}"
-        />
-        <link rel="preload" as="style" href="{% static 'css/base.css' %}" />
 
-        <!-- Global site tag (gtag.js) - Google Analytics -->
-        <script
-            async
-            nonce="{{ nonce }}"
-            src="https://www.googletagmanager.com/gtag/js?id=G-8T0FQHFQMD"
-        ></script>
-        <script src="{% static 'js/analytics.js' %}"></script>
+<head>
+    <!-- preload -->
+    {% block preload %}{% endblock preload %}
+    <link rel="preload" as="image" href="{% static 'images/m_p_logo_50.png' %}" />
+    <link rel="preload" as="style" href="{% static 'css/lib/bootstrap.custom.min.css' %}" />
+    <link rel="preload" as="style" href="{% static 'css/lib/hamburgers.custom.min.css' %}" />
+    <link rel="preload" as="style" href="{% static 'css/lib/animate.custom.min.css' %}" />
+    <link rel="preload" as="style" href="{% static 'css/base.css' %}" />
 
-        <!-- Required meta tags -->
-        <meta charset="utf-8" />
-        <meta
-            name="viewport"
-            content="width=device-width, initial-scale=1, shrink-to-fit=no"
-        />
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async nonce="{{ nonce }}" src="https://www.googletagmanager.com/gtag/js?id=G-8T0FQHFQMD"></script>
+    <script src="{% static 'js/analytics.js' %}"></script>
 
-        {% block meta_description %}{% endblock meta_description %}
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 
-        <!-- Bootstrap CSS -->
-        <link
-            rel="stylesheet"
-            href="{% static 'css/lib/bootstrap.custom.min.css' %}"
-        />
+    {% block meta_description %}{% endblock meta_description %}
 
-        <!-- favicon -->
-        <link
-            rel="shortcut icon"
-            type="image/png"
-            href="{% static 'images/m_p_favicon.png' %}"
-        />
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="{% static 'css/lib/bootstrap.custom.min.css' %}" />
 
-        <!-- hamburgers -->
-        <link
-            rel="stylesheet"
-            href="{% static 'css/lib/hamburgers.custom.min.css' %}"
-        />
+    <!-- favicon -->
+    <link rel="shortcut icon" type="image/png" href="{% static 'images/m_p_favicon.png' %}" />
 
-        <!-- animate css -->
-        <link
-            rel="stylesheet"
-            href="{% static 'css/lib/animate.custom.min.css' %}"
-        />
+    <!-- hamburgers -->
+    <link rel="stylesheet" href="{% static 'css/lib/hamburgers.custom.min.css' %}" />
 
-        <!-- Google Fonts -->
-        <!-- none -->
+    <!-- animate css -->
+    <link rel="stylesheet" href="{% static 'css/lib/animate.custom.min.css' %}" />
 
-        <!-- base css -->
-        <link rel="stylesheet" href="{% static 'css/base.css' %}" />
+    <!-- Google Fonts -->
+    <!-- none -->
 
-        {% block head_links %}{% endblock head_links %}
+    <!-- base css -->
+    <link rel="stylesheet" href="{% static 'css/base.css' %}" />
 
-        <!-- prettier-ignore -->
-        <title>
-            {% if title and post.title %}
-                {{ title }}: {{ post.title }} -
-            {% elif title %}
-                {{ title }} -
-            {% elif post.title %}
-                {{ post.title }} -
-            {% endif %}
-            Mike Patterson - Web Developer
-        </title>
+    {% block head_links %}{% endblock head_links %}
 
-        <!-- json ld -->
-        {% block json_ld %}{% endblock json_ld %}
-    </head>
+    <!-- prettier-ignore -->
+    <title>
+        {% if title and post.title %}
+        {{ title }}: {{ post.title }} -
+        {% elif title %}
+        {{ title }} -
+        {% elif post.title %}
+        {{ post.title }} -
+        {% endif %}
+        Mike Patterson - Web Developer
+    </title>
 
-    <body>
-        <nav class="navbar navbar-expand-md navbar-dark bg-dark">
-            <div class="container-fluid">
-                <a class="navbar-brand" href="{% url 'home' %}">
-                    <img
-                        id="nav-brand"
-                        src="{% static 'images/m_p_logo_50.png' %}"
-                        width="50"
-                        height="50"
-                        alt="Mike Patterson"
-                    />
-                </a>
-                <button
-                    class="navbar-toggler hamburger hamburger--slider animate__animated animate__rubberBand"
-                    type="button"
-                    data-bs-toggle="collapse"
-                    data-bs-target="#navbarSupportedContent"
-                    aria-controls="navbarSupportedContent"
-                    aria-expanded="false"
-                    aria-label="Toggle navigation"
-                >
-                    <!-- <span class="navbar-toggler-icon"></span> -->
-                    <span class="hamburger-box">
-                        <span class="hamburger-inner"></span>
-                    </span>
-                </button>
-                <div
-                    class="collapse navbar-collapse"
-                    id="navbarSupportedContent"
-                >
-                    <ul class="navbar-nav me-auto">
-                        <li class="nav-item ps-3 ps-md-0 ms-3 ms-md-0">
-                            <a
-                                class="nav-link {{ home_active }}"
-                                aria-current="{{ home_aria_current|default:'false' }}"
-                                href="{% url 'home' %}"
-                                >Home</a
-                            >
-                        </li>
-                        <li class="nav-item ps-3 ps-md-0 ms-3 ms-md-0">
-                            <a
-                                class="nav-link {{ about_active }}"
-                                aria-current="{{ about_aria_current|default:'false' }}"
-                                href="{% url 'about' %}"
-                                >About</a
-                            >
-                        </li>
-                        <li class="nav-item ps-3 ps-md-0 ms-3 ms-md-0">
-                            <a
-                                class="nav-link {{ projects_active }}"
-                                aria-current="{{ projects_aria_current|default:'false' }}"
-                                href="{% url 'projects' %}"
-                                >Projects</a
-                            >
-                        </li>
-                        <li class="nav-item ps-3 ps-md-0 ms-3 ms-md-0">
-                            <a
-                                class="nav-link {{ contact_active }}"
-                                aria-current="{{ contact_aria_current|default:'false' }}"
-                                href="{% url 'contact' %}"
-                                >Contact</a
-                            >
-                        </li>
-                        <li class="nav-item ps-3 ps-md-0 ms-3 ms-md-0">
-                            <a
-                                class="nav-link {{ blog_active }}"
-                                aria-current="{{ blog_aria_current|default:'false' }}"
-                                href="{% url 'blog' %}"
-                                >Blog</a
-                            >
-                        </li>
-                    </ul>
-                    <ul class="navbar-nav py-3 py-md-0 text-center">
-                        <li class="nav-item dropdown pe-md-3">
-                            <a
-                                class="nav-link dropdown-toggle"
-                                href="#"
-                                id="navbarDropdown"
-                                role="button"
-                                data-bs-toggle="dropdown"
-                                aria-expanded="false"
-                            >
-                                Blog Menu
-                            </a>
-                            <ul
-                                class="dropdown-menu"
-                                aria-labelledby="navbarDropdown"
-                            >
-                                <li>
-                                    <a
-                                        class="dropdown-item"
-                                        href="{% url 'blog' %}"
-                                        >Blog Home</a
-                                    >
-                                </li>
-                                <li><hr class="dropdown-divider" /></li>
-                                <li>
-                                    <a
-                                        class="dropdown-item"
-                                        href="{% url 'post-list-all' %}"
-                                        >All Posts</a
-                                    >
-                                </li>
-                                <li><hr class="dropdown-divider" /></li>
-                                <li>
-                                    <a
-                                        class="dropdown-item"
-                                        href="{% url 'category-list' %}"
-                                        >Categories</a
-                                    >
-                                </li>
-                                {% if user.is_authenticated %}
-                                <li><hr class="dropdown-divider" /></li>
-                                <li>
-                                    <a
-                                        class="dropdown-item"
-                                        href="/admin/blog/post/add"
-                                        >New Post</a
-                                    >
-                                </li>
-                                {% endif %}
-                            </ul>
-                        </li>
-                    </ul>
-                    <div class="ml-4">
-                        <form
-                            method="GET"
-                            action="/blog/search/"
-                            class="d-flex input-group"
-                        >
-                            <input
-                                class="form-control"
-                                type="search"
-                                placeholder="Blog Search"
-                                aria-label="Blog Search"
-                                aria-describedby="basic-addon2"
-                                name="q"
-                                value="{{ request.GET.q }}"
-                            />
-                            <button
-                                class="btn btn-outline-primary input-group-text"
-                                id="basic-addon2"
-                                type="submit"
-                            >
-                                Search
-                            </button>
-                        </form>
-                    </div>
+    <!-- json ld -->
+    {% block json_ld %}{% endblock json_ld %}
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="{% url 'home' %}">
+                <img id="nav-brand" src="{% static 'images/m_p_logo_50.png' %}" width="50" height="50"
+                    alt="Mike Patterson" />
+            </a>
+            <button class="navbar-toggler hamburger hamburger--slider animate__animated animate__rubberBand"
+                type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <!-- <span class="navbar-toggler-icon"></span> -->
+                <span class="hamburger-box">
+                    <span class="hamburger-inner"></span>
+                </span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item ps-3 ps-md-0 ms-3 ms-md-0">
+                        <a class="nav-link {{ home_active }}" aria-current="{{ home_aria_current|default:'false' }}"
+                            href="{% url 'home' %}">Home</a>
+                    </li>
+                    <li class="nav-item ps-3 ps-md-0 ms-3 ms-md-0">
+                        <a class="nav-link {{ about_active }}" aria-current="{{ about_aria_current|default:'false' }}"
+                            href="{% url 'about' %}">About</a>
+                    </li>
+                    <li class="nav-item ps-3 ps-md-0 ms-3 ms-md-0">
+                        <a class="nav-link {{ projects_active }}"
+                            aria-current="{{ projects_aria_current|default:'false' }}"
+                            href="{% url 'projects' %}">Projects</a>
+                    </li>
+                    <li class="nav-item ps-3 ps-md-0 ms-3 ms-md-0">
+                        <a class="nav-link {{ contact_active }}"
+                            aria-current="{{ contact_aria_current|default:'false' }}"
+                            href="{% url 'contact' %}">Contact</a>
+                    </li>
+
+                    {% if post or title == 'Blog' %}
+                    <li class="nav-item dropdown pe-md-3">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Blog
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li>
+                                <a class="dropdown-item" href="{% url 'blog' %}">Blog Home</a>
+                            </li>
+                            <li>
+                                <hr class="dropdown-divider" />
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="{% url 'post-list-all' %}">All Posts</a>
+                            </li>
+                            <li>
+                                <hr class="dropdown-divider" />
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="{% url 'category-list' %}">Categories</a>
+                            </li>
+                            {% if user.is_authenticated %}
+                            <li>
+                                <hr class="dropdown-divider" />
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="/admin/blog/post/add">New Post</a>
+                            </li>
+
+                            {% if post %}
+                            <li>
+                                <hr class="dropdown-divider" />
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="/admin/blog/post/{{ post.pk }}/change/">Edit Post</a>
+                            </li>
+                            {% endif %}
+
+                            {% endif %}
+                        </ul>
+                    </li>
+                    {% else %}
+
+                    <li class="nav-item ps-3 ps-md-0 ms-3 ms-md-0">
+                        <a class="nav-link {{ blog_active }}" aria-current="{{ blog_aria_current|default:'false' }}"
+                            href="{% url 'blog' %}">Blog</a>
+                    </li>
+
+                    {% endif %}
+                </ul>
+                <div class="ml-4">
+                    <form method="GET" action="/blog/search/" class="d-flex input-group">
+                        <input class="form-control" type="search" placeholder="Blog Search" aria-label="Blog Search"
+                            aria-describedby="basic-addon2" name="q" value="{{ request.GET.q }}" />
+                        <button class="btn btn-outline-primary input-group-text" id="basic-addon2" type="submit">
+                            Search
+                        </button>
+                    </form>
                 </div>
             </div>
-        </nav>
+        </div>
+    </nav>
 
-        {% block header %}{% endblock header %}
+    {% block header %}{% endblock header %}
 
-        {% block content %}{% endblock content %}
+    {% block content %}{% endblock content %}
 
-        {% block footer %}{% endblock footer %}
+    {% block footer %}{% endblock footer %}
 
-        <!-- Bootstrap JavaScript -->
-        <script src="{% static 'js/bootstrap.bundle.min.js' %}" defer></script>
-        {% block foot_links %}{% endblock foot_links %}
-        <!-- base js -->
-        <script
-            type="text/javascript"
-            src="{% static 'js/base.js' %}"
-            defer
-        ></script>
-    </body>
+    <!-- Bootstrap JavaScript -->
+    <script src="{% static 'js/bootstrap.bundle.min.js' %}" defer></script>
+    {% block foot_links %}{% endblock foot_links %}
+    <!-- base js -->
+    <script type="text/javascript" src="{% static 'js/base.js' %}" defer></script>
+</body>
+
 </html>
