@@ -1,39 +1,25 @@
-{% extends 'base.html' %}
+{% extends 'blog/post_list.html' %}
+{% load static %}
 
 
-{% block content %}
-<div class="container">
-    <h1 class="py-3 main-heading">{{ title }}</h1>
-    <nav class="py-3 mb-3">
-        <a class="btn btn-primary" href="{% url 'post-list-all' %}">All Posts</a>
-        <a class="btn btn-primary" href="{% url 'category-list' %}">Categories</a>
-        {% if user.is_authenticated %}
-        <a class="btn btn-success" href="/admin/blog/post/add/">New Post</a>
-        {% endif %}
-    </nav>
+{% block blog_main_content %}
 
-    <div class="row">
-        <div class="col-md-2 col-xl-3"></div>
-        <main class="col-md-8 col-xl-6">
-            <form method="GET" action="/blog/categories/filter/">
-                
-                {% for category in object_list %}
-                <div class="p-3 mb-3 post-entry d-flex">
-                
-                    <input class="btn btn-light" type="submit" name="category" value="{{ category.category_name }}">
-                    
-                    {% if user.is_authenticated %}
-                    <div class="btn btn-danger ms-auto">
-                        <a class="text-dark" href="/admin/blog/postcategory/{{ category.pk }}/delete/">Delete</a>
-                    </div>
-                    {% endif %}
-        
-                </div>
-                {% endfor %}
-        
-            </form>
-        </main>
-        <div class="col-md-2 col-xl-3"></div>
-    </div>
-</div>
-{% endblock content %}
+    <form method="GET" action="/blog/categories/filter/">
+
+        {% for category in object_list %}
+        <div class="p-3 mb-3 post-entry d-flex">
+
+            <input class="btn btn-light" type="submit" name="category" value="{{ category.category_name }}">
+
+            {% if user.is_authenticated %}
+            <div class="btn btn-danger ms-auto">
+                <a class="text-dark" href="/admin/blog/postcategory/{{ category.pk }}/delete/">Delete</a>
+            </div>
+            {% endif %}
+
+        </div>
+        {% endfor %}
+
+    </form>
+
+{% endblock blog_main_content %}

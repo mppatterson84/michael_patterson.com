@@ -40,7 +40,7 @@ class PostListView(ListView):
 
 class PostListAllView(ListView):
     model = Post
-    template_name = 'blog/post_list_all.html'
+    template_name = 'blog/post_list.html'
     ordering = ['pk']
 
     def get_context_data(self, **kwargs):
@@ -59,7 +59,7 @@ class PostListAllView(ListView):
 
 class PostSearchView(ListView):
     model = Post
-    template_name = 'blog/post_search.html'
+    template_name = 'blog/post_list.html'
     ordering = ['pk']
 
     def get_context_data(self, **kwargs):
@@ -97,7 +97,7 @@ class CategoryListView(ListView):
 
 class CategoryFilterView(ListView):
     model = Post
-    template_name = 'blog/category_filter.html'
+    template_name = 'blog/post_list.html'
     ordering = ['pk']
 
     def get_queryset(self):

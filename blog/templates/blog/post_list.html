@@ -27,26 +27,23 @@
 {% block content %}
 <div class="container">
     <h1 class="py-3 main-heading">{{ title }}</h1>
-    <nav class="py-3 mb-3">
-        <a class="btn btn-primary" href="{% url 'post-list-all' %}">All Posts</a>
-        <a class="btn btn-primary" href="{% url 'category-list' %}">Categories</a>
-        {% if user.is_authenticated %}
-        <a class="btn btn-success" href="/admin/blog/post/add/">New Post</a>
-        {% endif %}
-    </nav>
 
-    <div class="row">
+    <div class="row py-3">
         <aside class="col-md-2 col-xl-3"></aside>
         <main class="col-md-8 col-xl-6">
-            {% for post in object_list %}
-            <article class="p-3 mb-3 post-entry">
-                {% if post.published == False %}
-                <h4 class="bg-warning p-1">This post is not published.</h4>
-                {% endif %}
-                <h2><a href="{% url 'post-detail' post.slug %}">{{ post.title }}</a></h2>
-                <p>{{ post.body|truncatewords_html:50|safe }}</p>
-            </article>
-            {% endfor %}
+        {% block blog_main_content %}
+            
+        {% for post in object_list %}
+        <article class="p-3 mb-3 post-entry">
+            {% if post.published == False %}
+            <h4 class="bg-warning p-1">This post is not published.</h4>
+            {% endif %}
+            <h2><a href="{% url 'post-detail' post.slug %}">{{ post.title }}</a></h2>
+            <p>{{ post.body|truncatewords_html:50|safe }}</p>
+        </article>
+        {% endfor %}
+
+        {% endblock blog_main_content %}
         </main>
         <aside class="col-md-2 col-xl-3"></aside>
     </div>
