@@ -3,88 +3,88 @@
 
 
 {% block json_ld %}
-<script type="application/ld+json">
-            {
-                "@context": "https://schema.org",
-                "@type": "BlogPosting",
-                "mainEntityOfPage": {
-                    "@type": "WebPage",
-                    "@id": "{{ request.scheme }}://{{ request.site }}{% url 'post-detail' post.slug %}"
-                },
-                "headline": "{{ post.title }}",
-                "image": "{{ post.image }}",
-                "datePublished": "{{ post.created_at|date:'c' }}",
-                "dateModified": "{{ post.updated_at|date:'c' }}",
-                "author": {
-                    "@type": "Person",
-                    "name": "{{ post.author.first_name }} {{ post.author.last_name }}"
-                },
-                "publisher": {
-                    "@type": "Organization",
-                    "name": "{{ request.scheme }}://{{ request.site }}",
-                    "logo": {
-                        "@type": "ImageObject",
-                        "url": "{{ request.scheme }}://{{ request.site }}/static/images/m_p_logo_600.png"
-                    }
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "BlogPosting",
+            "mainEntityOfPage": {
+                "@type": "WebPage",
+                "@id": "{{ request.scheme }}://{{ request.site }}{% url 'post-detail' post.slug %}"
+            },
+            "headline": "{{ post.title }}",
+            "image": "{{ post.image }}",
+            "datePublished": "{{ post.created_at|date:'c' }}",
+            "dateModified": "{{ post.updated_at|date:'c' }}",
+            "author": {
+                "@type": "Person",
+                "name": "{{ post.author.first_name }} {{ post.author.last_name }}"
+            },
+            "publisher": {
+                "@type": "Organization",
+                "name": "{{ request.scheme }}://{{ request.site }}",
+                "logo": {
+                    "@type": "ImageObject",
+                    "url": "{{ request.scheme }}://{{ request.site }}/static/images/m_p_logo_600.png"
                 }
             }
-        </script>
+        }
+    </script>
 {% endblock json_ld %}
 
 
-{% block content %}
-<div class="container">
-    {% if post.published == False %}
-    <h4 class="bg-warning p-1 my-3">This post is not published.</h4>
+{% block blog_meta_head %}
+
+{% if post.published == False %}
+<h4 class="bg-warning p-1 my-3">This post is not published.</h4>
+{% endif %}
+
+<h1 class="py-3">{{ post.title }}</h1>
+
+<div class="p-3 mb-3 mx-auto post-meta">
+    {% if post.author.first_name and post.author.last_name %}
+    <p>By: {{ post.author.first_name }} {{ post.author.last_name }}</p>
+    {% else %}
+    <p>By: {{ post.author }}</p>
     {% endif %}
-
-    <h1 class="py-3">{{ post.title }}</h1>
-
-    <div class="p-3 mb-3 mx-auto post-meta">
-        {% if post.author.first_name and post.author.last_name %}
-        <p>By: {{ post.author.first_name }} {{ post.author.last_name }}</p>
-        {% else %}
-        <p>By: {{ post.author }}</p>
-        {% endif %}
-        <p>Published: {{ post.created_at }}</p>
-        {% if user.is_authenticated %}
-        <nav>
-            <div class="py-1">
-                <a href="/admin/blog/post/{{ post.pk }}/change/" class="btn btn-warning">Edit</a>
-                <a href="/admin/blog/post/{{ post.pk }}/delete/" class="btn btn-danger">Delete</a>
-                <span class="px-1">|</span>
-                <a class="btn btn-success" href="/admin/blog/post/add/">New Post</a>
-            </div>
-        </nav>
-        {% endif %}
-    </div>
-
-    <div class="row">
-        <aside class="col-md-2 col-xl-3"></aside>
-        <main class="col-md-8 col-xl-6">
-            <article class="py-3 mx-auto mb-3 post-body">
-                {{ post.body|safe }}
-            </article>
-        </main>
-        <aside class="col-md-2 col-xl-3"></aside>
-    </div>
-
-    <div class="p-3 mb-3 mx-auto post-meta-foot">
-        {% if post.created_at|date:"M:d:Y" == post.updated_at|date:"M:d:Y" and post.created_at|time:"H:i" != post.updated_at|time:"H:i" %}
-        <p>Updated: {{ post.updated_at }}</p>
-        {% elif post.created_at|date:"M:d:Y" != post.updated_at|date:"M:d:Y" %}
-        <p>Updated: {{ post.updated_at }}</p>
-        {% endif %}
-        
-        {% if post.categories.all %}
-        <p>Categories:
-            {% for category in post.categories.all %}
-            {{ category }}{% if not forloop.last %}, {% endif %}
-            {% endfor %}
-        </p>
-        {% endif %}
-        <a class="d-block py-3 text-end" href="#">Back to top</a>
-    </div>
-
+    <p>Published: {{ post.created_at }}</p>
+    {% if user.is_authenticated %}
+    <nav>
+        <div class="py-1">
+            <a href="/admin/blog/post/{{ post.pk }}/change/" class="btn btn-warning">Edit</a>
+            <a href="/admin/blog/post/{{ post.pk }}/delete/" class="btn btn-danger">Delete</a>
+            <span class="px-1">|</span>
+            <a class="btn btn-success" href="/admin/blog/post/add/">New Post</a>
+        </div>
+    </nav>
+    {% endif %}
 </div>
-{% endblock content %}
+
+{% endblock blog_meta_head %}
+
+{% block blog_main_content %}
+    <article class="py-3 mx-auto mb-3 post-body">
+        {{ post.body|safe }}
+    </article>
+{% endblock blog_main_content %}
+
+
+{% block blog_meta_foot %}
+    
+<div class="p-3 mb-3 mx-auto post-meta-foot">
+    {% if post.created_at|date:"M:d:Y" == post.updated_at|date:"M:d:Y" and post.created_at|time:"H:i" != post.updated_at|time:"H:i" %}
+    <p>Updated: {{ post.updated_at }}</p>
+    {% elif post.created_at|date:"M:d:Y" != post.updated_at|date:"M:d:Y" %}
+    <p>Updated: {{ post.updated_at }}</p>
+    {% endif %}
+    
+    {% if post.categories.all %}
+    <p>Categories:
+        {% for category in post.categories.all %}
+        {{ category }}{% if not forloop.last %}, {% endif %}
+        {% endfor %}
+    </p>
+    {% endif %}
+    <a class="d-block py-3 text-end" href="#">Back to top</a>
+</div>
+
+{% endblock blog_meta_foot %}

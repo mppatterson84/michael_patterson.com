@@ -2,51 +2,16 @@
 {% load static %}
 
 
-{% block json_ld %}
-<script type="application/ld+json">
-            {
-                "@context": "https://schema.org",
-                "@type": ["ItemList", "Blog"],
-                "name": "{{ title }} - {{ request.site.name }}",
-                "itemListElement":[
-                    {% for post in object_list %}
-                    {
-                        "@type":["ListItem", "BlogPosting"],
-                        "position":{{ forloop.counter }},
-                        "url":"{{ request.scheme }}://{{ request.site }}{% url 'post-detail' post.slug %}",
-                        "headline": "{{ post.title }}",
-                        "image": "{{ post.image }}"
-                    }{% if not forloop.last %},{% endif %}
-                    {% endfor %}
-                ]
-            }
-        </script>
-{% endblock json_ld %}
+{% block blog_main_content %}
+    
+{% for post in object_list %}
+<article class="p-3 mb-3 post-entry">
+    {% if post.published == False %}
+    <h4 class="bg-warning p-1">This post is not published.</h4>
+    {% endif %}
+    <h2><a href="{% url 'post-detail' post.slug %}">{{ post.title }}</a></h2>
+    <p>{{ post.body|truncatewords_html:50|safe }}</p>
+</article>
+{% endfor %}
 
-
-{% block content %}
-<div class="container">
-    <h1 class="py-3 main-heading">{{ title }}</h1>
-
-    <div class="row py-3">
-        <aside class="col-md-2 col-xl-3"></aside>
-        <main class="col-md-8 col-xl-6">
-        {% block blog_main_content %}
-            
-        {% for post in object_list %}
-        <article class="p-3 mb-3 post-entry">
-            {% if post.published == False %}
-            <h4 class="bg-warning p-1">This post is not published.</h4>
-            {% endif %}
-            <h2><a href="{% url 'post-detail' post.slug %}">{{ post.title }}</a></h2>
-            <p>{{ post.body|truncatewords_html:50|safe }}</p>
-        </article>
-        {% endfor %}
-
-        {% endblock blog_main_content %}
-        </main>
-        <aside class="col-md-2 col-xl-3"></aside>
-    </div>
-
-</div>
-{% endblock content %}
+{% endblock blog_main_content %}
