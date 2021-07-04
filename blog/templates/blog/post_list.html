@@ -12,6 +12,7 @@
     <h2 class="mb-3"><a href="{% url 'post-detail' post.slug %}">{{ post.title }}</a></h2>
     <a href="{% url 'post-detail' post.slug %}"><img class="mb-3" src="{{ post.image }}" alt="Post Featured Image"></a>
     <p>{{ post.body|truncatewords_html:50|safe }}</p>
+    <a class="btn btn-outline-primary" href="{% url 'post-detail' post.slug %}">Read More</a>
 </article>
 {% endfor %}
 
