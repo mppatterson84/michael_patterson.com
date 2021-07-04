@@ -27,14 +27,13 @@ figcaption {
     margin: 0;
     filter: invert(1);
 }
-.post-meta {
+.post-meta-head {
     border-bottom: 2px solid rgba(119, 136, 153, 0.5);
     background-color: rgb(252, 252, 255);
 }
 .post-meta-foot {
     border-top: 2px solid rgba(119, 136, 153, 0.5);
     background-color: rgb(252, 252, 255);
-    max-width: 800px;
 }
 article.post-body {
     background-color: rgb(252, 252, 255);

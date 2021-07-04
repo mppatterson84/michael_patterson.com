@@ -38,9 +38,7 @@
 <h4 class="bg-warning p-1 my-3">This post is not published.</h4>
 {% endif %}
 
-<h1 class="py-3">{{ post.title }}</h1>
-
-<div class="p-3 mb-3 post-meta">
+<div class="py-3 mb-3 post-meta-head">
     {% if post.author.first_name and post.author.last_name %}
     <p>By: {{ post.author.first_name }} {{ post.author.last_name }}</p>
     {% else %}
@@ -48,8 +46,8 @@
     {% endif %}
     <p>Published: {{ post.created_at }}</p>
     {% if user.is_authenticated %}
-    <nav>
-        <div class="py-1">
+    <nav class="mb-3">
+        <div>
             <a href="/admin/blog/post/{{ post.pk }}/change/" class="btn btn-warning">Edit</a>
             <a href="/admin/blog/post/{{ post.pk }}/delete/" class="btn btn-danger">Delete</a>
             <span class="px-1">|</span>
@@ -70,7 +68,7 @@
 
 {% block blog_meta_foot %}
     
-<div class="p-3 mb-3 mx-auto post-meta-foot">
+<div class="py-3 post-meta-foot">
     {% if post.created_at|date:"M:d:Y" == post.updated_at|date:"M:d:Y" and post.created_at|time:"H:i" != post.updated_at|time:"H:i" %}
     <p>Updated: {{ post.updated_at }}</p>
     {% elif post.created_at|date:"M:d:Y" != post.updated_at|date:"M:d:Y" %}
