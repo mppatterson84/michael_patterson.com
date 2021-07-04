@@ -9,7 +9,8 @@
     {% if post.published == False %}
     <h4 class="bg-warning p-1">This post is not published.</h4>
     {% endif %}
-    <h2><a href="{% url 'post-detail' post.slug %}">{{ post.title }}</a></h2>
+    <h2 class="mb-3"><a href="{% url 'post-detail' post.slug %}">{{ post.title }}</a></h2>
+    <a href="{% url 'post-detail' post.slug %}"><img class="mb-3" src="{{ post.image }}" alt="Post Featured Image"></a>
     <p>{{ post.body|truncatewords_html:50|safe }}</p>
 </article>
 {% endfor %}

@@ -39,6 +39,7 @@
 {% endif %}
 
 <div class="py-3 mb-3 post-meta-head">
+    <img class="mb-4" src="{{ post.image }}" alt="Post Featured Image">
     {% if post.author.first_name and post.author.last_name %}
     <p>By: {{ post.author.first_name }} {{ post.author.last_name }}</p>
     {% else %}
