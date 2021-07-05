@@ -1,6 +1,7 @@
 from .models import Post, PostCategory
 from django import forms
 from django.contrib import admin
+from django.core.validators import MaxLengthValidator
 from ckeditor.widgets import CKEditorWidget
 
 
@@ -14,7 +15,8 @@ class PostAdminForm(forms.ModelForm):
     image = forms.CharField(
         label='Featured Image URL',
         help_text='Required for Structured Data to provide good SEO',
-        required=True
+        required=True,
+        validators=[MaxLengthValidator(245)]
     )
 
     categories = forms.ModelMultipleChoiceField(

@@ -1,3 +1,4 @@
+from django.core.validators import MaxLengthValidator
 from django.db import models
 from django.urls import reverse
 from django.utils import timezone
@@ -6,14 +7,14 @@ from blog.utils import get_unique_slug
 
 
 class Post(models.Model):
-    title = models.CharField(max_length=110)
+    title = models.CharField(max_length=110, validators=[MaxLengthValidator(100)])
     body = models.TextField()
     image = models.ImageField(upload_to='images/', max_length=250, blank=True)
     author = models.ForeignKey(
         'auth.User', default='auth.User', on_delete=models.CASCADE)
     created_at = models.DateTimeField(default=timezone.now, blank=False)
     updated_at = models.DateTimeField(default=timezone.now, blank=False)
-    slug = models.SlugField(max_length=110, blank=True)
+    slug = models.SlugField(max_length=110, blank=True, validators=[MaxLengthValidator(100)])
     published = models.BooleanField(default=False)
     categories = models.ManyToManyField('blog.PostCategory')
 
