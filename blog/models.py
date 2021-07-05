@@ -13,7 +13,7 @@ class Post(models.Model):
         'auth.User', default='auth.User', on_delete=models.CASCADE)
     created_at = models.DateTimeField(default=timezone.now, blank=False)
     updated_at = models.DateTimeField(default=timezone.now, blank=False)
-    slug = models.SlugField(blank=True)
+    slug = models.SlugField(max_length=110, blank=True)
     published = models.BooleanField(default=False)
     categories = models.ManyToManyField('blog.PostCategory')
 
