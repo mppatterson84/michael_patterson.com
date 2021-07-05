@@ -8,7 +8,7 @@ from blog.utils import get_unique_slug
 class Post(models.Model):
     title = models.CharField(max_length=110)
     body = models.TextField()
-    image = models.ImageField(upload_to='images/', blank=True)
+    image = models.ImageField(upload_to='images/', max_length=250, blank=True)
     author = models.ForeignKey(
         'auth.User', default='auth.User', on_delete=models.CASCADE)
     created_at = models.DateTimeField(default=timezone.now, blank=False)
