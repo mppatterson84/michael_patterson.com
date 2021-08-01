@@ -3,8 +3,11 @@ My Django Website
 
 ## Implemented Features
 - General
-  - Bootstrap 5
-    - Customize Bootstrap with SASS
+  - Using NPM to bring in third party static assets 
+    - Bootstrap 5
+    - Animate.css
+    - Hamburgers
+  - Customized the third party assets with SASS so that only the needed features are included and minified
 - Pages App
   - Static pages with views, templates, and urls
 - Contact App
