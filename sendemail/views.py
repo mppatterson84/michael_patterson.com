@@ -3,7 +3,7 @@ import requests
 
 from django.contrib import messages
 from django.core.mail import send_mail, BadHeaderError
-from django.http import HttpResponse, HttpResponseRedirect
+from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from django.views.generic import TemplateView
 from .forms import EmailForm
