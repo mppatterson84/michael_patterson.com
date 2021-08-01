@@ -1,2 +1,41 @@
-# michael_patterson.com
-My Django website.
+# Michael-Patterson.com
+My Django Website
+
+## Implemented Features
+- General
+  - Bootstrap 5
+    - Customize Bootstrap with SASS
+- Pages App
+  - Static pages with views, templates, and urls
+- Contact App
+  - SendGrid integration
+  - ReCaptcha
+  - Store message data to the database
+- Blog App
+  - Rich Text Editing
+    - django-ckeditor
+  - Images
+    - Cloudinary
+  - Unique slug generator
+  - Search feature
+- Settings
+  - Settings file broken out into smaller files
+  - Settings files unique to development and production
+    - manage.py
+    - wsgi.py
+- SEO
+  - Load speed
+  - Semantic HTML
+  - Structured data / JSON-LD
+  - Keywords
+  - Good content
+- Security
+  - HTTP headers with custom middleware
+  - HTTPS
+  - No inline code in HTML
+  - Serve third party files, or CDN with subresource integrity or nonce
+  - Environment variables
+- Production
+  - Analytics
+  - Cloudflare
+  - Heroku
