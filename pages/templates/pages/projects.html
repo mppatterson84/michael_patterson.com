@@ -23,14 +23,65 @@
                 <div class="card-body">
                     <h5 class="card-title">Michael-Patterson.com</h5>
                     <p class="card-text">A full featured Django website.</p>
+                    <p class="card-text">Some implemented features include:</p>
                     <ul>
-                        <li>lorem</li>
-                        <li>lorem</li>
-                        <li>lorem</li>
-                        <li>lorem</li>
+                        <li>
+                            Blog App
+                            <ul>
+                                <li>
+                                    Rich text editing with django-ckeditor.
+                                </li>
+                                <li>
+                                    Images served via Cloudinary API.
+                                </li>
+                                <li>
+                                    A unique slug generator in the event that posts have the same title.
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            Contact App
+                            <ul>
+                                <li>
+                                    SendGrid email API integration.
+                                </li>
+                                <li>
+                                    Google reCAPTCHA integration.
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            SEO
+                            <ul>
+                                <li>Fast website performance.</li>
+                                <li>Structured data with JSON-LD.</li>
+                            </ul>
+                        </li>
+                        <li>
+                            Security
+                            <ul>
+                                <li>
+                                    Custom middleware to manage HTTP headers for improved security.
+                                    <ul>
+                                        <li>Content Security Policy</li>
+                                        <li>Strict Transport Security</li>
+                                        <li>Cache Control</li>
+                                    </ul>
+                                </li>
+                                <li>Environment variables to hide sensitive data.</li>
+                            </ul>
+                        </li>
+                        <li>
+                            Other
+                            <ul>
+                                <li>PostgreSQL database.</li>
+                                <li>Cloudflare DNS integration.</li>
+                                <li>Google Analytics.</li>
+                            </ul>
+                        </li>
                     </ul>
                 </div>
-                <div class="card-body">
+                <div class="p-3">
                     <a href="https://michael-patterson.com" class="card-link">Michael-Patterson.com</a>
                     <a href="https://github.com/mppatterson84/michael_patterson.com#readme" class="card-link"
                         target="_blank">GitHub
@@ -62,7 +113,7 @@
 
                     </p>
                 </div>
-                <div class="card-body">
+                <div class="p-3">
                     <a href="https://wp.michael-patterson.com" class="card-link" target="_blank">Demo</a>
                     <a href="https://github.com/mppatterson84/June" class="card-link" target="_blank">GitHub
                         Repository</a>
@@ -83,7 +134,7 @@
                         Javascript.
                     </p>
                 </div>
-                <div class="card-body">
+                <div class="p-3">
                     <a href="{% url 'rock-paper-scissors' %}" class="card-link">Play The Game</a>
                     <a href="https://github.com/mppatterson84/rock-paper-scissors" class="card-link"
                         target="_blank">Github
@@ -102,7 +153,7 @@
                         with a Raspberry Pi.
                     </p>
                 </div>
-                <div class="card-body">
+                <div class="p-3">
                     <a href="https://michael-patterson.com/blog/control-an-rc-car-with-a-raspberry-pi-and-gamepad/"
                         class="card-link">More About</a>
                     <a href="https://github.com/mppatterson84/gamepad_controlled_car" class="card-link"
@@ -111,9 +162,6 @@
                 </div>
             </section>
         </div>
-        <div class="col-md-4 py-3"></div>
-        <div class="col-md-4 py-3"></div>
-    </div>
     </div>
 
     <div class="row py-3">
