@@ -1,10 +1,11 @@
 :root {
-    --bg-image-p: url('https://images.unsplash.com/photo-1612694537513-b772cb21f725?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=768&q=80&orient=90&sat=25&bri=10');
+    /* --bg-image-p: url('https://images.unsplash.com/photo-1612694537513-b772cb21f725?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=768&q=80&orient=90&sat=25&bri=10'); */
     --bg-image-l: url('https://images.unsplash.com/photo-1612694537513-b772cb21f725?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1920&q=80&orient=0&sat=25&bri=10');
     --shadow-color: rgb(101, 92, 112);
 }
 header {
-    background-image: var(--bg-image-p);
+    /* background-image: var(--bg-image-p); */
+    background-image: var(--bg-image-l);
     background-color: rgb(252, 252, 255);
     background-repeat: no-repeat;
     background-size: cover;
@@ -79,9 +80,9 @@ header p {
 /* Medium screens, landscape phones and tablets, 812px and up */
 /* iPhone X landscape */
 @media only screen and (min-width: 812px) {
-    header {
+    /* header {
         background-image: var(--bg-image-l);
-    }
+    } */
 }
 
 /* Large screens, laptops and desktops, 992px and up */
