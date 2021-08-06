@@ -11,3 +11,8 @@ ALLOWED_HOSTS = [
 # https://docs.djangoproject.com/en/3.1/topics/security/#ssl-https
 
 SECURE_SSL_REDIRECT = True
+
+CORS_ORIGIN_WHITELIST = (
+    r"^https://\w+\.example\.com$",
+    'https://young-savannah-60236.herokuapp.com'
+)
