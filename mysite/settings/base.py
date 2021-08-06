@@ -47,9 +47,10 @@ INSTALLED_APPS = [
     'rest_framework',
 
     # Local
-    'pages.apps.PagesConfig',
     'blog.apps.BlogConfig',
+    'pages.apps.PagesConfig',
     'sendemail.apps.SendemailConfig',
+    'tasks.apps.TasksConfig',
 ]
 
 MIDDLEWARE = [
