@@ -17,6 +17,7 @@ django-ckeditor = "*"
 django-cloudinary-storage = "*"
 pillow = "*"
 djangorestframework = "*"
+django-cors-headers = "*"
 
 [requires]
 python_version = "3.7"
