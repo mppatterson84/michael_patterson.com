@@ -13,6 +13,6 @@ ALLOWED_HOSTS = [
 SECURE_SSL_REDIRECT = True
 
 CORS_ORIGIN_WHITELIST = (
-    r"^https://\w+\.example\.com$",
+    r"^https://\w+\.michael-patterson\.com$",
     'https://young-savannah-60236.herokuapp.com'
 )
