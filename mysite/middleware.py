@@ -34,6 +34,7 @@ class ExtraHttpHeaders(object):
 
         excluded_paths = [
             '/admin/',
+            '/api/',
             '/ckeditor/',
             '/browser/'
         ]
@@ -81,5 +82,7 @@ class ExtraHttpHeaders(object):
         return response
 
     def process_template_response(self, request, response):
+        if request.path.startswith('/api/'):
+                return response
         response.context_data['nonce'] = self.nonce_str
         return response
