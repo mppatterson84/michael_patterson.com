@@ -16,6 +16,7 @@ requests = "*"
 django-ckeditor = "*"
 django-cloudinary-storage = "*"
 pillow = "*"
+djangorestframework = "*"
 
 [requires]
 python_version = "3.7"

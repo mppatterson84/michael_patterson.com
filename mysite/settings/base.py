@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'ckeditor_uploader',
     'cloudinary_storage',
     'cloudinary',
+    'rest_framework',
 
     # Local
     'pages.apps.PagesConfig',
