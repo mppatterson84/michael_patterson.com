@@ -1,10 +1,8 @@
 :root {
-    /* --bg-image-p: url('https://images.unsplash.com/photo-1612694537513-b772cb21f725?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=768&q=80&orient=90&sat=25&bri=10'); */
     --bg-image-l: url('https://images.unsplash.com/photo-1612694537513-b772cb21f725?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1920&q=80&orient=0&sat=25&bri=10');
     --shadow-color: rgb(101, 92, 112);
 }
 header {
-    /* background-image: var(--bg-image-p); */
     background-image: var(--bg-image-l);
     background-color: rgb(252, 252, 255);
     background-repeat: no-repeat;
@@ -35,14 +33,6 @@ header p {
     header h1 {
         font-size: 4rem;
     }
-    header p {
-        background: linear-gradient(
-            0deg,
-            rgba(47, 70, 79, 0.7) 0%,
-            rgba(119, 136, 153, 0) 90%
-        );
-        font-size: 1.25rem;
-    }
 }
 
 /* Small screens, portrait tablets, 568px and up  */
@@ -53,14 +43,6 @@ header p {
     }
     header h1 {
         font-size: 4rem;
-    }
-    header p {
-        background: linear-gradient(
-            270deg,
-            rgba(47, 70, 79, 0.7) 0%,
-            rgba(119, 136, 153, 0) 99%
-        );
-        font-size: 1.25rem;
     }
 }
 
@@ -80,9 +62,6 @@ header p {
 /* Medium screens, landscape phones and tablets, 812px and up */
 /* iPhone X landscape */
 @media only screen and (min-width: 812px) {
-    /* header {
-        background-image: var(--bg-image-l);
-    } */
 }
 
 /* Large screens, laptops and desktops, 992px and up */
