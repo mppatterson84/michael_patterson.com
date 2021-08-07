@@ -22,5 +22,5 @@ urlpatterns = [
     path('', include('sendemail.urls')),
     path('ckeditor/', include('ckeditor_uploader.urls')),
     path('', include('blog.urls')),
-    path('', include('tasks.urls')),
+    path('api/tasks/v1/', include('tasks.urls')),
 ]
