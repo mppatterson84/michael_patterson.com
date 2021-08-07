@@ -7,7 +7,7 @@ class Task(models.Model):
     title = models.CharField(max_length=100)
     detail = models.TextField()
     completed = models.BooleanField(default=False)
-    user = models.ForeignKey(
+    author = models.ForeignKey(
         'auth.User', default='auth.User', on_delete=models.CASCADE)
     created_at = models.DateTimeField(default=timezone.now, blank=False)
     due_by = models.DateTimeField(default=next_day)
