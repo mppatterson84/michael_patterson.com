@@ -18,6 +18,7 @@ django-cloudinary-storage = "*"
 pillow = "*"
 djangorestframework = "*"
 django-cors-headers = "*"
+django-rest-auth = "*"
 
 [requires]
 python_version = "3.7"
