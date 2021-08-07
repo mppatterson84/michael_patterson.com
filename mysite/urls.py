@@ -25,4 +25,5 @@ urlpatterns = [
     path('api/tasks/v1/', include('tasks.urls')),
     path('api-auth', include('rest_framework.urls')),
     path('api/tasks/v1/rest-auth/', include('rest_auth.urls')),
+    path('api/tasks/v1/rest-auth/registration/', include('rest_auth.registration.urls')),
 ]
