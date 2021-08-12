@@ -24,7 +24,7 @@ class UserViewSet(viewsets.ModelViewSet):
 class TaskListView(ListView):
     model = Task
     template_name = 'tasks/task_list.html'
-    ordering = ['pk']
+    ordering = ['-pk']
 
 class TaskCreateView(LoginRequiredMixin, CreateView):
     model = Task
