@@ -18,9 +18,11 @@
     <div class="card my-3 mx-auto p-2">
         <div class="d-flex justify-content-between">
             <h1>Tasks</h1>
+            {% if user.is_authenticated %}
             <button class="btn btn-primary mb-3" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-task-form" aria-expanded="false" aria-controls="task-add-form">
                 Add Task
             </button>
+            {% endif %}
         </div>
 
         <div class="collapse" id="collapse-task-form">
@@ -57,6 +59,12 @@
             <h5 class="mx-4">Due: {{ task.due_by }}</h5>
 
         </div>
+            {% empty %}
+            {% if user.is_authenticated %}
+            <p>Add some tasks.</p>
+            {% else %}
+            <p>Please <a href="{% url 'login' %}">Log In</a> to view or add tasks.</p>
+            {% endif %}
             {% endfor %}
     </div>
     {% endblock content %}
