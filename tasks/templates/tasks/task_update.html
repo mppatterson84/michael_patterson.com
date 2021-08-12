@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+    <div class="container">
+        <h1>Update Task: {{ task.title }}</h1>
+        <form id="update-form" action="" method="POST">{% csrf_token %}
+            {{ form.as_p }}
+        </form>
+    </div>
+{% endblock content %}
+
+
+{% block foot_links %}
+    <script src="{% static 'js/tasksUpdate.js' %}" defer></script>
+{% endblock foot_links %}
