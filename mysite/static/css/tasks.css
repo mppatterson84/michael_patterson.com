@@ -1,0 +1,30 @@
+body {
+    min-height: 100vh;
+    background: rgb(34, 195, 41);
+    background: linear-gradient(
+        45deg,
+        rgba(34, 195, 41, 0.75) 0%,
+        rgba(45, 207, 253, 0.75) 99%
+    );
+}
+.card {
+    min-width: 300px;
+    max-width: 600px;
+}
+.task:nth-of-type(even) {
+    background-color: rgba(34, 195, 41, 0.25);
+}
+.task:nth-of-type(odd) {
+    background-color: rgba(45, 207, 253, 0.25);
+}
+.delete {
+    float: right;
+}
+.delete:hover {
+    cursor: pointer;
+}
+.delete-button {
+    width: min-content;
+    border: none;
+    background-color: transparent;
+}
