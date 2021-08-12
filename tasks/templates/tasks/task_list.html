@@ -2,6 +2,11 @@
 {% load static %}
 
 
+{% block preload %}
+<link rel="preload" as="image" href="{% static 'images/icons/trash-alt-solid.svg' %}">
+{% endblock preload %}
+
+
 {% block head_links %}
     <link rel="stylesheet" href="{% static 'css/tasks.css' %}">
 {% endblock head_links %}
@@ -9,40 +14,49 @@
 
 {% block content %}
 <div class="container">
-    <h1 class="mb-3 py-3 main-heading">Tasks</h1>
-    <button class="btn btn-primary mb-3" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-task-form" aria-expanded="false" aria-controls="task-add-form">
-        Add Task
-    </button>
-    <div class="collapse" id="collapse-task-form">
-        <form id="task-add-form" action="/tasks/add/" method="POST">{% csrf_token %}
-            <label for="title">Title</label>
-            <input class="form-control mb-3" placeholder="Task Title" type="text" name="title" id="task-title">
-            <label for="detail">Detail</label>
-            <textarea class="form-control mb-3" placeholder="Task Detail" name="detail" id="task-detail"></textarea>
-            <label for="due_by">Due</label>
-            <input class="form-control mb-3" type="datetime-local" name="due_by" id="task-due">
-            <input class="btn btn-success mb-3" type="submit" value="Submit">
-        </form>
-    </div>
     
-    {% for task in object_list %}
-    <div class="task card mb-3 p-3">
-        <p>Task: {{ task.title }}</p>
-        <p>Detail: {{ task.detail }}</p>
-        <p>Due: {{ task.due_by }}</p>
-        <p>Completed: {{ task.completed }}</p>
-        <form class="update" action="/tasks/update/{{ task.pk }}/" method="POST">{% csrf_token %}
-            <label for="completed">Completed</label>
-            <input class="completed" type="checkbox" name="completed"{% if task.completed %} checked{% endif %}>
-        </form>
-        <form class="delete-form" action="/tasks/delete/{{ task.pk }}/" method="POST">{% csrf_token %}
-            <input class="delete-button btn btn-danger" type="submit" value="Delete">
-        </form>
-        <p>Id: {{ task.pk }}</p>
+    <div class="card my-3 mx-auto p-2">
+        <div class="d-flex justify-content-between">
+            <h1>Tasks</h1>
+            <button class="btn btn-primary mb-3" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-task-form" aria-expanded="false" aria-controls="task-add-form">
+                Add Task
+            </button>
+        </div>
+
+        <div class="collapse" id="collapse-task-form">
+            <form id="task-add-form" action="/tasks/add/" method="POST">{% csrf_token %}
+                <label for="title">Title</label>
+                <input required class="form-control mb-3" placeholder="Task Title" type="text" name="title" id="task-title">
+                <label for="detail">Detail</label>
+                <textarea class="form-control mb-3" placeholder="Task Detail" name="detail" id="task-detail"></textarea>
+                <label for="due_by">Due</label>
+                <input required class="form-control mb-3" type="datetime-local" name="due_by" id="task-due">
+                <input class="btn btn-success mb-3" type="submit" value="Submit">
+            </form>
+        </div>
+        {% for task in object_list %}
+        <div class="task mt-1 p-2">
+            <span class="delete">
+                <form class="delete-form" action="/tasks/delete/{{ task.pk }}/" method="POST">{% csrf_token %}
+                    <button type="submit" class="delete-button">
+                        <i class="me-3"><img src="{% static 'images/icons/trash-alt-solid.svg' %}" alt="envelope icon"></i>
+                    </button>
+                </form>
+            </span>
+            <span id="completedCheck">
+                <form class="update" action="/tasks/update/{{ task.pk }}/" method="POST">{% csrf_token %}
+                    <input class="completed" type="checkbox" name="completed"{% if task.completed %} checked{% endif %}>
+                    <!-- <label class="p-1" for="completed">Completed</label> -->
+                </form>
+            </span>
+            <h3>{{ task.title }}</h3>
+            <p>{{ task.detail }}</p>
+            <h5>Due: {{ task.due_by }}</h5>
+        </div>
+            {% endfor %}
     </div>
-        {% endfor %}
-</div>
-{% endblock content %}
+    {% endblock content %}
+    </div>
 
 
 {% block foot_links %}
