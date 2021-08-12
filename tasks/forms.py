@@ -29,7 +29,8 @@ class TaskForm(forms.ModelForm):
         required=True,
         widget=forms.DateTimeInput(
             attrs={
-                "type": "datetime-local"
+                "type": "datetime-local",
+                "class": "form-control"
             }
         )
     )
