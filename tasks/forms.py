@@ -42,3 +42,11 @@ class TaskForm(forms.ModelForm):
             "due_by"
         ]
 
+class TaskUpdateForm(forms.ModelForm):
+    completed = forms.CheckboxInput()
+
+    class Meta:
+        model = Task
+        fields = [
+            "completed"
+        ]
