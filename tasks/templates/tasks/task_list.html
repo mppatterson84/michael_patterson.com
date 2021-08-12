@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block content %}
+<div class="container">
+    <h1 class="mb-3 py-3 main-heading">Tasks</h1>
+    <a href="{% url 'tasks-add' %}" class="btn btn-primary mb-3">Add Task</a>
+    
+    {% for task in object_list %}
+    <div class="task card mb-3 p-3">
+        <p>Task: {{ task.title }}</p>
+        <p>Detail: {{ task.detail }}</p>
+        <p>Due: {{ task.due_by }}</p>
+        <p>Completed: {{ task.completed }}</p>
+        <form class="update" action="/tasks/update/{{ task.pk }}/" method="POST">{% csrf_token %}
+            <input class="completed" type="checkbox" name="completed"{% if task.completed %} checked{% endif %}>
+        </form>
+        <form class="delete-form" action="/tasks/delete/{{ task.pk }}/" method="POST">{% csrf_token %}
+            <input class="delete-button btn btn-danger" type="submit" value="Delete">
+        </form>
+        <p>Id: {{ task.pk }}</p>
+    </div>
+        {% endfor %}
+</div>
+{% endblock content %}
+
+
+{% block foot_links %}
+    <script src="{% static 'js/tasks.js' %}" defer></script>
+{% endblock foot_links %}
