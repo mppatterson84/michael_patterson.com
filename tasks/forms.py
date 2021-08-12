@@ -16,7 +16,7 @@ class TaskForm(forms.ModelForm):
 
     detail = forms.CharField(
         required=True,
-        widget=forms.TextInput(
+        widget=forms.Textarea(
             attrs={
                 "placeholder": "Task Detail",
                 "class": "form-control"
