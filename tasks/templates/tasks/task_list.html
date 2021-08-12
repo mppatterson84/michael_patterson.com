@@ -36,22 +36,26 @@
         </div>
         {% for task in object_list %}
         <div class="task mt-1 p-2">
-            <span class="delete">
+            <div class="d-flex justify-content-between">
+                <div class="d-flex">
+                    <form class="update" action="/tasks/update/{{ task.pk }}/" method="POST">{% csrf_token %}
+                        <input class="completed me-2" type="checkbox" name="completed"{% if task.completed %} checked{% endif %}>
+                    </form>
+                    <h3>{{ task.title }}</h3>
+                </div>
                 <form class="delete-form" action="/tasks/delete/{{ task.pk }}/" method="POST">{% csrf_token %}
                     <button type="submit" class="delete-button">
                         <i class="me-3"><img src="{% static 'images/icons/trash-alt-solid.svg' %}" alt="envelope icon"></i>
                     </button>
                 </form>
-            </span>
-            <span id="completedCheck">
-                <form class="update" action="/tasks/update/{{ task.pk }}/" method="POST">{% csrf_token %}
-                    <input class="completed" type="checkbox" name="completed"{% if task.completed %} checked{% endif %}>
-                    <!-- <label class="p-1" for="completed">Completed</label> -->
-                </form>
-            </span>
-            <h3>{{ task.title }}</h3>
-            <p>{{ task.detail }}</p>
-            <h5>Due: {{ task.due_by }}</h5>
+            </div>
+
+            {% if task.detail %}
+            <p class="mx-4">{{ task.detail }}</p>
+            {% endif %}
+            
+            <h5 class="mx-4">Due: {{ task.due_by }}</h5>
+
         </div>
             {% endfor %}
     </div>
