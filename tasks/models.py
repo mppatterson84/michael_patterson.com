@@ -6,7 +6,7 @@ from tasks.utils import next_day
 
 class Task(models.Model):
     title = models.CharField(max_length=100)
-    detail = models.TextField()
+    detail = models.TextField(blank=True)
     completed = models.BooleanField(default=False)
     author = models.ForeignKey(
         'auth.User', default='auth.User', on_delete=models.CASCADE)
