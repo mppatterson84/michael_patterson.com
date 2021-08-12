@@ -8,6 +8,7 @@ from tasks.permissions import IsAuthorOrReadOnly
 from tasks.serializers import TaskSerializer, UserSerializer
 
 
+# API Views
 class TaskViewSet(viewsets.ModelViewSet):
     permission_classes = (IsAuthorOrReadOnly, IsAuthenticatedOrReadOnly,)
     queryset = Task.objects.all()
@@ -16,3 +17,10 @@ class TaskViewSet(viewsets.ModelViewSet):
 class UserViewSet(viewsets.ModelViewSet):
     queryset = get_user_model().objects.all()
     serializer_class = UserSerializer    
+
+# Views
+class TaskListView(ListView):
+    model = Task
+    template_name = 'tasks/task_list.html'
+    ordering = ['pk']
+
