@@ -1,5 +1,6 @@
 from django.contrib.auth import get_user_model
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.urls.base import reverse_lazy
 from django.views.generic import ListView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from rest_framework import viewsets
@@ -41,3 +42,8 @@ class TaskUpdateView(LoginRequiredMixin, UpdateView):
     form_class = TaskUpdateForm
     login_url = '/admin/'
 
+class TaskDeleteView(LoginRequiredMixin, DeleteView):
+    model = Task
+    template_name = 'tasks/task_delete.html'
+    success_url = reverse_lazy('tasks')
+    login_url = '/admin/'
