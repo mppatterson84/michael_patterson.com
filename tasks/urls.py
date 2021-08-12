@@ -5,6 +5,7 @@ from tasks.views import (
     UserViewSet,
     TaskListView,
     TaskCreateView,
+    TaskUpdateView,
 )
 
 router = SimpleRouter()
@@ -15,4 +16,5 @@ router.register('api/tasks/v1', TaskViewSet, basename='tasks')
 urlpatterns = [
     path('tasks/', TaskListView.as_view(), name='tasks'),
     path('tasks/add/', TaskCreateView.as_view(), name='tasks-add'),
+    path('tasks/update/<int:pk>/', TaskUpdateView.as_view(), name='tasks-update'),
 ] + router.urls
