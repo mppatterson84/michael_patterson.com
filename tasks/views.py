@@ -1,4 +1,6 @@
 from django.contrib.auth import get_user_model
+from django.views.generic import ListView
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from rest_framework import viewsets
 from rest_framework.permissions import IsAuthenticatedOrReadOnly
 from tasks.models import Task
