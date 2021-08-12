@@ -5,7 +5,20 @@
 {% block content %}
 <div class="container">
     <h1 class="mb-3 py-3 main-heading">Tasks</h1>
-    <a href="{% url 'tasks-add' %}" class="btn btn-primary mb-3">Add Task</a>
+    <button class="btn btn-primary mb-3" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-task-form" aria-expanded="false" aria-controls="task-add-form">
+        Add Task
+    </button>
+    <div class="collapse" id="collapse-task-form">
+        <form id="task-add-form" action="/tasks/add/" method="POST">{% csrf_token %}
+            <label for="title">Title</label>
+            <input class="form-control mb-3" placeholder="Task Title" type="text" name="title" id="task-title">
+            <label for="detail">Detail</label>
+            <input class="form-control mb-3" placeholder="Task Detail" type="textarea" name="detail" id="task-detail">
+            <label for="due_by">Due</label>
+            <input class="form-control mb-3" type="datetime-local" name="due_by" id="task-due">
+            <input class="btn btn-success mb-3" type="submit" value="Submit">
+        </form>
+    </div>
     
     {% for task in object_list %}
     <div class="task card mb-3 p-3">
@@ -14,6 +27,7 @@
         <p>Due: {{ task.due_by }}</p>
         <p>Completed: {{ task.completed }}</p>
         <form class="update" action="/tasks/update/{{ task.pk }}/" method="POST">{% csrf_token %}
+            <label for="completed">Completed</label>
             <input class="completed" type="checkbox" name="completed"{% if task.completed %} checked{% endif %}>
         </form>
         <form class="delete-form" action="/tasks/delete/{{ task.pk }}/" method="POST">{% csrf_token %}
