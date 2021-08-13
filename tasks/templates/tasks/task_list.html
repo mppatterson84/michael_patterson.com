@@ -63,7 +63,7 @@
             {% if user.is_authenticated %}
             <p>Add some tasks.</p>
             {% else %}
-            <p>Please <a href="{% url 'login' %}">Log In</a> to view or add tasks.</p>
+            <p>Please <a href="{% url 'login' %}?next={% url 'tasks' %}">Log In</a> to view or add tasks.</p>
             {% endif %}
             {% endfor %}
     </div>
