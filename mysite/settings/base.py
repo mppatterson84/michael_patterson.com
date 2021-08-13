@@ -59,6 +59,7 @@ INSTALLED_APPS = [
     'pages.apps.PagesConfig',
     'sendemail.apps.SendemailConfig',
     'tasks.apps.TasksConfig',
+    'users.apps.UsersConfig',
 ]
 
 MIDDLEWARE = [
