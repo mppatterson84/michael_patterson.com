@@ -11,7 +11,7 @@
 
             <input class="btn btn-light" type="submit" name="category" value="{{ category.category_name }}">
 
-            {% if user.is_authenticated %}
+            {% if user.is_staff %}
             <div class="btn btn-danger ms-auto">
                 <a class="text-dark" href="/admin/blog/postcategory/{{ category.pk }}/delete/">Delete</a>
             </div>

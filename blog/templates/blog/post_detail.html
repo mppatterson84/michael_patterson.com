@@ -46,7 +46,7 @@
     <p>By: {{ post.author }}</p>
     {% endif %}
     <p>Published: {{ post.created_at }}</p>
-    {% if user.is_authenticated %}
+    {% if user.is_staff %}
     <nav class="mb-3">
         <div>
             <a href="/admin/blog/post/{{ post.pk }}/change/" class="btn btn-warning">Edit</a>

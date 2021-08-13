@@ -114,7 +114,7 @@
                             <li>
                                 <a class="dropdown-item" href="{% url 'category-list' %}">Categories</a>
                             </li>
-                            {% if user.is_authenticated %}
+                            {% if user.is_staff %}
                             <li>
                                 <hr class="dropdown-divider" />
                             </li>
