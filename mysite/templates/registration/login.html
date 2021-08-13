@@ -9,7 +9,7 @@
 {% block content %}
 <div class="container">
     <h1 class="main-heading">Login</h1>
-    <div class="login mx-auto">
+    <div class="content">
         <form method="POST">{% csrf_token %}
             {{ form.as_p }}
             <input class="btn btn-secondary w-100" type="submit" value="Login">
