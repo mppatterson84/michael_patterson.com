@@ -37,6 +37,7 @@ class TaskCreateView(LoginRequiredMixin, CreateView):
     template_name = 'tasks/task_create.html'
     form_class = TaskForm
     login_url = 'login'
+    redirect_to_login = 'tasks'
 
     def form_valid(self, form):
         form.instance.author = self.request.user
@@ -47,9 +48,11 @@ class TaskUpdateView(LoginRequiredMixin, UpdateView):
     template_name = 'tasks/task_update.html'
     form_class = TaskUpdateForm
     login_url = 'login'
+    redirect_to_login = 'tasks'
 
 class TaskDeleteView(LoginRequiredMixin, DeleteView):
     model = Task
     template_name = 'tasks/task_delete.html'
     success_url = reverse_lazy('tasks')
+    login_url = 'login'
     redirect_to_login = 'tasks'
