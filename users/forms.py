@@ -4,6 +4,7 @@ from django.contrib.auth.forms import (
     AuthenticationForm,
     PasswordChangeForm,
     PasswordResetForm,
+    SetPasswordForm,
     UsernameField
 )
 
@@ -33,7 +34,22 @@ class BSPasswordChangeForm(PasswordChangeForm):
     )
 
 class BSPasswordResetForm(PasswordResetForm):
+    """
+    Extend PasswordResetForm base class with Bootstrap styling.
+    """
     email = forms.EmailField(
         max_length=254,
         widget=forms.EmailInput(attrs={'autocomplete': 'email', 'class': 'form-control'})
+    )
+
+class BSSetPasswordForm(SetPasswordForm):
+    """
+    Extend SetPasswordForm base class with Bootstrap styling.
+    """
+    new_password1 = forms.CharField(
+        widget=forms.PasswordInput(attrs={'autocomplete': 'new-password', 'class': 'form-control'}),
+        help_text=password_validation.password_validators_help_text_html(),
+    )
+    new_password2 = forms.CharField(
+        widget=forms.PasswordInput(attrs={'autocomplete': 'new-password', 'class': 'form-control'}),
     )
