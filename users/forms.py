@@ -5,7 +5,8 @@ from django.contrib.auth.forms import (
     PasswordChangeForm,
     PasswordResetForm,
     SetPasswordForm,
-    UsernameField
+    UsernameField,
+    UserCreationForm
 )
 
 
@@ -53,3 +54,22 @@ class BSSetPasswordForm(SetPasswordForm):
     new_password2 = forms.CharField(
         widget=forms.PasswordInput(attrs={'autocomplete': 'new-password', 'class': 'form-control'}),
     )
+
+class BSUserCreationForm(UserCreationForm):
+    """
+    Extend UserCreationForm base class with an email field and Bootstrap styling.
+    """
+    username = forms.CharField(
+        widget=forms.TextInput(attrs={'class': 'form-control'}),
+    )
+    email = forms.EmailField(
+        widget=forms.EmailInput(attrs={'class': 'form-control'}),
+    )
+    password1 = forms.CharField(
+        widget=forms.PasswordInput(attrs={'autocomplete': 'new-password', 'class': 'form-control'}),
+    )
+    password2 = forms.CharField(
+        widget=forms.PasswordInput(attrs={'autocomplete': 'new-password', 'class': 'form-control'}),
+    )
+    class Meta(UserCreationForm.Meta):
+        fields = UserCreationForm.Meta.fields + ('email',)
