@@ -9,7 +9,7 @@ from users.forms import (
     BSAuthenticationForm, BSPasswordChangeForm, BSPasswordResetForm,
     BSSetPasswordForm
 )
-from users.views import DashboardView
+from users.views import DashboardView, RegisterView
 
 urlpatterns = [
     path('dashboard/', DashboardView.as_view(), name='dashboard'),
@@ -22,4 +22,5 @@ urlpatterns = [
     path('password_reset/done/', PasswordResetDoneView.as_view(template_name='registration/password_reset_done.html'), name='password_reset_done'),
     path('reset/<uidb64>/<token>/', PasswordResetConfirmView.as_view(template_name='registration/password_reset_confirm.html', form_class=BSSetPasswordForm), name='password_reset_confirm'),
     path('reset/done/', PasswordResetCompleteView.as_view(template_name='registration/password_reset_complete.html'), name='password_reset_complete'),
+    path('signup/', RegisterView.as_view(), name='signup'),
 ]
