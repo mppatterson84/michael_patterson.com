@@ -1,4 +1,3 @@
-from django.contrib.auth import get_user_model
 from django.contrib.auth.models import User
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls.base import reverse_lazy
@@ -13,16 +12,20 @@ from tasks.serializers import TaskSerializer, UserSerializer
 
 # API Views
 class TaskViewSet(viewsets.ModelViewSet):
-    permission_classes = (IsAuthorOrReadOnly, IsAuthenticatedOrReadOnly,)
-    queryset = Task.objects.all()
+    # permission_classes = (IsAuthorOrReadOnly, IsAuthenticatedOrReadOnly,)
     serializer_class = TaskSerializer
+
+    def get_queryset(self):
+        user = self.request.user
+        if user.is_authenticated:
+            return Task.objects.filter(author=user)
 
 class UserViewSet(viewsets.ModelViewSet):
     serializer_class = UserSerializer
 
     def get_queryset(self):
-        if self.request.user.is_authenticated:
-            user = self.request.user
+        user = self.request.user
+        if user.is_authenticated:
             return User.objects.filter(username=user)
 
 # Views
