@@ -1,4 +1,5 @@
 from django.contrib.auth import get_user_model
+from django.contrib.auth.models import User
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls.base import reverse_lazy
 from django.views.generic import ListView
@@ -17,8 +18,12 @@ class TaskViewSet(viewsets.ModelViewSet):
     serializer_class = TaskSerializer
 
 class UserViewSet(viewsets.ModelViewSet):
-    queryset = get_user_model().objects.all()
-    serializer_class = UserSerializer    
+    serializer_class = UserSerializer
+
+    def get_queryset(self):
+        if self.request.user.is_authenticated:
+            user = self.request.user
+            return User.objects.filter(username=user)
 
 # Views
 class TaskListView(ListView):
