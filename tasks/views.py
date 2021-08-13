@@ -26,6 +26,12 @@ class TaskListView(ListView):
     template_name = 'tasks/task_list.html'
     ordering = ['-pk']
 
+    def get_queryset(self):
+        queryset = super().get_queryset()
+        if self.request.user.is_authenticated:
+            return queryset.filter(author=self.request.user)
+        return queryset.none()
+
 class TaskCreateView(LoginRequiredMixin, CreateView):
     model = Task
     template_name = 'tasks/task_create.html'
