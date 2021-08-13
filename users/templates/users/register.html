@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block head_links %}
+    <link rel="stylesheet" href="{% static 'css/users.css' %}">
+{% endblock head_links %}
+    
+
+{% block content %}
+<div class="container">
+    <h1 class="my-3 main-heading">Register New User</h1>
+    <div class="content">
+        <form method="POST">{% csrf_token %}
+            {{ form.as_p }}
+            <input class="btn btn-secondary w-100" type="submit" value="Register">
+        </form>
+        <p class="my-2">
+            <a href="{% url 'login' %}">Back to login</a>
+        </p>
+    </div>
+</div>
+{% endblock content %}
