@@ -3,7 +3,8 @@ from .ckeditor import *
 from .email import *
 
 ALLOWED_HOSTS = [
-    'www.michael-patterson.com', 
+    '.michael-patterson.com',
+    'www.michael-patterson.com',
     'young-savannah-60236.herokuapp.com',
 ]
 
