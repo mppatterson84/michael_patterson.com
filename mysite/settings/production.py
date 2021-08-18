@@ -20,6 +20,10 @@ SESSION_COOKIE_SECURE = True
 CSRF_COOKIE_SAMESITE = 'None'
 CSRF_COOKIE_SECURE = True
 
+CSRF_COOKIE_DOMAIN = [
+    '.michael-patterson.com'
+]
+
 CORS_ALLOWED_ORIGIN_REGEXES = (
     r"^https://\w+\.michael-patterson\.com$",
     r"^https://\w+\.michael-patterson\.com$",
