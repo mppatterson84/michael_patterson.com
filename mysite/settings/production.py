@@ -31,8 +31,8 @@ CORS_ALLOWED_ORIGINS = [
 ]
 
 CSRF_TRUSTED_ORIGINS = [
-    'https://www.michael-patterson.com',
-    'https://tasks.michael-patterson.com/',
-    'https://young-savannah-60236.herokuapp.com',
-    'https://tasks-app4739308573.netlify.app/',
+    'www.michael-patterson.com',
+    'tasks.michael-patterson.com',
+    'young-savannah-60236.herokuapp.com',
+    'tasks-app4739308573.netlify.app',
 ]
