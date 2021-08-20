@@ -160,7 +160,8 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 # https://docs.djangoproject.com/en/3.1/topics/auth/default/#django.contrib.auth.views.LogoutView
 
-LOGOUT_REDIRECT_URL = '/'
+LOGIN_REDIRECT_URL = 'dashboard'
+LOGOUT_REDIRECT_URL = 'dashboard'
 
 
 # Django sites framework
@@ -168,13 +169,17 @@ LOGOUT_REDIRECT_URL = '/'
 
 SITE_ID = 1
 
+
 # django-heroku
 django_heroku.settings(locals())
+
 
 # media and cloudinary storage
 MEDIA_URL = '/media/'
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
+
+# Django Rest Framework
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': [
         'rest_framework.permissions.IsAuthenticated',
@@ -186,7 +191,8 @@ REST_FRAMEWORK = {
     ],
 }
 
+
+# CORS headers
 CORS_ALLOW_CREDENTIALS = True
 
-LOGIN_REDIRECT_URL = 'dashboard'
-LOGOUT_REDIRECT_URL = 'dashboard'
+# Allauth
