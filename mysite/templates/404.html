@@ -1,3 +1,4 @@
+{% load static %}
 <!doctype html>
 <html lang="en">
 
@@ -7,12 +8,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://www.michael-patterson.com/static/css/lib/bootstrap.custom.min.css"
-        integrity="sha384-y2rdS/b5e4VDzM+//8MniQ8IB+ukU6j7zq5Z2Wz00+fSDUjlVUUny6Rh1x6GodOb" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'css/lib/bootstrap.custom.min.css' %}" />
 
     <!-- 404 CSS -->
-    <link rel="stylesheet" href="https://www.michael-patterson.com/static/css/fof.css"
-        integrity="sha384-YpIrT6zf3Jnn82uUcGMuxwtonAM4GRcyQbYnwTnm9/QLxPK8DQIOVfeRn+u9guS7" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'css/fof.css' %}" />
 
     <title>404 Page Not Found</title>
 </head>
