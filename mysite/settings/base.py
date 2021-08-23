@@ -199,3 +199,8 @@ CORS_ALLOW_CREDENTIALS = True
 # Allauth
 ACCOUNT_EMAIL_VERIFICATION = 'none'
 
+# Authentication backends
+# AUTHENTICATION_BACKENDS = [
+#     'django.contrib.auth.backends.ModelBackend',
+#     'allauth.account.auth_backends.AuthenticationBackend',
+# ]
