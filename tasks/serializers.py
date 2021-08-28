@@ -1,6 +1,4 @@
-from django.db import models
 from django.contrib.auth import get_user_model
-from datetime import datetime
 from rest_framework import serializers
 from tasks.models import Task
 
