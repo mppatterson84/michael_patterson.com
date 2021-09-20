@@ -3,7 +3,7 @@ from rest_framework import serializers
 from todo.models import Todo
 
 class TodoSerializer(serializers.ModelSerializer):
-    due_by = serializers.DateTimeField(format="%A, %B %d, %Y, %I:%M %p")
+    # due_by = serializers.DateTimeField(format="%A, %B %d, %Y, %I:%M %p")
 
     class Meta:
         model = Todo

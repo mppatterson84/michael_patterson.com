@@ -3,7 +3,7 @@ from rest_framework import serializers
 from tasks.models import Task
 
 class TaskSerializer(serializers.ModelSerializer):
-    due_by = serializers.DateTimeField(format="%A, %B %d, %Y, %I:%M %p")
+    # due_by = serializers.DateTimeField(format="%A, %B %d, %Y, %I:%M %p")
 
     class Meta:
         model = Task
