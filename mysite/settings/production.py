@@ -25,7 +25,6 @@ CSRF_COOKIE_DOMAIN = '.michael-patterson.com'
 
 CORS_ALLOWED_ORIGIN_REGEXES = (
     r"^https://\w+\.michael-patterson\.com$",
-    r"^https://\w+\.michael-patterson\.com$",
 )
 
 CORS_ALLOWED_ORIGINS = [
@@ -37,6 +36,7 @@ CORS_ALLOWED_ORIGINS = [
 CSRF_TRUSTED_ORIGINS = [
     'www.michael-patterson.com',
     'tasks.michael-patterson.com',
+    'todo.michael-patterson.com',
     'young-savannah-60236.herokuapp.com',
     'tasks-app4739308573.netlify.app',
 ]
