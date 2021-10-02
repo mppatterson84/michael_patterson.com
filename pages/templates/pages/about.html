@@ -16,26 +16,7 @@
 <main class="container">
     <h1 class="py-3 main-heading">About</h1>
     <div class="row py-3">
-        <div class="col-md-3"></div>
-        <div class="col-md-6 py-3">
-            <nav class="btn-group pb-3 mb-3" role="group" aria-label="Social Links">
-                <a class="btn btn-light border" href="https://www.linkedin.com/in/mike-patterson-web-developer/"
-                    target="_blank" title="Linkedin">
-                    <i>
-                        <img src="{% static 'images/icons/linkedin-brands.svg' %}" alt="linkedin">
-                    </i>
-                </a>
-                <a class="btn btn-light border" href="https://github.com/mppatterson84" target="_blank" title="GitHub">
-                    <i>
-                        <img src="{% static 'images/icons/github-brands.svg' %}" alt="github">
-                    </i>
-                </a>
-                <a class="btn btn-light border" href="https://twitter.com/suchamike" target="_blank" title="Twitter">
-                    <i>
-                        <img src="{% static 'images/icons/twitter-brands.svg' %}" alt="twitter">
-                    </i>
-                </a>
-            </nav>
+        <div class="col-md-8 col-lg-6">
             <article>
                 <p>
                     My name is Mike. I am a Web Developer. I've always been fascinated by technology and am especially
@@ -69,12 +50,32 @@
                 </p>
             </article>
         </div>
-        <div class="col-md-3"></div>
-    </div>
-    <div class="py-3 d-flex flex-column justify-content-center">
-        <div class="text-center">
-            <a href="{% url 'projects' %}" class="btn btn-primary btn-lg">Projects</a>
-        </div>
+        <aside class="col-md-4 col-lg-6">
+            <img class="p-3 d-block m-auto" src="https://res.cloudinary.com/dkc5rsxrn/image/upload/w_1000,c_fill,ar_1:1,g_auto,r_max,b_rgb:fafafa/v1633104657/Mike_Patterson_hu4lx8.jpg" alt="Mike Patterson" width="300" height="300">
+            <div class="text-center">
+                <nav class="btn-group p-3" role="group" aria-label="Social Links">
+                    <a class="btn btn-light border" href="https://www.linkedin.com/in/mike-patterson-web-developer/"
+                        target="_blank" title="Linkedin">
+                        <i>
+                            <img src="{% static 'images/icons/linkedin-brands.svg' %}" alt="linkedin">
+                        </i>
+                    </a>
+                    <a class="btn btn-light border" href="https://github.com/mppatterson84" target="_blank" title="GitHub">
+                        <i>
+                            <img src="{% static 'images/icons/github-brands.svg' %}" alt="github">
+                        </i>
+                    </a>
+                    <a class="btn btn-light border" href="https://twitter.com/suchamike" target="_blank" title="Twitter">
+                        <i>
+                            <img src="{% static 'images/icons/twitter-brands.svg' %}" alt="twitter">
+                        </i>
+                    </a>
+                </nav>
+                <div class="p-3">
+                    <a href="{% url 'projects' %}" class="btn btn-primary btn-lg">Projects</a>
+                </div>
+            </div>
+        </aside>
     </div>
 </main>
 {% endblock content %}
