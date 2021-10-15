@@ -33,10 +33,6 @@ figcaption {
 .post-meta-foot {
     border-top: 2px solid rgba(119, 136, 153, 0.5);
 }
-.post-entry {
-    border: 2px solid rgba(174, 221, 250, 0.3);
-    border-radius: 5px;
-}
 iframe {
     max-width: 100%;
 }
