@@ -47,6 +47,7 @@
     <p>By: {{ post.author }}</p>
     {% endif %}
     <p>Published: {{ post.created_at }}</p>
+    <a href="{% url 'blog' %}">Back To Blog</a>
     {% if user.is_staff %}
     <nav class="mb-3">
         <div>
