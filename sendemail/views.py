@@ -9,11 +9,12 @@ from django.views.generic import TemplateView
 from .forms import EmailForm
 
 
-def email_view(request):
-    if request.method == 'GET':
-        form = EmailForm()
-    else:
-        form = EmailForm(request.POST)
+class EmailContactView(TemplateView):
+    form_class = EmailForm
+    template_name = 'sendemail/email.html'
+
+    def post(self, request, *args, **kwargs):
+        form = self.form_class(request.POST)
         if form.is_valid():
             recaptcha_response = request.POST.get('g-recaptcha-response')
             data = {
@@ -39,15 +40,15 @@ def email_view(request):
                 return redirect('contact')
             return redirect('success')
 
-    context = {
-        'title': 'Contact',
-        'contact_active': 'active',
-        'contact_aria_current': 'page',
-        'form': form,
-        'reCAPTCHA_site_key_v2': os.environ['RECAPTCHA_SITE_KEY_V2'],
-    }
-    return render(request, 'sendemail/email.html', context)
-
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['title'] = 'Contact'
+        context['contact_active'] = 'active'
+        context['contact_aria_current'] = 'page'
+        context['reCAPTCHA_site_key_v2'] = os.environ.get('RECAPTCHA_SITE_KEY_V2')
+        context['form'] = self.form_class
+        return context
+    
 
 class SuccessPageView(TemplateView):
     template_name = 'sendemail/success.html'
