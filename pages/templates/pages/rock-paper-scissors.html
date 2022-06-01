@@ -60,5 +60,5 @@
 
 {% block foot_links %}
 <!-- rock paper scissors JS -->
-<script src="{% static 'js/rockPaperScissors.js' %}"></script>
+<script nonce="{{ nonce }}" src="{% static 'js/rockPaperScissors.js' %}"></script>
 {% endblock foot_links %}
