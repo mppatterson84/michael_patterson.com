@@ -83,6 +83,6 @@ class ExtraHttpHeaders(object):
 
     def process_template_response(self, request, response):
         if request.path.startswith('/api/'):
-                return response
+            return response
         response.context_data['nonce'] = self.nonce_str
         return response
