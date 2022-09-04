@@ -1,4 +1,19 @@
 @font-face {
+    font-family: 'AveriaSerifLibre';
+    src: url('fonts/AveriaSerifLibre-Regular.ttf');
+    font-display: swap;
+}
+@font-face {
+    font-family: 'AveriaSerifLibreBold';
+    src: url('fonts/AveriaSerifLibre-Bold.ttf');
+    font-display: swap;
+}
+@font-face {
+    font-family: 'BreeSerif';
+    src: url('fonts/BreeSerif-Regular.ttf');
+    font-display: swap;
+}
+@font-face {
     font-family: 'Audiowide';
     src: url('fonts/Audiowide-Regular.ttf');
     font-display: swap;
