@@ -21,9 +21,12 @@
 body {
     background-color: rgb(250, 250, 250);
     min-height: 100vh;
+}
+.flex-column-space-between {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    min-height: calc(100vh - 150px);
 }
 h1.main-heading {
     border-bottom: 2px solid rgba(119, 136, 153, 0.5);
