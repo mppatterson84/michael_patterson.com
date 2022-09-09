@@ -149,13 +149,16 @@
     </nav>
 
     {% block header %}{% endblock header %}
+    <div class="flex-column-space-between">
+        {% block content %}{% endblock content %}
+
         <footer>
             <a href="https://www.linkedin.com/in/mike-patterson-web-developer/" target="_blank">LinkedIn</a>
             <span>&bull;</span>
             <a href="https://github.com/mppatterson84" target="_blank">GitHub</a>
         </footer>
+    </div>
 
-    {% block content %}{% endblock content %}
 
     <!-- Bootstrap JavaScript -->
     <script nonce="{{ nonce }}" src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
