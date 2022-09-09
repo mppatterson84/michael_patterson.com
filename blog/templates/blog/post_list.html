@@ -14,6 +14,14 @@
     <p>{{ post.body|truncatewords_html:50|safe }}</p>
     <a class="btn btn-outline-primary" href="{% url 'post-detail' post.slug %}">Read More</a>
 </article>
+{% empty %}
+<article class="pb-3 mb-5 border-bottom border-2 border-dark">
+    <h2 class="mb-3">No Content</h2>
+    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Doloremque magnam voluptates, eum dolore velit optio rerum culpa molestiae unde praesentium repudiandae accusamus nobis quae omnis numquam excepturi beatae maiores similique?</p>
+    {% if user.is_staff %}
+    <a class="btn btn-success" href="/admin/blog/post/add">Create a blog post</a>
+    {% endif %}
+</article>
 {% endfor %}
 
 {% endblock blog_main_content %}
