@@ -148,7 +148,12 @@
         </div>
     </nav>
 
-    {% block header %}{% endblock header %}
+    {% block header %}
+    <div class="container">
+        <h1 class="py-3 main-heading">{% if title %}{{ title }}{% elif post.title %}{{ post.title }}{% endif %}</h1>
+    </div>
+    {% endblock header %}
+
     <div class="flex-column-space-between">
         {% block content %}{% endblock content %}
 
