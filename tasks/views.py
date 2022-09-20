@@ -37,6 +37,13 @@ class TaskListView(ListView):
             return queryset.filter(author=self.request.user)
         return queryset.none()
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['title'] = 'Tasks'
+        context['about_active'] = 'active'
+        context['about_aria_current'] = 'page'
+        return context
+
 class TaskCreateView(LoginRequiredMixin, CreateView):
     model = Task
     template_name = 'tasks/task_create.html'
