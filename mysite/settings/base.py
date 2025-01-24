@@ -205,3 +205,5 @@ ACCOUNT_EMAIL_VERIFICATION = 'none'
 #     'django.contrib.auth.backends.ModelBackend',
 #     'allauth.account.auth_backends.AuthenticationBackend',
 # ]
+
+# 1/24/2025 upgrade Heroku stack from heroku-20 to heroku 24
