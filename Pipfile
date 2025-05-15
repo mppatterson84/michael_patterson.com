@@ -21,6 +21,7 @@ django-rest-auth = "*"
 django-allauth = "*"
 djangorestframework-simplejwt = "*"
 django = "==3.1.14"
+legacy-cgi = "*"
 
 [requires]
 python_version = "3.13"
