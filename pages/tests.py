@@ -1,6 +1,6 @@
-from django.test import SimpleTestCase
+from django.test import TestCase
 
-class SimpleTests(SimpleTestCase):
+class SimpleTests(TestCase):
 
     def test_home_page_status_code(self):
         response = self.client.get('/')
