@@ -207,4 +207,6 @@ ACCOUNT_EMAIL_VERIFICATION = 'none'
 #     'allauth.account.auth_backends.AuthenticationBackend',
 # ]
 
+DEFAULT_AUTO_FIELD = "django.db.models.AutoField"
+
 # 1/24/2025 upgrade Heroku stack from heroku-20 to heroku 24
