@@ -3,7 +3,7 @@ from django.db import models
 from django.urls import reverse
 from django.utils import timezone
 from django.utils.text import slugify
-from blog.utils import get_unique_slug
+from blog.managers import PostManager
 
 
 class Post(models.Model):
@@ -14,15 +14,18 @@ class Post(models.Model):
         'auth.User', default='auth.User', on_delete=models.CASCADE)
     created_at = models.DateTimeField(default=timezone.now, blank=False)
     updated_at = models.DateTimeField(default=timezone.now, blank=False)
-    slug = models.SlugField(max_length=110, blank=True, validators=[MaxLengthValidator(100)])
+    slug = models.SlugField(unique=True, max_length=110, blank=True, validators=[MaxLengthValidator(100)])
     published = models.BooleanField(default=False)
     categories = models.ManyToManyField('blog.PostCategory')
+    
+    objects = PostManager()
 
     def __str__(self):
         return self.title
 
     def save(self, *args, **kwargs):
-        get_unique_slug(self)
+        if not self.slug:
+            self.slug = Post.objects.generate_unique_slug(self)
         self.updated_at = timezone.now()
         super(Post, self).save(*args, **kwargs)
 

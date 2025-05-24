@@ -18,6 +18,11 @@ class PostAdminForm(forms.ModelForm):
         required=True,
         validators=[MaxLengthValidator(245)]
     )
+    
+    slug = forms.SlugField(
+        label='Slug',
+        help_text='Leave blank to auto-generate a slug from the title',
+    )
 
     categories = forms.ModelMultipleChoiceField(
         queryset=PostCategory.objects.all(),
