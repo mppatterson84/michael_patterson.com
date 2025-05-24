@@ -4,6 +4,7 @@ from django.urls import reverse
 from django.utils import timezone
 from django.utils.text import slugify
 from blog.managers import PostManager
+from mysite.middleware import get_current_user
 
 
 class Post(models.Model):
@@ -11,7 +12,7 @@ class Post(models.Model):
     body = models.TextField()
     image = models.ImageField(upload_to='images/', max_length=250, blank=True)
     author = models.ForeignKey(
-        'auth.User', default='auth.User', on_delete=models.CASCADE)
+        'auth.User', default=get_current_user, on_delete=models.CASCADE)
     created_at = models.DateTimeField(default=timezone.now, blank=False)
     updated_at = models.DateTimeField(default=timezone.now, blank=False)
     slug = models.SlugField(unique=True, max_length=110, blank=True, validators=[MaxLengthValidator(100)])
