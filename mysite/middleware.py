@@ -2,6 +2,7 @@ import base64
 import hashlib
 import random
 import urllib.request
+import threading
 
 
 def get_sri(file_url):
@@ -86,3 +87,18 @@ class ExtraHttpHeaders(object):
             return response
         response.context_data['nonce'] = self.nonce_str
         return response
+    
+
+_user = threading.local()
+
+class CurrentUserMiddleware:
+    def __init__(self, get_response):
+        self.get_response = get_response
+
+    def __call__(self, request):
+        _user.value = request.user
+        response = self.get_response(request)
+        return response
+
+def get_current_user():
+    return getattr(_user, 'value', None)
