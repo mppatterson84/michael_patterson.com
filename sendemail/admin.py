@@ -3,6 +3,7 @@ from django.contrib import admin
 
 # Register your models here.
 
+@admin.register(Email)
 class EmailAdmin(admin.ModelAdmin):
     # fields = [('from_email', 'created_at'), 'subject', 'message',] # tuple puts fields on the same line
     fields = ['from_email', 'created_at', 'subject', 'message',]
@@ -11,4 +12,3 @@ class EmailAdmin(admin.ModelAdmin):
     list_filter = ('created_at',)
     readonly_fields = ('from_email', 'subject', 'message', 'created_at',)
 
-admin.site.register(Email, EmailAdmin)

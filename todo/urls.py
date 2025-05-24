@@ -11,6 +11,6 @@ router.register('api/todos/v1', TodoViewSet, basename='todos')
 
 
 urlpatterns = [
-    path('api/todos/v1/rest-auth/', include('rest_auth.urls')),
-    path('api/todos/v1/rest-auth/registration/', include('rest_auth.registration.urls')),
+#     path('api/todos/v1/rest-auth/', include('rest_auth.urls')),
+#     path('api/todos/v1/rest-auth/registration/', include('rest_auth.registration.urls')),
 ] + router.urls
