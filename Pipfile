@@ -21,7 +21,7 @@ django-allauth = "==0.54.0"
 legacy-cgi = "*"
 setuptools = "*"
 django-upgrade = "*"
-django = "==4.0"
+django = "==4.1"
 
 [requires]
 python_version = "3.13"
