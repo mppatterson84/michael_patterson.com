@@ -22,6 +22,7 @@ class PostAdminForm(forms.ModelForm):
     slug = forms.SlugField(
         label='Slug',
         help_text='Leave blank to auto-generate a slug from the title',
+        required=False,
     )
 
     categories = forms.ModelMultipleChoiceField(
