@@ -156,7 +156,14 @@ STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+STORAGES = {
+    "default": {
+        "BACKEND": 'cloudinary_storage.storage.MediaCloudinaryStorage',
+    },
+    "staticfiles": {
+        "BACKEND": 'whitenoise.storage.CompressedManifestStaticFilesStorage',
+    },
+}
 
 
 # https://docs.djangoproject.com/en/3.1/topics/auth/default/#django.contrib.auth.views.LogoutView
@@ -172,12 +179,11 @@ SITE_ID = 1
 
 
 # django-heroku
-django_heroku.settings(locals())
+django_heroku.settings(locals(), staticfiles=False)
 
 
 # media and cloudinary storage
 MEDIA_URL = '/media/'
-DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
 
 # Django Rest Framework
