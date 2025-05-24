@@ -17,11 +17,11 @@ django-cloudinary-storage = "*"
 pillow = "*"
 djangorestframework = "*"
 django-cors-headers = "*"
-django-rest-auth = "*"
 django-allauth = "==0.54.0"
 legacy-cgi = "*"
 setuptools = "*"
-django = "==3.2.25"
+django-upgrade = "*"
+django = "==4.0"
 
 [requires]
 python_version = "3.13"

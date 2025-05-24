@@ -50,8 +50,8 @@ INSTALLED_APPS = [
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
-    'rest_auth',
-    'rest_auth.registration',
+    # 'rest_auth', uninstalled
+    # 'rest_auth.registration', uninstalled
     'corsheaders',
 
     # Local
@@ -143,7 +143,6 @@ TIME_ZONE = 'America/Chicago'
 
 USE_I18N = True
 
-USE_L10N = True
 
 USE_TZ = True
 

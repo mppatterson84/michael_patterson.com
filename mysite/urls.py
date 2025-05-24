@@ -30,8 +30,8 @@ urlpatterns = [
     path('', include('todo.urls')),
     path('', include('users.urls')),
     path('api-auth', include('rest_framework.urls')),
-    path('api/tasks/v1/rest-auth/', include('rest_auth.urls')),
-    path('api/tasks/v1/rest-auth/registration/', include('rest_auth.registration.urls')),
+    # path('api/tasks/v1/rest-auth/', include('rest_auth.urls')),
+    # path('api/tasks/v1/rest-auth/registration/', include('rest_auth.registration.urls')),
     # path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
     # path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
 ]
