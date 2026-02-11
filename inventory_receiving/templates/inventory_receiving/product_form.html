@@ -1,0 +1,251 @@
+{% extends "inventory_receiving/base.html" %}
+{% load static %}
+
+{% block title %}{% if form.instance.sku %}Edit{% else %}Create{% endif %} Product - Inventory Receiving{% endblock %}
+
+{% block content %}
+<div class="row mb-4">
+    <div class="col-md-8">
+        <h1>{% if form.instance.sku %}Edit Product{% else %}Create New Product{% endif %}</h1>
+    </div>
+</div>
+
+<form method="post" enctype="multipart/form-data" novalidate>
+    {% csrf_token %}
+
+    <!-- Basic Information -->
+    <div class="form-section">
+        <h5>Basic Information</h5>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="mb-3">
+                    <label for="{{ form.product_type.id_for_label }}" class="form-label">Category *</label>
+                    {{ form.product_type }}
+                    {% if form.product_type.errors %}
+                        <div class="invalid-feedback d-block">{{ form.product_type.errors }}</div>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="mb-3">
+                    <label for="{{ form.title.id_for_label }}" class="form-label">Title *</label>
+                    {{ form.title }}
+                    {% if form.title.errors %}
+                        <div class="invalid-feedback d-block">{{ form.title.errors }}</div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="mb-3">
+                    <label for="{{ form.description.id_for_label }}" class="form-label">Description</label>
+                    {{ form.description }}
+                    {% if form.description.errors %}
+                        <div class="invalid-feedback d-block">{{ form.description.errors }}</div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Inventory -->
+    <div class="form-section">
+        <h5>Inventory</h5>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="mb-3">
+                    <label for="{{ form.initial_quantity.id_for_label }}" class="form-label">Initial Quantity *</label>
+                    {{ form.initial_quantity }}
+                    {% if form.initial_quantity.errors %}
+                        <div class="invalid-feedback d-block">{{ form.initial_quantity.errors }}</div>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="mb-3">
+                    <label for="{{ form.quantity_sold.id_for_label }}" class="form-label">Quantity Sold</label>
+                    {{ form.quantity_sold }}
+                    {% if form.quantity_sold.errors %}
+                        <div class="invalid-feedback d-block">{{ form.quantity_sold.errors }}</div>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="mb-3">
+                    <div class="form-check mt-4">
+                        {{ form.is_unique }}
+                        <label class="form-check-label" for="{{ form.is_unique.id_for_label }}">
+                            Unique Item
+                        </label>
+                    </div>
+                    {% if form.is_unique.errors %}
+                        <div class="invalid-feedback d-block">{{ form.is_unique.errors }}</div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Physical Attributes -->
+    <div class="form-section">
+        <h5>Physical Attributes</h5>
+        <div class="row">
+            <div class="col-md-3">
+                <div class="mb-3">
+                    <label for="{{ form.length_in.id_for_label }}" class="form-label">Length (inches)</label>
+                    {{ form.length_in }}
+                    {% if form.length_in.errors %}
+                        <div class="invalid-feedback d-block">{{ form.length_in.errors }}</div>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="mb-3">
+                    <label for="{{ form.width_in.id_for_label }}" class="form-label">Width (inches)</label>
+                    {{ form.width_in }}
+                    {% if form.width_in.errors %}
+                        <div class="invalid-feedback d-block">{{ form.width_in.errors }}</div>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="mb-3">
+                    <label for="{{ form.height_in.id_for_label }}" class="form-label">Height (inches)</label>
+                    {{ form.height_in }}
+                    {% if form.height_in.errors %}
+                        <div class="invalid-feedback d-block">{{ form.height_in.errors }}</div>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="mb-3">
+                    <label for="{{ form.weight_oz.id_for_label }}" class="form-label">Weight (ounces)</label>
+                    {{ form.weight_oz }}
+                    {% if form.weight_oz.errors %}
+                        <div class="invalid-feedback d-block">{{ form.weight_oz.errors }}</div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Status -->
+    <div class="form-section">
+        <h5>Status & Listing</h5>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="mb-3">
+                    <label for="{{ form.status.id_for_label }}" class="form-label">Status *</label>
+                    {{ form.status }}
+                    {% if form.status.errors %}
+                        <div class="invalid-feedback d-block">{{ form.status.errors }}</div>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="mb-3">
+                    <label for="{{ form.date_listed.id_for_label }}" class="form-label">Date Listed</label>
+                    {{ form.date_listed }}
+                    {% if form.date_listed.errors %}
+                        <div class="invalid-feedback d-block">{{ form.date_listed.errors }}</div>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="mb-3">
+                    <label for="{{ form.date_sold_out.id_for_label }}" class="form-label">Date Sold Out</label>
+                    {{ form.date_sold_out }}
+                    {% if form.date_sold_out.errors %}
+                        <div class="invalid-feedback d-block">{{ form.date_sold_out.errors }}</div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Images -->
+    <div class="form-section">
+        <h5>Product Images</h5>
+        <p class="text-muted">Add images of your product. You can add multiple images and reorder them.</p>
+        
+        {% if images.non_form_errors %}
+            <div class="alert alert-danger">{{ images.non_form_errors }}</div>
+        {% endif %}
+
+        <div id="id_images-TOTAL_FORMS" class="rec-disp-none">{{ images.management_form }}</div>
+
+        <div id="image-formset">
+            {% for form in images %}
+                {% if not form.DELETE %}
+                    <div class="card mb-3 image-form">
+                        <div class="card-body">
+                            {% if form.instance.pk %}
+                                <div class="mb-3">
+                                    <strong>Current Image:</strong>
+                                    <br>
+                                    <img src="{{ form.instance.image.url }}" class="rec-img" alt="Current image">
+                                </div>
+                            {% endif %}
+                            <div class="row">
+                                <div class="col-md-8">
+                                    <div class="mb-3">
+                                        <label for="{{ form.image.id_for_label }}" class="form-label">
+                                            {% if form.instance.pk %}Replace Image{% else %}Image File{% endif %}
+                                        </label>
+                                        {{ form.image }}
+                                        {% if form.image.errors %}
+                                            <div class="invalid-feedback d-block">{{ form.image.errors }}</div>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <div class="mb-3">
+                                        <label for="{{ form.sort_order.id_for_label }}" class="form-label">Sort Order</label>
+                                        {{ form.sort_order }}
+                                        {% if form.sort_order.errors %}
+                                            <div class="invalid-feedback d-block">{{ form.sort_order.errors }}</div>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                                {% if form.instance.pk %}
+                                    <div class="col-md-2">
+                                        <div class="mb-3">
+                                            <label class="form-label">&nbsp;</label>
+                                            <div class="form-check form-check-inline">
+                                                {{ form.DELETE }}
+                                                <label class="form-check-label" for="{{ form.DELETE.id_for_label }}">
+                                                    Delete
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+
+    <!-- Form Errors -->
+    {% if form.non_field_errors %}
+        <div class="alert alert-danger">
+            <strong>Error:</strong> {{ form.non_field_errors }}
+        </div>
+    {% endif %}
+
+    <!-- Submit -->
+    <div class="mb-4">
+        <button type="submit" class="btn btn-success btn-lg">
+            {% if form.instance.sku %}💾 Update Product{% else %}✅ Create Product{% endif %}
+        </button>
+        <a href="{% if form.instance.sku %}{% url 'inventory_receiving:product_detail' form.instance.sku %}{% else %}{% url 'inventory_receiving:product_list' %}{% endif %}" class="btn btn-secondary btn-lg">
+            Cancel
+        </a>
+    </div>
+</form>
+
+<script nonce="{{ nonce }}" type="text/javascript" src="{% static 'js/inventory-receiving.js' %}"></script>
+{% endblock %}

@@ -1,0 +1,80 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- preload -->
+    <link rel="preload" as="style" href="{% static 'css/lib/bootstrap.custom.min.css' %}" />
+    <link rel="preload" as="style" href="{% static 'css/inventory-receiving.css' %}" />
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Inventory Receiving System{% endblock %}</title>
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async nonce="{{ nonce }}" src="https://www.googletagmanager.com/gtag/js?id=G-8T0FQHFQMD"></script>
+    <script nonce="{{ nonce }}" src="{% static 'js/analytics.js' %}"></script>
+
+    <!-- favicon -->
+    <link rel="shortcut icon" type="image/png" href="{% static 'images/m_p_favicon.png' %}" />
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="{% static 'css/lib/bootstrap.custom.min.css' %}" />
+    <!-- inventory_receiving css -->
+    <link rel="stylesheet" href="{% static 'css/inventory-receiving.css' %}" />
+
+    {% block extra_css %}{% endblock %}
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="{% url 'inventory_receiving:dashboard' %}">
+                📦 Inventory Receiving
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'inventory_receiving:product_list' %}">Products</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'inventory_receiving:product_create' %}">+ New Product</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'inventory_receiving:product_type_list' %}">Categories</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'admin:index' %}">Admin</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container-fluid my-4">
+        {% if messages %}
+            {% for message in messages %}
+                <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+                    {{ message }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            {% endfor %}
+        {% endif %}
+
+        {% block content %}{% endblock %}
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-light py-4 mt-5 border-top">
+        <div class="container-fluid text-center text-muted">
+            <p>&copy; 2026 Inventory Management System - Michael Patterson. All rights reserved.</p>
+        </div>
+    </footer>
+
+    {% comment %} <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script> {% endcomment %}
+    <script nonce="{{ nonce }}" src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+    {% block extra_js %}{% endblock %}
+</body>
+</html>

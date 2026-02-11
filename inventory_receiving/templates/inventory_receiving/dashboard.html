@@ -1,0 +1,113 @@
+{% extends "inventory_receiving/base.html" %}
+
+{% block title %}Dashboard - Inventory Receiving{% endblock %}
+
+{% block content %}
+<div class="row mb-4">
+    <div class="col-md-12">
+        <h1 class="mb-3">Dashboard</h1>
+    </div>
+</div>
+
+<div class="row mb-4">
+    <div class="col-md-3">
+        <div class="stat-card">
+            <h6 class="text-muted mb-2">Total Products</h6>
+            <h2 class="mb-0">{{ total_products }}</h2>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="stat-card not-listed">
+            <h6 class="text-muted mb-2">Not Listed</h6>
+            <h2 class="mb-0">{{ products_not_listed }}</h2>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="stat-card listed">
+            <h6 class="text-muted mb-2">Active Listings</h6>
+            <h2 class="mb-0">{{ products_listed }}</h2>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="stat-card sold-out">
+            <h6 class="text-muted mb-2">Sold Out</h6>
+            <h2 class="mb-0">{{ products_sold_out }}</h2>
+        </div>
+    </div>
+</div>
+
+<div class="row mb-4">
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="mb-0">Quick Actions</h5>
+            </div>
+            <div class="card-body">
+                <a href="{% url 'inventory_receiving:product_create' %}" class="btn btn-primary btn-lg w-100 mb-2">
+                    ➕ Create New Product
+                </a>
+                <a href="{% url 'inventory_receiving:product_type_create' %}" class="btn btn-secondary btn-lg w-100">
+                    📂 Create Category
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="mb-0">Categories</h5>
+            </div>
+            <div class="card-body">
+                <p>Total Categories: <strong>{{ total_product_types }}</strong></p>
+                <a href="{% url 'inventory_receiving:product_type_list' %}" class="btn btn-outline-secondary w-100">
+                    View All Categories
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="card">
+    <div class="card-header">
+        <h5 class="mb-0">Recent Products</h5>
+    </div>
+    <div class="card-body">
+        {% if recent_products %}
+            <div class="table-responsive">
+                <table class="table table-hover mb-0">
+                    <thead class="table-light">
+                        <tr>
+                            <th>SKU</th>
+                            <th>Title</th>
+                            <th>Category</th>
+                            <th>Quantity</th>
+                            <th>Status</th>
+                            <th>Created</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for product in recent_products %}
+                            <tr>
+                                <td><strong>{{ product.sku }}</strong></td>
+                                <td>{{ product.title }}</td>
+                                <td>{{ product.product_type.code }}</td>
+                                <td>{{ product.quantity_remaining }}/{{ product.initial_quantity }}</td>
+                                <td>
+                                    <span class="badge bg-secondary">{{ product.get_status_display }}</span>
+                                </td>
+                                <td>{{ product.created_at|date:"M d, Y" }}</td>
+                                <td>
+                                    <a href="{% url 'inventory_receiving:product_detail' product.sku %}" class="btn btn-sm btn-info">View</a>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        {% else %}
+            <p class="text-muted mb-0">No products yet. <a href="{% url 'inventory_receiving:product_create' %}">Create one now</a>!</p>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

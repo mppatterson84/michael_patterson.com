@@ -1,0 +1,78 @@
+{% extends "inventory_receiving/base.html" %}
+
+{% block title %}{% if form.instance.id %}Edit{% else %}Create{% endif %} Category - Inventory Receiving{% endblock %}
+
+{% block content %}
+<div class="row mb-4">
+    <div class="col-md-8">
+        <h1>{% if form.instance.id %}Edit Category{% else %}Create New Category{% endif %}</h1>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-body">
+                <form method="post" novalidate>
+                    {% csrf_token %}
+
+                    <div class="mb-3">
+                        <label for="{{ form.title.id_for_label }}" class="form-label">Title *</label>
+                        {{ form.title }}
+                        {% if form.title.errors %}
+                            <div class="invalid-feedback d-block">{{ form.title.errors }}</div>
+                        {% endif %}
+                        <small class="form-text text-muted">e.g., "Handmade Mugs", "Printed Apparel"</small>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="{{ form.code.id_for_label }}" class="form-label">Code *</label>
+                        {{ form.code }}
+                        {% if form.code.errors %}
+                            <div class="invalid-feedback d-block">{{ form.code.errors }}</div>
+                        {% endif %}
+                        <small class="form-text text-muted">Unique alphanumeric code (will be uppercase). Used in SKU generation. e.g., "HDM", "PRT"</small>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="{{ form.description.id_for_label }}" class="form-label">Description</label>
+                        {{ form.description }}
+                        {% if form.description.errors %}
+                            <div class="invalid-feedback d-block">{{ form.description.errors }}</div>
+                        {% endif %}
+                    </div>
+
+                    {% if form.non_field_errors %}
+                        <div class="alert alert-danger">
+                            <strong>Error:</strong> {{ form.non_field_errors }}
+                        </div>
+                    {% endif %}
+
+                    <div class="mb-4">
+                        <button type="submit" class="btn btn-success btn-lg">
+                            {% if form.instance.id %}💾 Update Category{% else %}✅ Create Category{% endif %}
+                        </button>
+                        <a href="{% url 'inventory_receiving:product_type_list' %}" class="btn btn-secondary btn-lg">
+                            Cancel
+                        </a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="mb-0">ℹ️ SKU Format</h5>
+            </div>
+            <div class="card-body">
+                <p>Categories control how SKUs are generated for products.</p>
+                <p><strong>Format:</strong> <code>&lt;CODE&gt;-&lt;NUMBER&gt;</code></p>
+                <p><strong>Example:</strong> <code>HDM-1001</code></p>
+                <p class="text-muted small">The code you enter here will be used as the SKU prefix for all products in this category.</p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

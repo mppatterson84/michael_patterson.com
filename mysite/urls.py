@@ -34,4 +34,5 @@ urlpatterns = [
     # path('api/tasks/v1/rest-auth/registration/', include('rest_auth.registration.urls')),
     # path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
     # path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
+    path('inventory-receiving/', include('inventory_receiving.urls')),
 ]

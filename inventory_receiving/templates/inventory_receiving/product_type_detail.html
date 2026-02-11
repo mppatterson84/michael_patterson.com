@@ -1,0 +1,116 @@
+{% extends "inventory_receiving/base.html" %}
+
+{% block title %}{{ product_type.title }} - Inventory Receiving{% endblock %}
+
+{% block content %}
+<div class="row mb-4">
+    <div class="col-md-8">
+        <h1>{{ product_type.title }}</h1>
+        <p class="text-muted">Category Code: <strong>{{ product_type.code }}</strong></p>
+    </div>
+    <div class="col-md-4 text-end">
+        <a href="{% url 'inventory_receiving:product_type_edit' product_type.id %}" class="btn btn-warning">✏️ Edit</a>
+    </div>
+</div>
+
+<div class="row mb-4">
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="mb-0">Category Details</h5>
+            </div>
+            <div class="card-body">
+                <table class="table table-borderless mb-0">
+                    <tr>
+                        <th>Title:</th>
+                        <td>{{ product_type.title }}</td>
+                    </tr>
+                    <tr>
+                        <th>Code:</th>
+                        <td><strong>{{ product_type.code }}</strong></td>
+                    </tr>
+                    {% if product_type.description %}
+                        <tr>
+                            <th colspan="2">Description:</th>
+                        </tr>
+                        <tr>
+                            <td colspan="2">{{ product_type.description }}</td>
+                        </tr>
+                    {% endif %}
+                    <tr>
+                        <th>Next SKU Number:</th>
+                        <td>{{ product_type.next_sku_number }}</td>
+                    </tr>
+                    <tr>
+                        <th>Created:</th>
+                        <td>{{ product_type.created_at|date:"M d, Y h:i A" }}</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Products in this Category -->
+<div class="card">
+    <div class="card-header d-flex justify-content-between align-items-center">
+        <h5 class="mb-0">Products in this Category ({{ products.count }})</h5>
+        <a href="{% url 'inventory_receiving:product_create' %}?product_type={{ product_type.id }}" class="btn btn-sm btn-primary">
+            ➕ Add Product
+        </a>
+    </div>
+    <div class="card-body">
+        {% if products %}
+            <div class="table-responsive">
+                <table class="table table-hover mb-0">
+                    <thead class="table-light">
+                        <tr>
+                            <th>SKU</th>
+                            <th>Title</th>
+                            <th>Stock</th>
+                            <th>Status</th>
+                            <th>Created</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for product in products %}
+                            <tr>
+                                <td><strong>{{ product.sku }}</strong></td>
+                                <td>{{ product.title }}</td>
+                                <td>
+                                    {{ product.quantity_remaining }}/{{ product.initial_quantity }}
+                                    {% if product.quantity_remaining == 0 %}
+                                        <span class="badge bg-danger">Out of Stock</span>
+                                    {% endif %}
+                                </td>
+                                <td>
+                                    <span class="badge 
+                                        {% if product.status == 'not_listed' %}bg-secondary
+                                        {% elif product.status == 'sold_out' %}bg-danger
+                                        {% elif product.status == 'ebay' %}bg-primary
+                                        {% elif product.status == 'etsy' %}bg-success
+                                        {% elif product.status == 'website' %}bg-info
+                                        {% endif %}">
+                                        {{ product.get_status_display }}
+                                    </span>
+                                </td>
+                                <td>{{ product.created_at|date:"M d, Y" }}</td>
+                                <td>
+                                    <a href="{% url 'inventory_receiving:product_detail' product.sku %}" class="btn btn-sm btn-info">View</a>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        {% else %}
+            <p class="text-muted mb-0">No products in this category yet. <a href="{% url 'inventory_receiving:product_create' %}">Create one</a>!</p>
+        {% endif %}
+    </div>
+</div>
+
+<div class="mt-4">
+    <a href="{% url 'inventory_receiving:product_type_list' %}" class="btn btn-secondary">← Back to Categories</a>
+</div>
+{% endblock %}

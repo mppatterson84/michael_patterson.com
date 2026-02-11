@@ -61,6 +61,7 @@ INSTALLED_APPS = [
     'tasks.apps.TasksConfig',
     'todo.apps.TodoConfig',
     'users.apps.UsersConfig',
+    'inventory_receiving.apps.InventoryReceivingConfig',
 ]
 
 MIDDLEWARE = [
@@ -163,6 +164,20 @@ STORAGES = {
     "staticfiles": {
         "BACKEND": 'whitenoise.storage.CompressedManifestStaticFilesStorage',
     },
+    'inventory_receiving': {
+        'BACKEND': 'storages.backends.s3boto3.S3Boto3Storage',
+        'OPTIONS': {
+            'access_key': os.environ.get('AWS_ACCESS_KEY_ID'),
+            'secret_key': os.environ.get('AWS_SECRET_ACCESS_KEY'),
+            'bucket_name': os.environ.get('AWS_STORAGE_BUCKET_NAME'),
+            'region_name': os.environ.get('AWS_S3_REGION_NAME'),
+            'querystring_auth': True,
+            'file_overwrite': False,
+            'object_parameters': {
+                'CacheControl': 'max-age=86400',            
+            },
+        }
+    }
 }
 
 
@@ -184,7 +199,7 @@ django_heroku.settings(locals(), staticfiles=False)
 
 # media and cloudinary storage
 MEDIA_URL = '/media/'
-
+MEDIA_ROOT = BASE_DIR / 'media'
 
 # Django Rest Framework
 REST_FRAMEWORK = {

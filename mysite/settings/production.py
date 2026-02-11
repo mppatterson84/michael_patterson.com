@@ -6,6 +6,7 @@ ALLOWED_HOSTS = [
     '.michael-patterson.com',
     'www.michael-patterson.com',
     'young-savannah-60236.herokuapp.com',
+    'michael-patterson.com-inventory-product-images.s3.amazonaws.com',
 ]
 
 # SSL/HTTPS
@@ -31,6 +32,7 @@ CORS_ALLOWED_ORIGINS = [
     'https://www.michael-patterson.com',
     'https://young-savannah-60236.herokuapp.com',
     'https://tasks-app4739308573.netlify.app/',
+    'https://michael-patterson.com-inventory-product-images.s3.amazonaws.com',
 ]
 
 CSRF_TRUSTED_ORIGINS = [
@@ -39,4 +41,5 @@ CSRF_TRUSTED_ORIGINS = [
     'todo.michael-patterson.com',
     'young-savannah-60236.herokuapp.com',
     'tasks-app4739308573.netlify.app',
+    'michael-patterson.com-inventory-product-images.s3.amazonaws.com'
 ]

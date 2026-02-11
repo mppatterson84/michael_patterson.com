@@ -1,0 +1,107 @@
+{% extends "inventory_receiving/base.html" %}
+
+{% block title %}Categories - Inventory Receiving{% endblock %}
+
+{% block content %}
+<div class="row mb-4">
+    <div class="col-md-8">
+        <h1>Product Categories</h1>
+    </div>
+    <div class="col-md-4 text-end">
+        <a href="{% url 'inventory_receiving:product_type_create' %}" class="btn btn-primary btn-lg">
+            ➕ New Category
+        </a>
+    </div>
+</div>
+
+<!-- Search -->
+<div class="card mb-4">
+    <div class="card-body">
+        <form method="get" class="row g-3">
+            <div class="col-md-8">
+                <input type="text" name="search" class="form-control" placeholder="Search by title, code..." value="{{ request.GET.search }}">
+            </div>
+            <div class="col-md-4">
+                <button type="submit" class="btn btn-primary w-100">Search</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<!-- Categories Table -->
+{% if product_types %}
+    <div class="row">
+        {% for product_type in product_types %}
+            <div class="col-md-6 mb-4">
+                <div class="card h-100">
+                    <div class="card-header">
+                        <h5 class="mb-0">
+                            {{ product_type.title }}
+                            <span class="badge bg-secondary float-end">{{ product_type.code }}</span>
+                        </h5>
+                    </div>
+                    <div class="card-body">
+                        {% if product_type.description %}
+                            <p class="text-muted">{{ product_type.description }}</p>
+                        {% else %}
+                            <p class="text-muted">No description</p>
+                        {% endif %}
+                        
+                        <table class="table table-sm table-borderless mb-3">
+                            <tr>
+                                <th>Next SKU #:</th>
+                                <td><strong>{{ product_type.next_sku_number }}</strong></td>
+                            </tr>
+                            <tr>
+                                <th>Products:</th>
+                                <td><strong>{{ product_type.products.count }}</strong></td>
+                            </tr>
+                            <tr>
+                                <th>Created:</th>
+                                <td>{{ product_type.created_at|date:"M d, Y" }}</td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="card-footer bg-light">
+                        <a href="{% url 'inventory_receiving:product_type_detail' product_type.id %}" class="btn btn-sm btn-info">View</a>
+                        <a href="{% url 'inventory_receiving:product_type_edit' product_type.id %}" class="btn btn-sm btn-warning">Edit</a>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+
+    <!-- Pagination -->
+    {% if is_paginated %}
+        <nav aria-label="Page navigation" class="mt-4">
+            <ul class="pagination justify-content-center">
+                {% if page_obj.has_previous %}
+                    <li class="page-item">
+                        <a class="page-link" href="?page=1{% if request.GET.search %}&search={{ request.GET.search }}{% endif %}">First</a>
+                    </li>
+                    <li class="page-item">
+                        <a class="page-link" href="?page={{ page_obj.previous_page_number }}{% if request.GET.search %}&search={{ request.GET.search }}{% endif %}">Previous</a>
+                    </li>
+                {% endif %}
+
+                <li class="page-item active">
+                    <span class="page-link">Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}</span>
+                </li>
+
+                {% if page_obj.has_next %}
+                    <li class="page-item">
+                        <a class="page-link" href="?page={{ page_obj.next_page_number }}{% if request.GET.search %}&search={{ request.GET.search }}{% endif %}">Next</a>
+                    </li>
+                    <li class="page-item">
+                        <a class="page-link" href="?page={{ page_obj.paginator.num_pages }}{% if request.GET.search %}&search={{ request.GET.search }}{% endif %}">Last</a>
+                    </li>
+                {% endif %}
+            </ul>
+        </nav>
+    {% endif %}
+{% else %}
+    <div class="alert alert-info">
+        No categories found. <a href="{% url 'inventory_receiving:product_type_create' %}">Create your first category</a>!
+    </div>
+{% endif %}
+{% endblock %}

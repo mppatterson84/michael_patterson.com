@@ -1,0 +1,213 @@
+{% extends "inventory_receiving/base.html" %}
+
+{% block title %}{{ product.sku }} - {{ product.title }} - Inventory Receiving{% endblock %}
+
+{% block content %}
+<div class="row mb-4">
+    <div class="col-md-8">
+        <h1>{{ product.sku }}</h1>
+        <p class="text-muted">{{ product.title }}</p>
+    </div>
+    <div class="col-md-4 text-end">
+        <a href="{% url 'inventory_receiving:product_edit' product.sku %}" class="btn btn-warning">✏️ Edit</a>
+        <a href="{% url 'inventory_receiving:product_delete' product.sku %}" class="btn btn-danger">🗑️ Delete</a>
+    </div>
+</div>
+
+<div class="row">
+    <!-- Product Information -->
+    <div class="col-md-6">
+        <div class="card mb-4">
+            <div class="card-header">
+                <h5 class="mb-0">Product Information</h5>
+            </div>
+            <div class="card-body">
+                <table class="table table-borderless mb-0">
+                    <tr>
+                        <th>SKU:</th>
+                        <td><strong>{{ product.sku }}</strong></td>
+                    </tr>
+                    <tr>
+                        <th>Title:</th>
+                        <td>{{ product.title }}</td>
+                    </tr>
+                    <tr>
+                        <th>Category:</th>
+                        <td>
+                            <a href="{% url 'inventory_receiving:product_type_detail' product.product_type.id %}">
+                                {{ product.product_type.title }} ({{ product.product_type.code }})
+                            </a>
+                        </td>
+                    </tr>
+                    {% if product.description %}
+                        <tr>
+                            <th colspan="2">Description:</th>
+                        </tr>
+                        <tr>
+                            <td colspan="2">{{ product.description }}</td>
+                        </tr>
+                    {% endif %}
+                </table>
+            </div>
+        </div>
+
+        <div class="card mb-4">
+            <div class="card-header">
+                <h5 class="mb-0">Inventory</h5>
+            </div>
+            <div class="card-body">
+                <table class="table table-borderless mb-0">
+                    <tr>
+                        <th>Initial Quantity:</th>
+                        <td>{{ product.initial_quantity }}</td>
+                    </tr>
+                    <tr>
+                        <th>Quantity Sold:</th>
+                        <td>{{ product.quantity_sold }}</td>
+                    </tr>
+                    <tr>
+                        <th>Remaining:</th>
+                        <td>
+                            <strong class="{% if product.quantity_remaining == 0 %}text-danger{% elif product.quantity_remaining <= 3 %}text-warning{% else %}text-success{% endif %}">
+                                {{ product.quantity_remaining }}
+                            </strong>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Unique Item:</th>
+                        <td>{% if product.is_unique %}✓ Yes{% else %}No{% endif %}</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <div class="card mb-4">
+            <div class="card-header">
+                <h5 class="mb-0">Physical Attributes</h5>
+            </div>
+            <div class="card-body">
+                <table class="table table-borderless mb-0">
+                    <tr>
+                        <th>Length:</th>
+                        <td>{{ product.length_in }}"</td>
+                    </tr>
+                    <tr>
+                        <th>Width:</th>
+                        <td>{{ product.width_in }}"</td>
+                    </tr>
+                    <tr>
+                        <th>Height:</th>
+                        <td>{{ product.height_in }}"</td>
+                    </tr>
+                    <tr>
+                        <th>Weight:</th>
+                        <td>{{ product.weight_oz }} oz</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- Status and Dates -->
+    <div class="col-md-6">
+        <div class="card mb-4">
+            <div class="card-header">
+                <h5 class="mb-0">Status & Listing</h5>
+            </div>
+            <div class="card-body">
+                <table class="table table-borderless mb-0">
+                    <tr>
+                        <th>Current Status:</th>
+                        <td>
+                            <span class="badge 
+                                {% if product.status == 'not_listed' %}bg-secondary
+                                {% elif product.status == 'sold_out' %}bg-danger
+                                {% elif product.status == 'ebay' %}bg-primary
+                                {% elif product.status == 'etsy' %}bg-success
+                                {% elif product.status == 'website' %}bg-info
+                                {% endif %}">
+                                {{ product.get_status_display }}
+                            </span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Date Listed:</th>
+                        <td>
+                            {% if product.date_listed %}
+                                {{ product.date_listed|date:"M d, Y" }}
+                            {% else %}
+                                <span class="text-muted">Not yet listed</span>
+                            {% endif %}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Date Sold Out:</th>
+                        <td>
+                            {% if product.date_sold_out %}
+                                {{ product.date_sold_out|date:"M d, Y" }}
+                            {% else %}
+                                <span class="text-muted">Not sold out</span>
+                            {% endif %}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Active:</th>
+                        <td>{% if product.is_active %}✓ Yes{% else %}No (Inactive){% endif %}</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <div class="card mb-4">
+            <div class="card-header">
+                <h5 class="mb-0">Timeline</h5>
+            </div>
+            <div class="card-body">
+                <table class="table table-borderless mb-0">
+                    <tr>
+                        <th>Created:</th>
+                        <td>{{ product.created_at|date:"M d, Y h:i A" }}</td>
+                    </tr>
+                    <tr>
+                        <th>Last Updated:</th>
+                        <td>{{ product.updated_at|date:"M d, Y h:i A" }}</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Product Images -->
+<div class="card">
+    <div class="card-header d-flex justify-content-between align-items-center">
+        <h5 class="mb-0">Product Images</h5>
+        <a href="{% url 'inventory_receiving:product_image_create' product.sku %}" class="btn btn-sm btn-primary">
+            ➕ Add Image
+        </a>
+    </div>
+    <div class="card-body">
+        {% if images %}
+            <div class="product-image-grid">
+                {% for image in images %}
+                    <div class="product-image-item">
+                        <img src="{{ image.image.url }}" alt="Product image" title="Sort order: {{ image.sort_order }}">
+                         <a href="{% url 'inventory_receiving:product_image_delete' image.id %}" class="btn btn-sm btn-danger btn-delete" onclick="return confirm('Delete this image?');">
+                            ✕
+                        </a>
+                    </div>
+                {% endfor %}
+            </div>
+        {% else %}
+            <p class="text-muted mb-0">
+                No images yet. 
+                <a href="{% url 'inventory_receiving:product_image_create' product.sku %}">Add your first image</a>!
+            </p>
+        {% endif %}
+    </div>
+</div>
+
+<div class="mt-4">
+    <a href="{% url 'inventory_receiving:product_list' %}" class="btn btn-secondary">← Back to Products</a>
+</div>
+{% endblock %}
