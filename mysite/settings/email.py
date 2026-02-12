@@ -2,7 +2,7 @@ from .base import *
 
 EMAIL_BACKEND = os.environ['EMAIL_BACKEND']
 EMAIL_HOST = os.environ['EMAIL_HOST']
-EMAIL_HOST_USER = os.environ['SEND_EMAIL_ADDRESS']
+EMAIL_HOST_USER = os.environ['EMAIL_HOST_USER']
 EMAIL_HOST_PASSWORD = os.environ['EMAIL_PASSWORD']
 EMAIL_PORT = os.environ['EMAIL_PORT']
 EMAIL_USE_TLS = os.environ['EMAIL_USE_TLS'] == 'True'

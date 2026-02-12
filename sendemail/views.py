@@ -25,13 +25,13 @@ class EmailContactView(TemplateView):
                 'https://www.google.com/recaptcha/api/siteverify', data=data)
             result = r.json()
             subject = form.cleaned_data['subject']
-            from_email = form.cleaned_data['from_email']
-            message = form.cleaned_data['message']
+            from_email = os.environ['EMAIL_HOST_USER']
+            user_email_address = form.cleaned_data['from_email']
+            message = f"Someone sent a message from the contact form with email address {user_email_address}\n{form.cleaned_data['message']}"
             if result['success']:
                 form.save()
                 try:
-                    send_mail(subject, message, from_email, [
-                        os.environ['SEND_EMAIL_ADDRESS']])
+                    send_mail(subject, message, from_email, [os.environ['SEND_EMAIL_ADDRESS']])
                 except BadHeaderError:
                     return HttpResponse('Invalid header found.')
             else:
