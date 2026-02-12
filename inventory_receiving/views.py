@@ -1,6 +1,6 @@
 from django.shortcuts import redirect, get_object_or_404
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
-from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
 from django.urls import reverse_lazy
 from django.db.models import Q
 
@@ -12,10 +12,12 @@ from .forms import ProductTypeForm, ProductForm, ProductImageForm, ProductImageF
 # Product Type Views
 # ============================================================================
 
-class ProductTypeListView(LoginRequiredMixin, ListView):
+class ProductTypeListView(PermissionRequiredMixin, ListView):
     """List all product types."""
     model = ProductType
     template_name = 'inventory_receiving/product_type_list.html'
+    permission_required = 'inventory_receiving.view_producttype'
+    login_url = 'login'
     context_object_name = 'product_types'
     paginate_by = 20
     
@@ -31,26 +33,32 @@ class ProductTypeListView(LoginRequiredMixin, ListView):
         return queryset
 
 
-class ProductTypeCreateView(LoginRequiredMixin, CreateView):
+class ProductTypeCreateView(PermissionRequiredMixin, CreateView):
     """Create a new product type."""
     model = ProductType
     form_class = ProductTypeForm
     template_name = 'inventory_receiving/product_type_form.html'
+    permission_required = 'inventory_receiving.add_producttype'
+    login_url = 'login'
     success_url = reverse_lazy('inventory_receiving:product_type_list')
 
 
-class ProductTypeUpdateView(LoginRequiredMixin, UpdateView):
+class ProductTypeUpdateView(PermissionRequiredMixin, UpdateView):
     """Update a product type."""
     model = ProductType
     form_class = ProductTypeForm
     template_name = 'inventory_receiving/product_type_form.html'
+    permission_required = 'inventory_receiving.change_producttype'
+    login_url = 'login'
     success_url = reverse_lazy('inventory_receiving:product_type_list')
 
 
-class ProductTypeDetailView(LoginRequiredMixin, DetailView):
+class ProductTypeDetailView(PermissionRequiredMixin, DetailView):
     """View details of a product type and its products."""
     model = ProductType
     template_name = 'inventory_receiving/product_type_detail.html'
+    permission_required = 'inventory_receiving.view_producttype'
+    login_url = 'login'
     context_object_name = 'product_type'
     
     def get_context_data(self, **kwargs):
@@ -63,10 +71,12 @@ class ProductTypeDetailView(LoginRequiredMixin, DetailView):
 # Product Views
 # ============================================================================
 
-class ProductListView(LoginRequiredMixin, ListView):
+class ProductListView(PermissionRequiredMixin, ListView):
     """List all active products."""
     model = Product
     template_name = 'inventory_receiving/product_list.html'
+    permission_required = 'inventory_receiving.view_product'
+    login_url = 'login'
     context_object_name = 'products'
     paginate_by = 20
     
@@ -104,10 +114,12 @@ class ProductListView(LoginRequiredMixin, ListView):
         return context
 
 
-class ProductDetailView(LoginRequiredMixin, DetailView):
+class ProductDetailView(PermissionRequiredMixin, DetailView):
     """View details of a specific product including images."""
     model = Product
     template_name = 'inventory_receiving/product_detail.html'
+    permission_required = 'inventory_receiving.view_product'
+    login_url = 'login'
     context_object_name = 'product'
     slug_field = 'sku'
     slug_url_kwarg = 'sku'
@@ -121,11 +133,13 @@ class ProductDetailView(LoginRequiredMixin, DetailView):
         return context
 
 
-class ProductCreateView(LoginRequiredMixin, CreateView):
+class ProductCreateView(PermissionRequiredMixin, CreateView):
     """Create a new product."""
     model = Product
     form_class = ProductForm
     template_name = 'inventory_receiving/product_form.html'
+    permission_required = 'inventory_receiving.add_product'
+    login_url = 'login'
     
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -151,11 +165,13 @@ class ProductCreateView(LoginRequiredMixin, CreateView):
         return self.object.get_absolute_url()
 
 
-class ProductUpdateView(LoginRequiredMixin, UpdateView):
+class ProductUpdateView(PermissionRequiredMixin, UpdateView):
     """Update an existing product."""
     model = Product
     form_class = ProductForm
     template_name = 'inventory_receiving/product_form.html'
+    permission_required = 'inventory_receiving.change_product'
+    login_url = 'login'
     slug_field = 'sku'
     slug_url_kwarg = 'sku'
     
@@ -186,11 +202,13 @@ class ProductUpdateView(LoginRequiredMixin, UpdateView):
         return self.object.get_absolute_url()
 
 
-class ProductDeleteView(LoginRequiredMixin, UpdateView):
+class ProductDeleteView(PermissionRequiredMixin, UpdateView):
     """Deactivate a product (soft delete)."""
     model = Product
     fields = []
     template_name = 'inventory_receiving/product_confirm_delete.html'
+    permission_required = 'inventory_receiving.delete_product'
+    login_url = 'login'
     slug_field = 'sku'
     slug_url_kwarg = 'sku'
     success_url = reverse_lazy('inventory_receiving:product_list')
@@ -209,11 +227,13 @@ class ProductDeleteView(LoginRequiredMixin, UpdateView):
 # Product Image Views
 # ============================================================================
 
-class ProductImageCreateView(LoginRequiredMixin, CreateView):
+class ProductImageCreateView(PermissionRequiredMixin, CreateView):
     """Add an image to a product."""
     model = ProductImage
     form_class = ProductImageForm
     template_name = 'inventory_receiving/product_image_form.html'
+    permission_required = 'inventory_receiving.add_productimage'
+    login_url = 'login'
     
     def dispatch(self, request, *args, **kwargs):
         self.product = get_object_or_404(Product, sku=kwargs['sku'], is_active=True)
@@ -232,10 +252,12 @@ class ProductImageCreateView(LoginRequiredMixin, CreateView):
         return context
 
 
-class ProductImageDeleteView(LoginRequiredMixin, DeleteView):
+class ProductImageDeleteView(PermissionRequiredMixin, DeleteView):
     """Delete an image from a product."""
     model = ProductImage
     template_name = 'inventory_receiving/product_image_confirm_delete.html'
+    permission_required = 'inventory_receiving.delete_productimage'
+    login_url = 'login'
     
     def dispatch(self, request, *args, **kwargs):
         self.object = self.get_object()
@@ -255,9 +277,11 @@ class ProductImageDeleteView(LoginRequiredMixin, DeleteView):
 # Dashboard View
 # ============================================================================
 
-class DashboardView(LoginRequiredMixin, ListView):
+class DashboardView(PermissionRequiredMixin, ListView):
     """Dashboard showing inventory_receiving summary and recent products."""
     template_name = 'inventory_receiving/dashboard.html'
+    permission_required = 'inventory_receiving.view_product'
+    login_url = 'login'
     context_object_name = 'recent_products'
     
     def get_queryset(self):
