@@ -5,6 +5,6 @@ EMAIL_HOST = os.environ['EMAIL_HOST']
 EMAIL_HOST_USER = os.environ['SEND_EMAIL_ADDRESS']
 EMAIL_HOST_PASSWORD = os.environ['EMAIL_PASSWORD']
 EMAIL_PORT = os.environ['EMAIL_PORT']
-EMAIL_USE_TLS = os.environ['EMAIL_USE_TLS']
-EMAIL_USE_SSL = os.environ['EMAIL_USE_SSL']
+EMAIL_USE_TLS = os.environ['EMAIL_USE_TLS'] == 'True'
+EMAIL_USE_SSL = os.environ['EMAIL_USE_SSL'] == 'True'
 DEFAULT_FROM_EMAIL = os.environ['SEND_EMAIL_ADDRESS']
