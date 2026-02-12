@@ -1,8 +1,10 @@
 from .base import *
 
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'smtp.sendgrid.net'
-EMAIL_HOST_USER = 'apikey'
+EMAIL_BACKEND = os.environ['EMAIL_BACKEND']
+EMAIL_HOST = os.environ['EMAIL_HOST']
+EMAIL_HOST_USER = os.environ['SEND_EMAIL_ADDRESS']
 EMAIL_HOST_PASSWORD = os.environ['EMAIL_PASSWORD']
-EMAIL_PORT = 587
-EMAIL_USE_TLS = True
+EMAIL_PORT = os.environ['EMAIL_PORT']
+EMAIL_USE_TLS = os.environ['EMAIL_USE_TLS']
+EMAIL_USE_SSL = os.environ['EMAIL_USE_SSL']
+DEFAULT_FROM_EMAIL = os.environ['SEND_EMAIL_ADDRESS']
