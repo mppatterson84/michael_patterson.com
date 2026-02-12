@@ -28,9 +28,9 @@ class ProductType(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
 
     def clean(self):
-        # Enforce uppercase alphanumeric codes
-        if not self.code.isalnum():
-            raise ValidationError("Product type code must be alphanumeric.")
+        # Enforce uppercase alphanumeric codes and hyphens
+        if not all(c.isalnum() or c == '-' for c in self.code):
+            raise ValidationError("Product type code must be alphanumeric or contain hyphens.")
         self.code = self.code.upper()
 
     def __str__(self):
