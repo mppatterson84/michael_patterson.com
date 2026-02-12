@@ -1,0 +1,48 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- favicon -->
+    <link rel="shortcut icon" type="image/png" href="{% static 'images/m_p_favicon.png' %}" />
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="{% static 'css/lib/bootstrap.custom.min.css' %}" />
+
+    <!-- 404 CSS -->
+    <link rel="stylesheet" href="{% static 'css/404.css' %}" />
+
+    <title>404 Page Not Found</title>
+</head>
+
+<body class="bg-black text-white">
+    <div class="container-fluid">
+        <div class="row vh-100">
+            <h1 class="pt-3">403 Forbidden</h1>
+            <h2 class="pt-3 text-center">
+                {% if user.is_authenticated %}
+                I'm sorry {% if user.first_name %}{{ user.first_name }}{% else %}{{ user }}{% endif %}, I'm afraid I can't do that.
+                {% else %}
+                I'm sorry Dave, I'm afraid I can't do that.
+                {% endif %}
+            </h2>
+            <div class="col-sm-4 mx-auto">
+                <a href="https://www.michael-patterson.com">
+                    <img class="img-fluid"
+                        src="https://res.cloudinary.com/dkc5rsxrn/image/upload/v1629498307/artificial-intelligence-155161_1280_dwh0ng.png"
+                        alt="Hal 9000">
+                </a>
+            </div>
+            <h4 class="text-center">
+                <a class="bg-black text-white" href="https://www.michael-patterson.com">www.michael-patterson.com</a>
+            </h4>
+        </div>
+    </div>
+
+</body>
+
+</html>
