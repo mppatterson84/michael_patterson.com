@@ -8,21 +8,41 @@
 
 {% block content %}
 <main class="container">
-    <h1 class="py-3 main-heading">Dashboard</h1>
+    <h1 class="py-3 main-heading">User Dashboard</h1>
     <div class="row py-3">
         <div class="col-md-3"></div>
         <div class="col-md-6 py-3">
             <p>Hello, {{ user.username|default:"Guest" }}!</p>
             <div>
                 {% if user.is_authenticated %}
+                {% if perms.inventory_receiving.view_product %}
                 <p>
-                    <a href="{% url 'logout' %}">Logout</a>
+                    <a href="{% url 'inventory_receiving:dashboard' %}">Inventory Receiving</a>
                 </p>
+                {% endif %}
+                {% if not perms.inventory_receiving.view_product %}
+                <p>
+                    <a href="{% url 'contact' %}">Contact Admin to </br> Request Permissions</a>
+                </p>
+                {% endif %}
+                {% if user.is_staff %}
+                <p>
+                    <a href="{% url 'admin:index' %}">Admin Site</a>
+                </p>
+                {% endif %}
                 <p>
                     <a href="{% url 'password_change' %}">Change Password</a>
                 </p>
+                <p>
+                    <form method="post" action="{% url 'logout' %}">
+                        {% csrf_token %}
+                        <button class="btn btn-outline-danger" type="submit">Log Out</button>
+                    </form>
+                </p>
                 {% else %}
-                    <a href="{% url 'login' %}">Login</a>
+                <p>
+                    <a class="btn btn-outline-primary" href="{% url 'login' %}">Login</a>
+                </p>
                 {% endif %}
             </div>
         </div>

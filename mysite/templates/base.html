@@ -134,8 +134,66 @@
                             {% endif %}
                         </ul>
                     </li>
+                </ul>    
+                <ul class="navbar-nav pb-3 pb-md-0 text-end">    
+                    <li>
+                        <p class="nav-link mb-0 ms-auto me-1">Hello, {{ user.username|default:"Guest" }}!</p>
+                    </li>
+
+                    {% if not user.is_authenticated %}
+                    <li>
+                        <a class="nav-link ps-3 ps-md-2 ms-3 ms-md-0" href="{% url 'login' %}">
+                            Login
+                        </a>
+                    </li>
+                    {% endif %}
+
+                    {% if user.is_authenticated %}
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle ps-3 ps-md-2 ms-3 ms-md-0" href="#" id="navbarDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            User Menu
+                        </a>
+                        <ul class="dropdown-menu mt-3 mt-md-0" aria-labelledby="navbarDropdown">
+                            {% if perms.inventory_receiving.view_product %}
+                            <li>
+                                <a class="dropdown-item" href="{% url 'inventory_receiving:dashboard' %}">Inventory Receiving</a>
+                            </li>
+                            {% endif %}
+                            {% if not perms.inventory_receiving.view_product %}
+                            <li>
+                                <a class="dropdown-item" href="{% url 'contact' %}">Contact Admin to </br> Request Permissions</a>
+                            </li>
+                            {% endif %}
+                            <li>
+                                <hr class="dropdown-divider" />
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="{% url 'dashboard' %}">User Dashboard</a>
+                            </li>
+                            <li>
+                                <hr class="dropdown-divider" />
+                            </li>
+                            {% if user.is_staff %}
+                            <li>
+                                <a class="dropdown-item" href="{% url 'admin:index' %}">Admin Site</a>
+                            </li>
+                            <li>
+                                <hr class="dropdown-divider" />
+                            </li>
+                            {% endif %}
+                            <li class="text-center">
+                                <form method="post" action="{% url 'logout' %}">
+                                    {% csrf_token %}
+                                    <button class="btn btn-outline-danger" type="submit">Log Out</button>
+                                </form>
+                            </li>
+                        </ul>
+                    </li>
+                    {% endif %}
                 </ul>
-                <div class="ml-4">
+
+                <div class="ms-4">
                     <form method="GET" action="/blog/search/" class="d-flex input-group">
                         <input class="form-control" type="search" placeholder="Blog Search" aria-label="Blog Search"
                             aria-describedby="basic-addon2" name="q" value="{{ request.GET.q }}" />
