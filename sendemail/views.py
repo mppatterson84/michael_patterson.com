@@ -2,7 +2,7 @@ import os
 import requests
 
 from django.contrib import messages
-from django.core.mail import send_mail, BadHeaderError
+from django.core.mail import send_mail, BadHeaderError, EmailMessage
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from django.views.generic import TemplateView
@@ -24,14 +24,22 @@ class EmailContactView(TemplateView):
             r = requests.post(
                 'https://www.google.com/recaptcha/api/siteverify', data=data)
             result = r.json()
-            subject = form.cleaned_data['subject']
-            from_email = os.environ['EMAIL_HOST_USER']
-            user_email_address = form.cleaned_data['from_email']
-            message = f"Someone sent a message from the contact form with email address {user_email_address}\n{form.cleaned_data['message']}"
+            email = EmailMessage(
+                subject=form.cleaned_data['subject'],
+                body=form.cleaned_data['message'],
+                from_email=os.environ['SEND_EMAIL_ADDRESS'],
+                to=[os.environ['EMAIL_HOST_USER']],
+                reply_to=[form.cleaned_data['from_email']]
+            )
+            # subject = form.cleaned_data['subject']
+            # from_email = os.environ['EMAIL_HOST_USER']
+            # user_email_address = form.cleaned_data['from_email']
+            # message = f"Someone sent a message from the contact form at michael-patterson.com\nsender email: {user_email_address}\n{form.cleaned_data['message']}"
             if result['success']:
                 form.save()
                 try:
-                    send_mail(subject, message, from_email, [os.environ['SEND_EMAIL_ADDRESS']])
+                    # send_mail(subject, message, from_email, [os.environ['SEND_EMAIL_ADDRESS']])
+                    email.send()
                 except BadHeaderError:
                     return HttpResponse('Invalid header found.')
             else:
