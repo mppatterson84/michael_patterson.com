@@ -49,7 +49,7 @@
                         <a class="nav-link" href="{% url 'admin:index' %}">Admin</a>
                     </li>
                     {% endif %}
-                    <li class="nav-item ps-3 ps-md-0 ms-3 ms-md-0">
+                    <li class="nav-item">
                         <a class="nav-link {{ home_active }}" aria-current="{{ home_aria_current|default:'false' }}"
                             href="{% url 'dashboard' %}">User Dashboard</a>
                     </li>

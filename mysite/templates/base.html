@@ -135,13 +135,13 @@
                         </ul>
                     </li>
                 </ul>    
-                <ul class="navbar-nav pb-3 pb-md-0 text-end">    
-                    <li>
+                <ul class="navbar-nav pb-3 pb-md-0">    
+                    <li class="nav-item ps-3 ps-md-0 ms-3 ms-md-0">
                         <p class="nav-link mb-0 ms-auto me-1">Hello, {{ user.username|default:"Guest" }}!</p>
                     </li>
 
                     {% if not user.is_authenticated %}
-                    <li>
+                    <li class="nav-item ps-3 ps-md-0 ms-3 ms-md-0">
                         <a class="nav-link ps-3 ps-md-2 ms-3 ms-md-0" href="{% url 'login' %}">
                             Login
                         </a>
@@ -162,7 +162,7 @@
                             {% endif %}
                             {% if not perms.inventory_receiving.view_product %}
                             <li>
-                                <a class="dropdown-item" href="{% url 'contact' %}">Contact Admin to </br> Request Permissions</a>
+                                <a class="dropdown-item" href="{% url 'contact' %}">Contact Admin to <br> Request Permissions</a>
                             </li>
                             {% endif %}
                             <li>
