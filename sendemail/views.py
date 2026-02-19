@@ -7,7 +7,7 @@ from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from django.views.generic import TemplateView
 from .forms import EmailForm
-
+from django.conf import settings
 
 class EmailContactView(TemplateView):
     form_class = EmailForm
@@ -36,7 +36,8 @@ class EmailContactView(TemplateView):
             # user_email_address = form.cleaned_data['from_email']
             # message = f"Someone sent a message from the contact form at michael-patterson.com\nsender email: {user_email_address}\n{form.cleaned_data['message']}"
             if result['success']:
-                form.save()
+                if settings.SAVE_EMAILS_TO_DB == True:
+                    form.save()
                 try:
                     # send_mail(subject, message, from_email, [os.environ['SEND_EMAIL_ADDRESS']])
                     email.send()
