@@ -234,7 +234,7 @@ class ProductImageCreateView(PermissionRequiredMixin, CreateView):
         return super().form_valid(form)
     
     def get_success_url(self):
-        return self.product.get_absolute_url()
+        return reverse_lazy('inventory_receiving:product_image_create', kwargs={'sku': self.product.sku})
     
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -254,7 +254,7 @@ class ProductImageDeleteView(PermissionRequiredMixin, DeleteView):
         return super().dispatch(request, *args, **kwargs)
     
     def get_success_url(self):
-        return self.product.get_absolute_url()
+        return reverse_lazy('inventory_receiving:product_image_create', kwargs={'sku': self.product.sku})
     
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)

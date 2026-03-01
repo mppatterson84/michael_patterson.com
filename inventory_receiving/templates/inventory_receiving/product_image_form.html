@@ -11,7 +11,7 @@
 </div>
 
 <div class="row">
-    <div class="col-md-8">
+    <div class="col-md-6">
         <div class="card">
             <div class="card-body">
                 <form method="post" enctype="multipart/form-data" novalidate>
@@ -56,19 +56,35 @@
         </div>
     </div>
 
-    <div class="col-md-4">
+    <!-- Product Images -->
+    <div class="col-md-6">
         <div class="card">
             <div class="card-header">
                 <h5 class="mb-0">Current Images</h5>
             </div>
             <div class="card-body">
-                {% if product.images.exists %}
-                    <p>This product has <strong>{{ product.images.count }}</strong> image(s).</p>
-                    <a href="{% url 'inventory_receiving:product_detail' product.sku %}" class="btn btn-outline-primary w-100">
+                <div class="d-flex">
+                    {% if product.images.exists %}
+                        <p>This product has <strong>{{ product.images.count }}</strong> image(s).</p>
+                        {% else %}
+                        <p class="text-muted">No images yet.</p>
+                        {% endif %}
+                    <a href="{% url 'inventory_receiving:product_detail' product.sku %}" class="btn btn-outline-primary ms-auto">
                         View Product
                     </a>
-                {% else %}
-                    <p class="text-muted">No images yet.</p>
+                </div>
+
+                {% if product.images.exists %}
+                    <div class="product-image-grid">
+                        {% for image in product.images.all %}
+                            <div class="product-image-item">
+                                <img src="{{ image.image.url }}" alt="Product image" title="Sort order: {{ image.sort_order }}">
+                                <a href="{% url 'inventory_receiving:product_image_delete' image.id %}" class="btn btn-sm btn-danger btn-delete" onclick="return confirm('Delete this image?');">
+                                    ✕
+                                </a>
+                            </div>
+                        {% endfor %}
+                    </div>
                 {% endif %}
             </div>
         </div>

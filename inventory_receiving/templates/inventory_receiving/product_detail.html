@@ -107,9 +107,36 @@
             </div>
         </div>
     </div>
-
+    
     <!-- Status and Dates -->
     <div class="col-md-6">
+        <!-- Product Images -->
+        <div class="card mb-4">
+            <div class="card-header d-flex justify-content-between align-items-center">
+                <h5 class="mb-0">Product Images</h5>
+                <a href="{% url 'inventory_receiving:product_image_create' product.sku %}" class="btn btn-sm btn-primary">
+                    Edit Images
+                </a>
+            </div>
+            <div class="card-body">
+                {% if images %}
+                    <div class="product-image-grid">
+                        {% for image in images %}
+                            <div class="product-image-item">
+                                <a href="{{ image.image.url }}" target="_blank">
+                                    <img src="{{ image.image.url }}" alt="Product image" title="Sort order: {{ image.sort_order }}">
+                                </a>
+                            </div>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    <p class="text-muted mb-0">
+                        No images yet. 
+                        <a href="{% url 'inventory_receiving:product_image_create' product.sku %}">Add your first image</a>!
+                    </p>
+                {% endif %}
+            </div>
+        </div>
         <div class="card mb-4">
             <div class="card-header">
                 <h5 class="mb-0">Status & Listing</h5>
@@ -175,35 +202,6 @@
                 </table>
             </div>
         </div>
-    </div>
-</div>
-
-<!-- Product Images -->
-<div class="card">
-    <div class="card-header d-flex justify-content-between align-items-center">
-        <h5 class="mb-0">Product Images</h5>
-        <a href="{% url 'inventory_receiving:product_image_create' product.sku %}" class="btn btn-sm btn-primary">
-            ➕ Add Image
-        </a>
-    </div>
-    <div class="card-body">
-        {% if images %}
-            <div class="product-image-grid">
-                {% for image in images %}
-                    <div class="product-image-item">
-                        <img src="{{ image.image.url }}" alt="Product image" title="Sort order: {{ image.sort_order }}">
-                         <a href="{% url 'inventory_receiving:product_image_delete' image.id %}" class="btn btn-sm btn-danger btn-delete" onclick="return confirm('Delete this image?');">
-                            ✕
-                        </a>
-                    </div>
-                {% endfor %}
-            </div>
-        {% else %}
-            <p class="text-muted mb-0">
-                No images yet. 
-                <a href="{% url 'inventory_receiving:product_image_create' product.sku %}">Add your first image</a>!
-            </p>
-        {% endif %}
     </div>
 </div>
 
