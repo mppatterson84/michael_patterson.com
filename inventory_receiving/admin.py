@@ -1,5 +1,6 @@
 from django.contrib import admin
 from .models import ProductType, Product, ProductImage
+from django.conf import settings
 
 
 @admin.register(ProductType)
@@ -72,7 +73,7 @@ class ProductAdmin(admin.ModelAdmin):
 
     def has_delete_permission(self, request, obj=None):
         """Prevent deletion of products. Use is_active flag instead."""
-        return False
+        return settings.ALLOW_PRODUCT_DELETION
 
 
 @admin.register(ProductImage)

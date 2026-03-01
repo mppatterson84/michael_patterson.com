@@ -231,4 +231,6 @@ DEFAULT_AUTO_FIELD = "django.db.models.AutoField"
 
 SAVE_EMAILS_TO_DB = os.environ.get('SAVE_EMAILS_TO_DB', 'False') == 'True'
 
+ALLOW_PRODUCT_DELETION = os.environ.get('ALLOW_PRODUCT_DELETION') == 'True'
+
 # 1/24/2025 upgrade Heroku stack from heroku-20 to heroku 24
