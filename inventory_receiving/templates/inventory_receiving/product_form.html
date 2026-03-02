@@ -91,7 +91,7 @@
     <div class="form-section">
         <h5>Physical Attributes</h5>
         <div class="row">
-            <div class="col-md-3">
+            <div class="col-md-2">
                 <div class="mb-3">
                     <label for="{{ form.length_in.id_for_label }}" class="form-label">Length (inches)</label>
                     {{ form.length_in }}
@@ -100,7 +100,7 @@
                     {% endif %}
                 </div>
             </div>
-            <div class="col-md-3">
+            <div class="col-md-2">
                 <div class="mb-3">
                     <label for="{{ form.width_in.id_for_label }}" class="form-label">Width (inches)</label>
                     {{ form.width_in }}
@@ -109,7 +109,7 @@
                     {% endif %}
                 </div>
             </div>
-            <div class="col-md-3">
+            <div class="col-md-2">
                 <div class="mb-3">
                     <label for="{{ form.height_in.id_for_label }}" class="form-label">Height (inches)</label>
                     {{ form.height_in }}
@@ -120,7 +120,16 @@
             </div>
             <div class="col-md-3">
                 <div class="mb-3">
-                    <label for="{{ form.weight_oz.id_for_label }}" class="form-label">Weight (ounces)</label>
+                    <label for="{{ form.weight_lb.id_for_label }}" class="form-label">Weight (lbs)</label>
+                    {{ form.weight_lb }}
+                    {% if form.weight_lb.errors %}
+                        <div class="invalid-feedback d-block">{{ form.weight_lb.errors }}</div>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="mb-3">
+                    <label for="{{ form.weight_oz.id_for_label }}" class="form-label">Weight (oz)</label>
                     {{ form.weight_oz }}
                     {% if form.weight_oz.errors %}
                         <div class="invalid-feedback d-block">{{ form.weight_oz.errors }}</div>

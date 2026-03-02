@@ -108,6 +108,16 @@ class Product(models.Model):
     def quantity_remaining(self):
         return self.initial_quantity - self.quantity_sold
 
+    @property
+    def weight_lbs(self):
+        """Whole pounds portion of the weight."""
+        return self.weight_oz // 16
+
+    @property
+    def weight_oz_remainder(self):
+        """Remaining ounces after extracting whole pounds."""
+        return self.weight_oz % 16
+
     def get_absolute_url(self):
         return reverse('inventory_receiving:product_detail', kwargs={'sku': self.sku})
 

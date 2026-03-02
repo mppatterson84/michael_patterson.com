@@ -29,7 +29,21 @@ class ProductTypeForm(forms.ModelForm):
 
 class ProductForm(forms.ModelForm):
     """Form for creating and editing Products."""
-    
+
+    # Non-model field: pounds portion of weight
+    weight_lb = forms.IntegerField(
+        label='Weight (lbs)',
+        min_value=0,
+        required=False,
+        initial=0,
+        widget=forms.NumberInput(attrs={
+            'class': 'form-control',
+            'type': 'number',
+            'min': '0',
+            'placeholder': 'pounds'
+        })
+    )
+
     class Meta:
         model = Product
         fields = [
@@ -86,7 +100,8 @@ class ProductForm(forms.ModelForm):
                 'class': 'form-control',
                 'type': 'number',
                 'min': '0',
-                'placeholder': 'ounces'
+                'max': '15',
+                'placeholder': 'oz (0-15)'
             }),
             'status': forms.Select(attrs={
                 'class': 'form-control'
@@ -100,6 +115,30 @@ class ProductForm(forms.ModelForm):
                 'type': 'date'
             }),
         }
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        # When editing an existing product, split stored total ounces into lbs + oz
+        if self.instance.pk:
+            total_oz = self.instance.weight_oz
+            self.initial['weight_lb'] = total_oz // 16 # Floor division to get pounds
+            self.initial['weight_oz'] = total_oz % 16 # Remainder after dividing by 16
+
+    def clean_weight_oz(self):
+        oz = self.cleaned_data.get('weight_oz') or 0
+        if oz > 15:
+            raise forms.ValidationError(
+                "Ounces must be 0-15. Use the pounds field for full pounds."
+            )
+        return oz
+
+    def clean(self):
+        cleaned_data = super().clean()
+        weight_lb = cleaned_data.get('weight_lb') or 0
+        weight_oz = cleaned_data.get('weight_oz') or 0
+        # Store combined total as ounces in the model field
+        cleaned_data['weight_oz'] = weight_lb * 16 + weight_oz
+        return cleaned_data
 
 
 class ProductImageForm(forms.ModelForm):

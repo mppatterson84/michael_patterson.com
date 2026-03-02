@@ -101,7 +101,16 @@
                     </tr>
                     <tr>
                         <th>Weight:</th>
-                        <td>{{ product.weight_oz }} oz</td>
+                        <td>
+                            {% if product.weight_lbs > 0 %}
+                                {{ product.weight_lbs }} lb{{ product.weight_lbs|pluralize }}
+                                {% if product.weight_oz_remainder > 0 %}
+                                    {{ product.weight_oz_remainder }} oz
+                                {% endif %}
+                            {% else %}
+                                {{ product.weight_oz_remainder }} oz
+                            {% endif %}
+                        </td>
                     </tr>
                 </table>
             </div>
