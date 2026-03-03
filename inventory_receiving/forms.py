@@ -3,6 +3,21 @@ from django.forms import inlineformset_factory
 from .models import ProductType, Product, ProductImage
 
 
+class ProductTypeSelect(forms.Select):
+    """Select widget that adds data attributes from the related ProductType to each <option>."""
+
+    def create_option(self, name, value, label, selected, index, **kwargs):
+        option = super().create_option(name, value, label, selected, index, **kwargs)
+        if value:
+            try:
+                product_type = ProductType.objects.get(pk=int(str(value)))
+                option['attrs']['data-code'] = product_type.code
+                option['attrs']['data-next-sku-number'] = product_type.next_sku_number
+            except (ProductType.DoesNotExist, ValueError):
+                pass
+        return option
+
+
 class ProductTypeForm(forms.ModelForm):
     """Form for creating and editing Product Types."""
     
@@ -53,7 +68,7 @@ class ProductForm(forms.ModelForm):
             'status', 'date_listed', 'date_sold_out'
         ]
         widgets = {
-            'product_type': forms.Select(attrs={
+            'product_type': ProductTypeSelect(attrs={
                 'class': 'form-control'
             }),
             'title': forms.TextInput(attrs={
