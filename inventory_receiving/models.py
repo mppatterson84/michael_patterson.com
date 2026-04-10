@@ -1,5 +1,7 @@
-from django.db import models
 from django.core.exceptions import ValidationError
+from django.db import models
+from django.db.models.signals import post_delete
+from django.dispatch import receiver
 from django.utils import timezone
 from django.urls import reverse
 import math
@@ -204,3 +206,10 @@ class ProductImage(models.Model):
 
     def __str__(self):
         return f"Image for {self.product.sku}"
+
+
+@receiver(post_delete, sender=ProductImage)
+def delete_product_image_file(sender, instance, **kwargs):
+    """Delete the image file from storage when a ProductImage is deleted."""
+    if instance.image:
+        instance.image.delete(save=False)
